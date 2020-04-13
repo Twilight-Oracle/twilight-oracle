@@ -2,5 +2,17 @@
   {{ .Title }} &ndash; {{ .Site.Title }}
 {{ end }}
 {{ define "main" }}
-  {{ .Content }}
+  <div class="stats">
+    <div class="title">
+      <span>{{ .Title }}</span>
+      <span>{{ .Params.Number }}</span>
+    </div>
+    <div class="typeline">
+      {{ with .Params.Ops }}<span>{{ . }}</span>{{ end }}
+      <span>{{ .Params.Side }} Event {{ with .Params.Scoring }} &ndash; Scoring {{ end }}</span>
+    </div>
+    <div class="text">
+      {{ .Content }}
+    </div>
+  </div>
 {{ end }}

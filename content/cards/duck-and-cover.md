@@ -3,7 +3,7 @@ title: "Duck and Cover"
 date: 2020-04-09T16:18:28-07:00
 number: "42"
 ops: 3
-side: "us"
+side: "US"
 ---
 Degrade DEFCON one level.
 
