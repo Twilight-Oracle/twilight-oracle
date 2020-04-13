@@ -1,6 +1,8 @@
 ---
 title: "Europe Scoring"
 number: "1"
-scoring: true
+types:
+  - scoring
 side: "Neutral"
+period: "Early"
 ---

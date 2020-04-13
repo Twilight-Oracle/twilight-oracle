@@ -1,0 +1,47 @@
+body {
+  background: lightsteelblue;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.stats {
+  background: midnightblue;
+  color: white;
+  padding: 1em;
+  font-size: 1.25em;
+}
+
+.stats .titleline {
+  font-size: 1.5em;
+}
+
+.stats .number {
+  float: right;
+}
+
+.stats .period {
+  font-size: 1.25em;
+  padding: 0.25em;
+  margin: 0.5em;
+  text-align: center;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.stats .period.early {
+  background: deepskyblue;
+  color: black;
+}
+
+.stats .period.mid {
+  background: steelblue;
+  color: black;
+}
+
+.stats .period.late {
+  background: black;
+  color: white;
+}
+
+.stats .typeline {
+  font-size: 1.25em;
+}
