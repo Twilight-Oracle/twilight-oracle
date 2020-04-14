@@ -1,32 +1,3 @@
-body {
-  background: lightsteelblue;
-  font-family: "Times New Roman", Times, serif;
-}
-
-.card {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-}
-
-.stats {
-  background: white;
-  border-bottom: solid black 3pt;
-  border-radius: 0.5em / 1em;
-  border-left: solid black 1px;
-  border-right: solid black 1px;
-  font-size: 1.25em;
-  flex-basis: 500px;
-}
-
-.stats .header {
-  border-radius: inherit;
-  border-top: solid black 3pt;
-  border-bottom: solid black 3pt;
-  padding: 0.5em;
-  font-size: 1.25em;
-}
-
 .early {
   background: #00a9d1;
   color: black;
@@ -40,15 +11,4 @@ body {
 .mid {
   background: #0085ac;
   color: white;
-}
-
-.stats .text {
-  padding: 0.5em;
-}
-
-.stats .titleline {
-  font-size: 1.25em;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
 }
