@@ -12,7 +12,12 @@
     </div>
     <div class="typeline">
       {{- with .Params.Ops }}<span>{{ . }} Operations</span>{{ end }}
-      <span>{{ .Params.Side }} Event {{- with .Params.Types }} &ndash; {{ range . }} {{ . }} {{ end }} {{ end }}</span>
+      <span>
+        {{- .Params.Side }} Event
+        {{- with .Params.Types }} &ndash;
+          {{ delimit (apply . "index" $.Site.Data.cardTypeStrings ".") ", "}}
+        {{- end -}}
+      </span>
     </div>
     <div class="text">
       {{ .Content }}
