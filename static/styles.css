@@ -3,43 +3,52 @@ body {
   font-family: "Times New Roman", Times, serif;
 }
 
+.card {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
 .stats {
-  background: midnightblue;
-  color: white;
-  padding: 1em;
+  background: white;
+  border-bottom: solid black 3pt;
+  border-radius: 0.5em / 1em;
+  border-left: solid black 1px;
+  border-right: solid black 1px;
   font-size: 1.25em;
+  flex-basis: 500px;
+}
+
+.stats .header {
+  border-radius: inherit;
+  border-top: solid black 3pt;
+  border-bottom: solid black 3pt;
+  padding: 0.5em;
+  font-size: 1.25em;
+}
+
+.early {
+  background: #00a9d1;
+  color: black;
+}
+
+.late {
+  background: #2d3045;
+  color: white;
+}
+
+.mid {
+  background: #0085ac;
+  color: white;
+}
+
+.stats .text {
+  padding: 0.5em;
 }
 
 .stats .titleline {
-  font-size: 1.5em;
+  font-size: 1.25em;
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
-}
-
-.stats .period {
-  font-size: 1.25em;
-  padding: 0.25em;
-  margin: 0.5em;
-  text-align: center;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
-}
-
-.stats .period.early {
-  background: deepskyblue;
-  color: black;
-}
-
-.stats .period.mid {
-  background: steelblue;
-  color: black;
-}
-
-.stats .period.late {
-  background: black;
-  color: white;
-}
-
-.stats .typeline {
-  font-size: 1.25em;
 }

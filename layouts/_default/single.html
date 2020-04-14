@@ -2,25 +2,30 @@
   {{ .Title }} &ndash; {{ .Site.Title }}
 {{ end }}
 {{ define "main" }}
-  <div class="stats">
-    <div class="period {{ lower .Params.Period }}">
-      {{- .Params.Period }} War
-    </div>
-    <div class="titleline">
-      <span class="title">{{ .Title }}</span>
-      <span class="number">{{ .Params.Number }}</span>
-    </div>
-    <div class="typeline">
-      {{- with .Params.Ops }}<span>{{ . }} Operations</span>{{ end }}
-      <span>
-        {{- .Params.Side }} Event
-        {{- with .Params.Types }} &ndash;
-          {{ delimit (apply . "index" $.Site.Data.cardTypeStrings ".") ", "}}
-        {{- end -}}
-      </span>
-    </div>
-    <div class="text">
-      {{ .Content }}
+  <div class="card">
+    <img src="{{ .Params.Image }}" alt="">
+    <div class="stats">
+      <div class="header {{ lower .Params.Period }}">
+        <div class="titleline">
+          <span class="title">{{ .Title }}</span>
+          <span class="number">{{ .Params.Number }}</span>
+        </div>
+        <div class="period">
+          {{- .Params.Period }} War
+        </div>
+        <div class="typeline">
+          {{- with .Params.Ops }}<span>{{ . }} Operations</span> {{ end -}}
+          <span>
+            {{- .Params.Side }} Event
+            {{- with .Params.Types }} &ndash;
+              {{ delimit (apply . "index" $.Site.Data.cardTypeStrings ".") ", "}}
+            {{- end -}}
+          </span>
+        </div>
+      </div>
+      <div class="text">
+        {{ .Content }}
+      </div>
     </div>
   </div>
 {{ end }}
