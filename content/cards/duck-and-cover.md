@@ -1,11 +1,12 @@
 ---
 title: "Duck and Cover"
-date: 2020-04-09T16:18:28-07:00
-number: "42"
+number: 4
 ops: 3
 side: "US"
 period: "Early"
+image: https://twilightstrategy.files.wordpress.com/2012/01/duck-and-cover.jpg
+twilightstrategy: https://twilightstrategy.com/2011/12/12/duck-and-cover/
 ---
 Degrade DEFCON one level.
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Then US player earns VPs equal to 5 minus current DEFCON level.
