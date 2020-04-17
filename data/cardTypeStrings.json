@@ -1,5 +1,5 @@
 {
   "scoring": "Scoring",
-  "permanent": "Ongoing Effect",
-  "once": "Removed After Event"
+  "ongoing": "Ongoing Effect",
+  "unique": "Removed After Event"
 }

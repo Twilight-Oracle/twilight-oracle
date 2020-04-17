@@ -14,8 +14,8 @@
           {{- .Params.Period }} War
         </p>
         <p class="card-types">
-          {{- with .Params.Ops -}} {{ . }} Operations {{ end -}}
-          {{- .Params.Side }} Event
+          {{- with .Params.Ops -}} {{ . }} OPS {{ end -}}
+          {{- .Params.Side }} Event <!-- TODO: handle empty side as neutral -->
           {{- with .Params.Types }} &ndash;
             {{ delimit (apply . "index" $.Site.Data.cardTypeStrings ".") ", "}}
           {{- end -}}
