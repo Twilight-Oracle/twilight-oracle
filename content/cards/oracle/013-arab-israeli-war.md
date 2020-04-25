@@ -1,6 +1,6 @@
 ---
 title: Arab-Israeli War
-number: 013
+number: 13
 ops: 2
 types:
   - war

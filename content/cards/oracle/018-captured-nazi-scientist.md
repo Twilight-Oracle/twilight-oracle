@@ -1,6 +1,6 @@
 ---
 title: Captured Nazi Scientist
-number: 018
+number: 18
 ops: 1
 types:
   - unique

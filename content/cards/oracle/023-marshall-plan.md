@@ -1,6 +1,6 @@
 ---
 title: Marshall Plan
-number: 023
+number: 23
 ops: 4
 types:
   - unique

@@ -1,6 +1,6 @@
 ---
 title: The China Card
-number: 006
+number: 6
 ops: 4
 period: Early
 ---

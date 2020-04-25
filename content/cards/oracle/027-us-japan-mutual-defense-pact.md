@@ -1,6 +1,6 @@
 ---
 title: US/Japan Mutual Defense Pact
-number: 027
+number: 27
 ops: 4
 types:
   - unique

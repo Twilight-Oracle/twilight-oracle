@@ -1,6 +1,6 @@
 ---
 title: Europe Scoring
-number: 002
+number: 2
 types:
   - scoring
 period: Early

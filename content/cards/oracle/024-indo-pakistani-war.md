@@ -1,6 +1,6 @@
 ---
 title: Indo-Pakistani War
-number: 024
+number: 24
 ops: 2
 types:
   - war

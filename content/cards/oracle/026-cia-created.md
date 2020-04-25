@@ -1,6 +1,6 @@
 ---
 title: CIA Created
-number: 026
+number: 26
 ops: 1
 types:
   - unique

@@ -1,6 +1,6 @@
 ---
 title: Olympic Games
-number: 020
+number: 20
 ops: 2
 period: Early
 ---

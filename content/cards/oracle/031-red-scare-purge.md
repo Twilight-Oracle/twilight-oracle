@@ -1,6 +1,6 @@
 ---
 title: Red Scare/Purge
-number: 031
+number: 31
 ops: 4
 period: Early
 ---

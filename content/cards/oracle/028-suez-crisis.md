@@ -1,6 +1,6 @@
 ---
 title: Suez Crisis
-number: 028
+number: 28
 ops: 3
 types:
   - unique

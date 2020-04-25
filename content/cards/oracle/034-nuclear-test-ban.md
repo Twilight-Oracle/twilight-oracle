@@ -1,6 +1,6 @@
 ---
 title: Nuclear Test Ban
-number: 034
+number: 34
 ops: 4
 period: Early
 ---

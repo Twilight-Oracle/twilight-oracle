@@ -1,6 +1,6 @@
 ---
 title: Socialist Governments
-number: 007
+number: 7
 ops: 3
 side: USSR
 period: Early

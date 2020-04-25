@@ -1,6 +1,6 @@
 ---
 title: Formosa Resolution
-number: 035
+number: 35
 ops: 2
 types:
   - ongoing

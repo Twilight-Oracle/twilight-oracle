@@ -1,6 +1,6 @@
 ---
 title: UN Intervention
-number: 032
+number: 32
 ops: 1
 period: Early
 ---

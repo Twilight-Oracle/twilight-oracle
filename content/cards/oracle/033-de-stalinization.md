@@ -1,6 +1,6 @@
 ---
 title: De-Stalinization
-number: 033
+number: 33
 ops: 3
 types:
   - unique

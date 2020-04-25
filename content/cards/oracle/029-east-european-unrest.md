@@ -1,6 +1,6 @@
 ---
 title: East European Unrest
-number: 029
+number: 29
 ops: 3
 side: USA
 period: Early

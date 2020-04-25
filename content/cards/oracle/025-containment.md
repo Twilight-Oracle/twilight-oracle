@@ -1,6 +1,6 @@
 ---
 title: Containment
-number: 025
+number: 25
 ops: 3
 types:
   - unique

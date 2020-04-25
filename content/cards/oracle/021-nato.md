@@ -1,6 +1,6 @@
 ---
 title: NATO
-number: 021
+number: 21
 ops: 4
 types:
   - unique

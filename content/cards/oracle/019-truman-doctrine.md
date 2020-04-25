@@ -1,6 +1,6 @@
 ---
 title: Truman Doctrine
-number: 019
+number: 19
 ops: 1
 types:
   - unique

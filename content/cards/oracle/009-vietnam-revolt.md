@@ -1,6 +1,6 @@
 ---
 title: Vietnam Revolt
-number: 009
+number: 9
 ops: 2
 types:
   - unique

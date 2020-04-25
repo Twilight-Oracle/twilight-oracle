@@ -1,6 +1,6 @@
 ---
 title: Five-Year Plan
-number: 005
+number: 5
 ops: 3
 side: USA
 period: Early

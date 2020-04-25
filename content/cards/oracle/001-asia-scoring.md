@@ -1,6 +1,6 @@
 ---
 title: Asia Scoring
-number: 001
+number: 1
 types:
   - scoring
 period: Early

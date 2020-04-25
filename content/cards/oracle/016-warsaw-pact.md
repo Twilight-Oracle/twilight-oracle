@@ -1,6 +1,6 @@
 ---
 title: Warsaw Pact
-number: 016
+number: 16
 ops: 3
 types:
   - unique

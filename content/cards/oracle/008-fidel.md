@@ -1,6 +1,6 @@
 ---
 title: Fidel
-number: 008
+number: 8
 ops: 2
 types:
   - unique

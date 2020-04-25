@@ -1,6 +1,6 @@
 ---
 title: Blockade
-number: 010
+number: 10
 ops: 1
 types:
   - unique

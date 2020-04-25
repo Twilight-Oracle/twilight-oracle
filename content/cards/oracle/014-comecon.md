@@ -1,6 +1,6 @@
 ---
 title: Comecon
-number: 014
+number: 14
 ops: 3
 types:
   - unique

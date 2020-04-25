@@ -1,6 +1,6 @@
 ---
 title: De Gaulle Leads France
-number: 017
+number: 17
 ops: 3
 types:
   - unique

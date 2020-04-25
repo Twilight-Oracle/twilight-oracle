@@ -1,6 +1,6 @@
 ---
 title: Korean War
-number: 011
+number: 11
 ops: 2
 types:
   - war

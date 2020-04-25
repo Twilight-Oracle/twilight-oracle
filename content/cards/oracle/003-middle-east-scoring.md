@@ -1,6 +1,6 @@
 ---
 title: Middle East Scoring
-number: 003
+number: 3
 types:
   - scoring
 period: Early

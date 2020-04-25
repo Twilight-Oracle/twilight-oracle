@@ -1,6 +1,6 @@
 ---
 title: Romanian Abdication
-number: 012
+number: 12
 ops: 1
 types:
   - unique

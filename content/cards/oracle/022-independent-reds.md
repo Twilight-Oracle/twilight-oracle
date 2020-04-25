@@ -1,6 +1,6 @@
 ---
 title: Independent Reds
-number: 022
+number: 22
 ops: 2
 types:
   - unique

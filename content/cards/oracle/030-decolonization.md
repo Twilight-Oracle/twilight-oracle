@@ -1,6 +1,6 @@
 ---
 title: Decolonization
-number: 030
+number: 30
 ops: 2
 side: USSR
 period: Early
