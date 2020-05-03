@@ -20,8 +20,18 @@
             {{ delimit (apply . "index" $.Site.Data.cardTypeStrings ".") ", "}}
           {{- end -}}
         </p>
-        <div class="card-text">
+        <p class="card-text">
           {{ .Content }}
+        </p>
+        <div class="card-versions">
+          {{ with where .Site.Pages "Params.number" .Params.Number }}
+            {{ with index (where . ".File.Dir" "cards/oracle/") 0 }}
+              <a href="{{ .Permalink }}">Oracle</a>
+            {{ end }}
+            {{ with index (where . ".File.Dir" "cards/printed/") 0 }}
+              <a href="{{ .Permalink }}">Printed</a>
+            {{ end }}
+          {{ end }}
         </div>
       </div>
     </div>
