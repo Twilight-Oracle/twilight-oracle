@@ -1,0 +1,15 @@
+{{ define "title" }}
+  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+  <ul>
+    {{ range sort .Pages ".Params.number" }}
+    {{/* TODO checking the path is crude */}}
+    {{ if eq .File.Dir "cards/oracle/" }}
+      <li>
+        <a href="{{ .Permalink }}">{{ .Params.number }} {{ .Title }}</a>
+      </li>
+    {{ end }}
+    {{ end }}
+  </ul>
+{{ end }}
