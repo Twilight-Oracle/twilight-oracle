@@ -1,0 +1,17 @@
+{
+  "name": "twilight-oracle",
+  "version": "0.1.0",
+  "private": true,
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf public && hugo && ./build-index"
+  },
+  "author": "ninevra",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "metalsmith": "^2.3.0",
+    "metalsmith-scoped": "^1.0.0"
+  }
+}

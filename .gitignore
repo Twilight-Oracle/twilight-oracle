@@ -1,2 +1,6 @@
 # ignore hugo's output for now
 /public/
+# ignore npm dependencies
+/node_modules/
+# ignore the lunr index (an intermediate build product)
+/static/lunr-index.json

@@ -1,0 +1,72 @@
+#!/usr/bin/env node
+
+const metalsmith = require('metalsmith');
+const scoped = require('metalsmith-scoped');
+
+const lunr = require('./static/lunr.js');
+
+function buildLunrIndex(outputFilename, config) {
+  return function plugin(files, metalsmith, callback) {
+    const index = lunr(function () {
+      // TODO: lunr is really overkill for simple yes-no filtering like should
+      // be done for number, ops, side, period; it may even have undesirable
+      // semantics
+      // TODO: how to get data on cards (name, summary...) to the client? just not prebuild the index?
+      this.ref('permalink');
+      this.field('title'); // TODO: check case-insensitive
+      this.field('number'); // TODO: will search care about numbers versus strings?
+      this.field('ops'); // TODO: allow a 'none' option?
+      this.field('side'); // TODO: default to neutral, check case-insensitive
+      this.field('period'); // TODO: check case-insensitive
+      this.field('contents'); // TODO: convert to string from Buffer, strip markdown stuff
+      // TODO: unify printed and oracle versions somehow - array of titles, other values perhaps? 'printed' field?
+      for (let file of Object.keys(files)) {
+        this.add(files[file]);
+      }
+    });
+    files[outputFilename] = {
+      contents: Buffer.from(JSON.stringify(index))
+    };
+    setImmediate(callback);
+  }
+}
+
+// delete everything
+function rm(files, metalsmith, callback) {
+  for (let file of Object.keys(files)) {
+    delete files[file]
+  }
+  setImmediate(callback);
+}
+
+// Crudely imitate hugo's permalinks
+function hugoPermalinks(files, metalsmith, callback) {
+  for (let file of Object.keys(files)) {
+    const permalink = '/cards/' + file.replace(/.md$/, '');
+    const dest = permalink + '/index.html';
+    files[dest] = files[file];
+    delete files[file];
+    files[dest].permalink = permalink;
+    console.log(`${file} -> ${permalink}`);
+  }
+  setImmediate(callback);
+}
+
+// log the path of every file
+function logPaths(files, metalsmith, callback) {
+  for (let file of Object.keys(files)) {
+    console.log(file);
+  }
+  setImmediate(callback);
+}
+
+metalsmith(__dirname)
+  .source('./content/cards')
+  .destination('./static/')
+  .clean(false)
+  .use(hugoPermalinks)
+  .use(buildLunrIndex('lunr-index.json'))
+  .use(scoped(rm, ['**/*', '!lunr-index.json']))
+  .build(function (err) {
+    if (err) throw err;
+  });
