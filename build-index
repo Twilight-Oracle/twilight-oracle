@@ -14,12 +14,13 @@ function buildLunrIndex(outputFilename, config) {
       // semantics
       // TODO: how to get data on cards (name, summary...) to the client? just not prebuild the index?
       this.ref('permalink');
-      this.field('title'); // TODO: check case-insensitive
+      this.field('title');
       this.field('number'); // TODO: will search care about numbers versus strings?
       this.field('ops'); // TODO: allow a 'none' option?
-      this.field('side'); // TODO: default to neutral, check case-insensitive
-      this.field('period'); // TODO: check case-insensitive
+      this.field('side');
+      this.field('period');
       this.field('contents'); // TODO: convert to string from Buffer, strip markdown stuff
+      // TODO: search on types somehow
       // TODO: unify printed and oracle versions somehow - array of titles, other values perhaps? 'printed' field?
       for (let file of Object.keys(files)) {
         this.add(files[file]);
@@ -61,12 +62,25 @@ function logPaths(files, metalsmith, callback) {
   setImmediate(callback);
 }
 
+// metalsmith-default-values does this, but a little heavier-weight than we need
+function setDefault(key, value) {
+  return function setDefault(files, metalsmith, callback) {
+    for (let file of Object.keys(files)) {
+      if (!files[file].hasOwnProperty(key)) {
+        files[file][key] = value;
+      }
+    }
+    setImmediate(callback);
+  }
+}
+
 metalsmith(__dirname)
   .source('./content/cards')
   .destination('./static/')
   .clean(false)
   .use(drafts())
   .use(hugoPermalinks)
+  .use(setDefault('side', 'Neutral'))
   .use(buildLunrIndex('lunr-index.json'))
   .use(scoped(rm, ['**/*', '!lunr-index.json']))
   .build(function (err) {
