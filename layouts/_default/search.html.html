@@ -11,17 +11,22 @@
   {{/* TODO better way to load lunr script? inline this? */}}
   <script src="/lunr.js" type="text/javascript"></script>
   <script type="text/javascript">
-    const idxP = fetch('/lunr-index.json')
-      .then(response => response.json()) // TODO: error handling
-      .then(data => lunr.Index.load(data));
-    // TODO: is DOMContentLoaded needed here?
-    idxP.then(idx => {
+    async function loadIndex() {
+      // TODO: handle fetch errors
+      return lunr.Index.load(await (await fetch('/lunr-index.json')).json());
+    }
+    (async () => {
+      const idx = await loadIndex();
+      // TODO: is DOMContentLoaded needed here
       const resultsElem = document.getElementById('search-results');
-      for (let result of idx.search('place influence')) {
+      for (let result of idx.search(getSearchString())) {
         const resultElem = createResultElem(result.ref, result.ref);
         resultsElem.appendChild(resultElem);
       }
-    });
+    })();
+    function getSearchString() {
+      return new URLSearchParams(location.search).get('q');
+    }
     function createResultElem(url, name) {
       const resultElem = document.getElementById('search-result-template').content.cloneNode(true);
       resultElem.querySelector('a').href = url;
