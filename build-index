@@ -2,6 +2,7 @@
 
 const metalsmith = require('metalsmith');
 const scoped = require('metalsmith-scoped');
+const drafts = require('metalsmith-drafts');
 
 const lunr = require('./static/lunr.js');
 
@@ -64,6 +65,7 @@ metalsmith(__dirname)
   .source('./content/cards')
   .destination('./static/')
   .clean(false)
+  .use(drafts())
   .use(hugoPermalinks)
   .use(buildLunrIndex('lunr-index.json'))
   .use(scoped(rm, ['**/*', '!lunr-index.json']))

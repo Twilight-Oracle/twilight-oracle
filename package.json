@@ -12,6 +12,7 @@
   "license": "UNLICENSED",
   "dependencies": {
     "metalsmith": "^2.3.0",
+    "metalsmith-drafts": "^1.0.0",
     "metalsmith-scoped": "^1.0.0"
   }
 }
