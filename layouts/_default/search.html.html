@@ -16,21 +16,24 @@
       return lunr.Index.load(await (await fetch('/lunr-index.json')).json());
     }
     (async () => {
-      const idx = await loadIndex();
+      const [idx, allCards] = await Promise.all([loadIndex(), fetch('/all-cards.json').then(r => r.json())]);
       // TODO: is DOMContentLoaded needed here
       const resultsElem = document.getElementById('search-results');
-      for (let result of idx.search(getSearchString())) {
-        const resultElem = createResultElem(result.ref, result.ref);
+      const results = idx.search(getSearchString());
+      console.log(results);
+      for (let result of results) {
+        const resultElem = createResultElem(result.ref, allCards[result.ref]);
         resultsElem.appendChild(resultElem);
       }
     })();
     function getSearchString() {
       return new URLSearchParams(location.search).get('q');
     }
-    function createResultElem(url, name) {
+    function createResultElem(url, card) {
+      if (card === undefined) console.log(url);
       const resultElem = document.getElementById('search-result-template').content.cloneNode(true);
       resultElem.querySelector('a').href = url;
-      resultElem.querySelector('a').textContent = name;
+      resultElem.querySelector('a').textContent = card.title;
       return resultElem;
     }
   </script>

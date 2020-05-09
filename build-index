@@ -6,6 +6,24 @@ const drafts = require('metalsmith-drafts');
 
 const lunr = require('./static/lunr.js');
 
+function buildAllCardsJson(outputFilename) {
+  return function plugin(files, metalsmith, callback) {
+    const allFiles = Object.fromEntries(Object.values(files).map(file => {
+      const permalink = file.permalink;
+      file = {...file};
+      delete file.stats;
+      delete file.mode;
+      delete file.permalink;
+      file.contents = file.contents.toString();
+      return [permalink, file];
+    }));
+    files[outputFilename] = {
+      contents: Buffer.from(JSON.stringify(allFiles))
+    }
+    setImmediate(callback);
+  }
+}
+
 function buildLunrIndex(outputFilename, config) {
   return function plugin(files, metalsmith, callback) {
     const index = lunr(function () {
@@ -81,8 +99,9 @@ metalsmith(__dirname)
   .use(drafts())
   .use(hugoPermalinks)
   .use(setDefault('side', 'Neutral'))
-  .use(buildLunrIndex('lunr-index.json'))
-  .use(scoped(rm, ['**/*', '!lunr-index.json']))
+  .use(buildAllCardsJson('all-cards.json'))
+  .use(scoped(buildLunrIndex('lunr-index.json'), ['cards/**', 'lunr-index.json']))
+  .use(scoped(rm, ['**', '!lunr-index.json', '!all-cards.json']))
   .build(function (err) {
     if (err) throw err;
   });

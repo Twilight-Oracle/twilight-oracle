@@ -2,5 +2,6 @@
 /public/
 # ignore npm dependencies
 /node_modules/
-# ignore the lunr index (an intermediate build product)
+# ignore the lunr index & related files (intermediate build products)
 /static/lunr-index.json
+/static/all-cards.json
