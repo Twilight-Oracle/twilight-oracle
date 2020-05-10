@@ -16,17 +16,33 @@
       return lunr.Index.load(await (await fetch('/lunr-index.json')).json());
     }
     function parseSearch(query, cards) {
-      function* tokens(query) {
-        const quoted = '"[^"]*"';
-        const word = '[^:"\\s][^:\\s]*';
-        const pattern = new RegExp(`^\\s*(${word}:)?(${quoted}|${word})`);
+      const tokens = Object.entries({
+        quoted: '"[^"]*"',
+        colon: ':',
+        gt: '>',
+        ge: '>=',
+        eq: '=',
+        le: '<=',
+        lt: '<',
+        word: '[^"<>=:\\s][^<>=:\\s]*',
+        space: '\\s+'
+      });
+
+      function* tokenize(query) {
+        const pattern = new RegExp('^' + tokens.map(
+          ([name, pattern]) => `(${pattern})`
+        ).join('|'));
         console.log(pattern);
-        for (let token = pattern.exec(query); token; token = pattern.exec(query)) {
-          yield token[0];
-          query = query.slice(token[0].length);
+        for (let match = pattern.exec(query); match; match = pattern.exec(query)) {
+          const groupIndex = match.slice(1).findIndex(v => v);
+          const [name] = tokens[groupIndex];
+          const value = match[groupIndex + 1];
+          yield [name, value];
+          query = query.slice(match[0].length);
         }
       }
-      for (let token of tokens(query)) {
+      
+      for (let token of tokenize(query)) {
         console.log(token);
       }
     }
