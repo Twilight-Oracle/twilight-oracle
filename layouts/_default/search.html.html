@@ -15,15 +15,39 @@
       // TODO: handle fetch errors
       return lunr.Index.load(await (await fetch('/lunr-index.json')).json());
     }
+    function parseSearch(query, cards) {
+      function* tokens(query) {
+        const quoted = '"[^"]*"';
+        const word = '[^:"\\s][^:\\s]*';
+        const pattern = new RegExp(`^\\s*(${word}:)?(${quoted}|${word})`);
+        console.log(pattern);
+        for (let token = pattern.exec(query); token; token = pattern.exec(query)) {
+          yield token[0];
+          query = query.slice(token[0].length);
+        }
+      }
+      for (let token of tokens(query)) {
+        console.log(token);
+      }
+    }
     (async () => {
       const [idx, allCards] = await Promise.all([loadIndex(), fetch('/all-cards.json').then(r => r.json())]);
       // TODO: is DOMContentLoaded needed here
       const resultsElem = document.getElementById('search-results');
-      const results = idx.search(getSearchString());
-      console.log(results);
-      for (let result of results) {
-        const resultElem = createResultElem(result.ref, allCards[result.ref]);
-        resultsElem.appendChild(resultElem);
+      parseSearch(getSearchString());
+      try {
+        const results = idx.search(getSearchString());
+        console.log(results);
+        for (let result of results) {
+          const resultElem = createResultElem(result.ref, allCards[result.ref]);
+          resultsElem.appendChild(resultElem);
+        }
+      } catch (e) {
+        if (e instanceof lunr.QueryParseError) {
+          console.warn('caught a QueryParseError', e);
+        } else {
+          throw e;
+        }
       }
     })();
     function getSearchString() {
