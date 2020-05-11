@@ -6,13 +6,18 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf public && hugo && ./build-index"
+    "build": "rm -rf public && ./build-index && rollup -c && hugo"
   },
   "author": "ninevra",
   "license": "UNLICENSED",
-  "dependencies": {
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.1.0",
+    "@rollup/plugin-node-resolve": "^7.1.3",
+    "lunr": "^2.3.8",
     "metalsmith": "^2.3.0",
     "metalsmith-drafts": "^1.0.0",
-    "metalsmith-scoped": "^1.0.0"
+    "metalsmith-scoped": "^1.0.0",
+    "parsimmon": "^1.13.0",
+    "rollup": "^2.9.1"
   }
 }
