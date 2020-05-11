@@ -6,6 +6,12 @@ async function loadIndex() {
   return lunr.Index.load(await (await fetch('/lunr-index.json')).json());
 }
 function parseSearch(query, cards) {
+  const textOperator = (parser) => (
+    // Require whitespace or parentheses after e.g. and, or, not
+    // Prevents "nota" from parsing as "not a"
+    // Also allow whitespace before and after
+    parser.lookahead(parsimmon.regexp(/[()\s]/)).trim(parsimmon.optWhitespace)
+  );
   const parsers = {
     colon: () => parsimmon.string(':'),
     gt: () => parsimmon.string('>'),
@@ -13,9 +19,9 @@ function parseSearch(query, cards) {
     eq: () => parsimmon.string('='),
     le: () => parsimmon.string('<='),
     lt: () => parsimmon.string('<'),
-    and: () => parsimmon.string('and').trim(parsimmon.optWhitespace),
-    or: () => parsimmon.string('or').trim(parsimmon.optWhitespace),
-    not: () => parsimmon.string('not').trim(parsimmon.optWhitespace),
+    and: () => textOperator(parsimmon.string('and')),
+    or: () => textOperator(parsimmon.string('or')),
+    not: () => textOperator(parsimmon.string('not')),
     lparen: () => parsimmon.string('('),
     rparen: () => parsimmon.string(')'),
     word: () => parsimmon.regexp(/[^"<>=:()\s]+/),
