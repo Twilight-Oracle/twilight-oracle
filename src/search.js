@@ -48,7 +48,15 @@ function parseSearch(query, cards) {
       parsimmon.seq(l.conjunction, l.or, l.disjunction),
       l.conjunction
     ),
-    expression: (l) => l.disjunction
+    listConjunction: (l) => parsimmon.alt(
+      parsimmon.seq(
+        l.disjunction,
+        parsimmon.of('&').trim(parsimmon.optWhitespace),
+        l.listConjunction
+      ),
+      l.disjunction
+    ),
+    expression: (l) => l.listConjunction
   }
 
   console.log(parsimmon.createLanguage(parsers).expression.parse(getSearchString()));
