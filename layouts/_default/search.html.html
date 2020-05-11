@@ -25,7 +25,11 @@
         le: '<=',
         lt: '<',
         word: '[^"<>=:\\s][^<>=:\\s]*',
-        space: '\\s+'
+        space: '\\s+',
+        and: 'and',
+        or: 'or',
+        lparen: '(',
+        rparen: ')'
       });
 
       function* tokenize(query) {
