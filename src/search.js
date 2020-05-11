@@ -15,6 +15,7 @@ function parseSearch(query, cards) {
     lt: () => parsimmon.string('<'),
     and: () => parsimmon.string('and').trim(parsimmon.optWhitespace),
     or: () => parsimmon.string('or').trim(parsimmon.optWhitespace),
+    not: () => parsimmon.string('not').trim(parsimmon.optWhitespace),
     lparen: () => parsimmon.string('('),
     rparen: () => parsimmon.string(')'),
     word: () => parsimmon.regexp(/[^"<>=:()\s]+/),
@@ -29,9 +30,13 @@ function parseSearch(query, cards) {
       l.term,
       l.expression.wrap(l.lparen, l.rparen)
     ),
-    conjunction: (l) => parsimmon.alt(
-      parsimmon.seq(l.basic, l.and, l.conjunction),
+    negation: (l) => parsimmon.alt(
+      parsimmon.seq(l.not, l.negation),
       l.basic
+    ),
+    conjunction: (l) => parsimmon.alt(
+      parsimmon.seq(l.negation, l.and, l.conjunction),
+      l.negation
     ),
     disjunction: (l) => parsimmon.alt(
       parsimmon.seq(l.conjunction, l.or, l.disjunction),
