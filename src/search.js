@@ -13,9 +13,11 @@ function parseSearch(query, cards) {
     eq: () => parsimmon.string('='),
     le: () => parsimmon.string('<='),
     lt: () => parsimmon.string('<'),
-    and: () => parsimmon.string('and'),
-    or: () => parsimmon.string('or'),
-    word: () => parsimmon.regexp(/[^"<>=:\s]+/),
+    and: () => parsimmon.string('and').trim(parsimmon.optWhitespace),
+    or: () => parsimmon.string('or').trim(parsimmon.optWhitespace),
+    lparen: () => parsimmon.string('('),
+    rparen: () => parsimmon.string(')'),
+    word: () => parsimmon.regexp(/[^"<>=:()\s]+/),
     quoted: () => parsimmon.regexp(/"[^"]*"/),
     separator: (l) => parsimmon.alt(l.ge, l.le, l.gt, l.lt, l.eq, l.colon),
     value: (l) => parsimmon.alt(l.word, l.quoted),
@@ -23,10 +25,22 @@ function parseSearch(query, cards) {
       parsimmon.seq(l.word, l.separator, l.value),
       l.value
     ),
-    list: (l) => l.term.sepBy(parsimmon.whitespace)
+    basic: (l) => parsimmon.alt(
+      l.term,
+      l.expression.wrap(l.lparen, l.rparen)
+    ),
+    conjunction: (l) => parsimmon.alt(
+      parsimmon.seq(l.basic, l.and, l.conjunction),
+      l.basic
+    ),
+    disjunction: (l) => parsimmon.alt(
+      parsimmon.seq(l.conjunction, l.or, l.disjunction),
+      l.conjunction
+    ),
+    expression: (l) => l.disjunction
   }
 
-  console.log(parsimmon.createLanguage(parsers).list.parse(getSearchString()));
+  console.log(parsimmon.createLanguage(parsers).expression.parse(getSearchString()));
 }
 (async () => {
   const [idx, allCards] = await Promise.all([loadIndex(), fetch('/all-cards.json').then(r => r.json())]);
