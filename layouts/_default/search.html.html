@@ -24,7 +24,7 @@
         eq: '=',
         le: '<=',
         lt: '<',
-        word: '[^"<>=:\\s][^<>=:\\s]*',
+        word: '[^"<>=:\\s]+',
         space: '\\s+',
         and: 'and',
         or: 'or',
@@ -45,7 +45,7 @@
           query = query.slice(match[0].length);
         }
       }
-      
+
       for (let token of tokenize(query)) {
         console.log(token);
       }
