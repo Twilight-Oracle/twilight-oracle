@@ -94,13 +94,16 @@ function setDefault(key, value) {
 
 metalsmith(__dirname)
   .source('./content/cards')
-  .destination('./static/')
+  .destination('./static/') // TODO: move to somewhere else, for bundler to find them?
   .clean(false)
   .use(drafts())
   .use(hugoPermalinks)
   .use(setDefault('side', 'Neutral'))
   .use(buildAllCardsJson('all-cards.json'))
-  .use(scoped(buildLunrIndex('lunr-index.json'), ['**', 'lunr-index.json']))
+  .use(scoped(
+    buildLunrIndex('lunr-index.json'),
+    ['**', 'lunr-index.json', '!all-cards.json']
+  ))
   .use(scoped(rm, ['**', '!lunr-index.json', '!all-cards.json']))
   .build(function (err) {
     if (err) throw err;
