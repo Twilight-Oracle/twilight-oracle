@@ -100,7 +100,7 @@ metalsmith(__dirname)
   .use(hugoPermalinks)
   .use(setDefault('side', 'Neutral'))
   .use(buildAllCardsJson('all-cards.json'))
-  .use(scoped(buildLunrIndex('lunr-index.json'), ['cards/**', 'lunr-index.json']))
+  .use(scoped(buildLunrIndex('lunr-index.json'), ['**', 'lunr-index.json']))
   .use(scoped(rm, ['**', '!lunr-index.json', '!all-cards.json']))
   .build(function (err) {
     if (err) throw err;
