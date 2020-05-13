@@ -1,16 +1,22 @@
 import lunr from 'lunr';
 import queryLang from './query-grammar.js';
+import allCards from '../static/all-cards.json';
+import jsonIndex from '../static/lunr-index.json';
 
-async function loadIndex() {
-  // TODO: handle fetch errors
-  return lunr.Index.load(await (await fetch('/lunr-index.json')).json());
-}
+
+// async function loadIndex() {
+//   // TODO: handle fetch errors
+//   return lunr.Index.load(await (await fetch('/lunr-index.json')).json());
+// }
 function parseSearch(query, cards) {
   console.log(queryLang.expression.parse(getSearchString()));
 }
+// TODO: may no longer need to be async
 (async () => {
-  const [idx, allCards] = await Promise.all([loadIndex(), fetch('/all-cards.json').then(r => r.json())]);
+  // const [idx, allCards] = await Promise.all([loadIndex(), fetch('/all-cards.json').then(r => r.json())]);
   // TODO: is DOMContentLoaded needed here
+  const idx = lunr.Index.load(jsonIndex);
+  console.log(idx);
   const resultsElem = document.getElementById('search-results');
   parseSearch(getSearchString());
   try {
