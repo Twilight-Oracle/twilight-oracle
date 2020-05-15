@@ -22,7 +22,6 @@ export function getTextDescription(tree, neg=false) {
 const r = getTextDescription;
 
 export const sym = {
-  // TODO: how to get human-readable expressions for the comparators?
   default: {
     type:'comparator', string:'',
     textFunc: (a, neg=false) => `${neg ? 'not ' : ''}containing ${r(a)}`

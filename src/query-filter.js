@@ -1,5 +1,6 @@
 import queryLang, { sym, getTextDescription } from './query-grammar.js';
 
+// Eventual goal:
 // Takes a query string and an array of objects
 // Returns status, message, and results
 // status: boolean: was the query applied
