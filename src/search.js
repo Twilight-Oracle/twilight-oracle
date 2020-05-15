@@ -2,6 +2,7 @@ import lunr from 'lunr';
 import queryLang from './query-grammar.js';
 import allCards from '../static/all-cards.json';
 import jsonIndex from '../static/lunr-index.json';
+import queryFilter from './query-filter.js';
 
 
 // async function loadIndex() {
@@ -19,6 +20,7 @@ function parseSearch(query, cards) {
   console.log(idx);
   const resultsElem = document.getElementById('search-results');
   parseSearch(getSearchString());
+  console.log(queryFilter(getSearchString()));
   try {
     const results = idx.search(getSearchString());
     console.log(results);

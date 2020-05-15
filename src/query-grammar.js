@@ -7,21 +7,55 @@ const textOperator = (parser) => (
   parser.lookahead(parsimmon.regexp(/[()\s]/)).trim(parsimmon.optWhitespace)
 );
 
+function comparatorText(relation) {
+  return (a, b, neg=false) => `where ${r(a)} is ${neg ? 'not' : ''}${relation} ${r(b)}`;
+}
+
+export function getTextDescription(tree, neg=false) {
+  if (Array.isArray(tree)) {
+    const [node, ...children] = tree;
+    return node.textFunc(...children, neg);
+  } else {
+    return tree;
+  }
+}
+const r = getTextDescription;
+
 export const sym = {
   // TODO: how to get human-readable expressions for the comparators?
-  colon: {type:'comparator', string:':'},
-  gt: {type:'comparator', string:'>'},
-  ge: {type:'comparator', string:'>='},
-  eq: {type:'comparator', string:'='},
-  le: {type:'comparator', string:'<='},
-  lt: {type:'comparator', string:'<'},
-  and: {type:'operator', arity:2, string:'and', func: (a, b) => a && b},
-  or: {type:'operator', arity:2, string:'or', func: (a, b) => a || b},
-  // TODO: negation should print differently depending on the operand, i.e.:
-  // "key does not contain value", "key is not greater than value", "not
-  // (parenthetical)". Can this be resolved at parse time? Probably not without
-  // expanding the grammar a bunch; might be worth it though.
-  not: {type:'operator', arity:1, string:'not', func: (a) => !a},
+  default: {
+    type:'comparator', string:'',
+    textFunc: (a, neg=false) => `${neg ? 'not ' : ''}containing ${r(a)}`
+  },
+  colon: {
+    type:'comparator', string:':',
+    textFunc: (a, b, neg=false) => `where ${r(a)} ${neg ? 'does not contain' : 'contains'} ${r(b)}`
+  },
+  gt: {
+    type:'comparator', string:'>',
+    textFunc: comparatorText('greater than')
+  },
+  ge: {type:'comparator', string:'>=', textFunc: comparatorText('at least')},
+  eq: {
+    type:'comparator', string:'=',
+    textFunc: (a, b, neg=false) => `where ${r(a)} ${neg ? 'does not equal' : 'equals'} ${r(b)}`
+  },
+  le: {type:'comparator', string:'<=', textFunc: comparatorText('at most')},
+  lt: {type:'comparator', string:'<', textFunc: comparatorText('less than')},
+  and: {
+    type:'operator', arity:2, string:'and',
+    valueFunc: (a, b) => a && b,
+    textFunc: (a, b, neg=false) => neg ? `not (${r(a)} and ${r(b)})` : `${r(a)} and ${r(b)}`
+  },
+  or: {
+    type:'operator', arity:2, string:'or',
+    valueFunc: (a, b) => a || b,
+    textFunc: (a, b, neg=false) => neg ? `not (${r(a)} or ${r(b)})` : `either ${r(a)} or ${r(b)}`
+  },
+  not: {
+    type:'operator', arity:1, string:'not',
+    valueFunc: (a) => !a, textFunc: (a, neg=false) => r(a, !neg)
+  }
 }
 
 const parsers = {
@@ -44,7 +78,7 @@ const parsers = {
     parsimmon.seq(l.word, l.separator, l.value).map(
       ([key, sep, value]) => [sep, key, value]
     ),
-    l.value
+    l.value.map(value => [sym.default, value])
   ),
   basic: (l) => parsimmon.alt(
     l.term,
