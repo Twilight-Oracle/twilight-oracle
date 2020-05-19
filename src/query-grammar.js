@@ -8,7 +8,7 @@ const textOperator = (parser) => (
 );
 
 function comparatorText(relation) {
-  return (a, b, neg=false) => `where ${r(a)} is ${neg ? 'not' : ''}${relation} ${r(b)}`;
+  return (a, b, neg=false) => `where ${t(a)} is ${neg ? 'not' : ''}${relation} ${t(b)}`;
 }
 
 export function getTextDescription(tree, neg=false) {
@@ -19,41 +19,73 @@ export function getTextDescription(tree, neg=false) {
     return tree;
   }
 }
-const r = getTextDescription;
+const t = getTextDescription;
+
+export function applyFilter(tree, obj) {
+  if (Array.isArray(tree)) {
+    const [node, ...children] = tree;
+    return node.valueFunc(...children, obj);
+  } else {
+    throw new Error(`tried to apply a non-ast ${JSON.stringify(tree)}`);
+  }
+}
+const v = applyFilter;
+
+(obj) => obj[field] && obj.field > expectation
 
 export const sym = {
   default: {
     type:'comparator', string:'',
-    textFunc: (a, neg=false) => `${neg ? 'not ' : ''}containing ${r(a)}`
+    textFunc: (a, neg=false) => `${neg ? 'not ' : ''}containing ${t(a)}`,
+    valueFunc: (value, obj) => Object.values(obj).some(v => v.includes && v.includes(value))
   },
   colon: {
     type:'comparator', string:':',
-    textFunc: (a, b, neg=false) => `where ${r(a)} ${neg ? 'does not contain' : 'contains'} ${r(b)}`
+    textFunc: (a, b, neg=false) => `where ${t(a)} ${neg ? 'does not contain' : 'contains'} ${t(b)}`,
+    valueFunc: (key, value, obj) => obj[key] && obj[key].includes && obj[key].includes(value)
   },
   gt: {
     type:'comparator', string:'>',
-    textFunc: comparatorText('greater than')
+    textFunc: comparatorText('greater than'),
+    valueFunc: (key, value, obj) => obj[key] && obj[key] > value
   },
-  ge: {type:'comparator', string:'>=', textFunc: comparatorText('at least')},
+  ge: {
+    type:'comparator', string:'>=',
+    textFunc: comparatorText('at least'),
+    valueFunc: (key, value, obj) => obj[key] && obj[key] >= value
+  },
   eq: {
     type:'comparator', string:'=',
-    textFunc: (a, b, neg=false) => `where ${r(a)} ${neg ? 'does not equal' : 'equals'} ${r(b)}`
+    textFunc: (a, b, neg=false) => `where ${t(a)} ${neg ? 'does not equal' : 'equals'} ${t(b)}`,
+    // Use of == here is intentional; some type coercion is desired
+    // Could specify the coercion more exactly?
+    // Note that the other relational comparison operators also coerce
+    valueFunc: (key, value, obj) => obj[key] && obj[key] == value
   },
-  le: {type:'comparator', string:'<=', textFunc: comparatorText('at most')},
-  lt: {type:'comparator', string:'<', textFunc: comparatorText('less than')},
+  le: {
+    type:'comparator', string:'<=',
+    textFunc: comparatorText('at most'),
+    valueFunc: (key, value, obj) => obj[key] && obj[key] <= value
+  },
+  lt: {
+    type:'comparator', string:'<',
+    textFunc: comparatorText('less than'),
+    valueFunc: (key, value, obj) => obj[key] && obj[key] < value
+  },
   and: {
     type:'operator', arity:2, string:'and',
-    valueFunc: (a, b) => a && b,
-    textFunc: (a, b, neg=false) => neg ? `not (${r(a)} and ${r(b)})` : `${r(a)} and ${r(b)}`
+    valueFunc: (a, b, obj) => v(a, obj) && v(b, obj),
+    textFunc: (a, b, neg=false) => neg ? `not (${t(a)} and ${t(b)})` : `${t(a)} and ${t(b)}`
   },
   or: {
     type:'operator', arity:2, string:'or',
-    valueFunc: (a, b) => a || b,
-    textFunc: (a, b, neg=false) => neg ? `not (${r(a)} or ${r(b)})` : `either ${r(a)} or ${r(b)}`
+    valueFunc: (a, b, obj) => v(a, obj) || v(b, obj),
+    textFunc: (a, b, neg=false) => neg ? `not (${t(a)} or ${t(b)})` : `either ${t(a)} or ${t(b)}`
   },
   not: {
     type:'operator', arity:1, string:'not',
-    valueFunc: (a) => !a, textFunc: (a, neg=false) => r(a, !neg)
+    valueFunc: (a, obj) => !v(a, obj),
+    textFunc: (a, neg=false) => t(a, !neg)
   }
 }
 
