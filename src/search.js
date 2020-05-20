@@ -1,8 +1,7 @@
 import lunr from 'lunr';
 import allCards from '../static/all-cards.json';
 import jsonIndex from '../static/lunr-index.json';
-import queryFilter from './query-filter.js';
-import queryLang, { getTextDescription, applyFilter } from './query-grammar.js';
+import queryLang from './query-grammar.js';
 
 // TODO: may no longer need to be async
 (async () => {
@@ -14,8 +13,8 @@ import queryLang, { getTextDescription, applyFilter } from './query-grammar.js';
   const parseResult = queryLang.expression.parse(getSearchString());
   if (parseResult.status) {
     const ast = parseResult.value;
-    console.log(getTextDescription(ast));
-    const results = Object.entries(allCards).filter(([path, card]) => applyFilter(ast, card));
+    console.log(ast.text());
+    const results = Object.entries(allCards).filter(([path, card]) => ast.matches(card));
     for (let [path, card] of results) {
       const resultElem = createResultElem(path, card);
       resultsElem.appendChild(resultElem);
