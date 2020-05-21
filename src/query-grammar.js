@@ -26,20 +26,15 @@ const parsers = {
   separator: (l) => parsimmon.alt(l.ge, l.le, l.gt, l.lt, l.eq, l.colon),
   value: (l) => parsimmon.alt(l.word, l.quoted),
   term: (l) => parsimmon.alt(
-    parsimmon.seq(l.word, l.separator, l.value).assert(
-      // TODO: this might work, but it can't return custom error messages
-      // use chain() instead probably
+    parsimmon.seq(l.word, l.separator, l.value).chain(
       ([key, sep, value]) => {
         try {
           const field = schema.getField(key);
-          return true;
-        } catch {
-          return false;
+          return parsimmon.succeed(new sep(field, value));
+        } catch (e) {
+          return parsimmon.fail(e.message);
         }
-      },
-      "Unrecognized field"
-    ).map(
-      ([key, sep, value]) => new sep(schema.getField(key), value)
+      }
     ),
     l.value.map(value => new nodes.Default(value, schema))
   ),
