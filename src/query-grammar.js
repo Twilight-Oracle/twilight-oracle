@@ -1,5 +1,6 @@
 import parsimmon from 'parsimmon';
 import * as nodes from './query-nodes.js';
+import schema from './query-schema.js';
 
 const textOperator = (parser) => (
   // Require whitespace or parentheses after e.g. and, or, not
@@ -26,9 +27,9 @@ const parsers = {
   value: (l) => parsimmon.alt(l.word, l.quoted),
   term: (l) => parsimmon.alt(
     parsimmon.seq(l.word, l.separator, l.value).map(
-      ([key, sep, value]) => new sep(key, value)
+      ([key, sep, value]) => new sep(schema.getField(key), value)
     ),
-    l.value.map(value => new nodes.Default(value))
+    l.value.map(value => new nodes.Default(value, schema))
   ),
   basic: (l) => parsimmon.alt(
     l.term,

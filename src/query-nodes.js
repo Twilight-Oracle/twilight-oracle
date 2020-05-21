@@ -1,12 +1,20 @@
+/*
+  interface Node: {
+    text(negated: boolean): string,
+    matches(obj: object): boollean
+  }
+*/
+
 export class Default {
-  constructor(value) {
+  constructor(schema, value) {
     this.value = value;
+    this.schema = schema;
   }
   text(negated=false) {
     return `which ${negated ? 'do not ' : ''}contain ${this.value}`;
   }
   matches(obj) {
-    return Object.values(obj).some(v => v.includes && v.includes(this.value));
+    return this.schema.defaultContains(this.value, obj);
   }
 }
 
@@ -17,20 +25,17 @@ export class Colon {
   }
   text(negated=false) {
     if (negated) {
-      return `where ${this.field} does not contain ${this.value}`;
+      return `where ${this.field.text} does not contain ${this.value}`;
     } else {
-      return `where ${this.field} contains ${this.value}`;
+      return `where ${this.field.text} contains ${this.value}`;
     }
   }
   matches(obj) {
-    return (
-      obj[this.field]
-      && obj[this.field].includes
-      && obj[this.field].includes(this.value)
-    );
+    return this.field.contains(this.value, obj);
   }
 }
 
+// An abstract base class, kinda
 class Comparator {
   constructor(field, value) {
     this.field = field;
@@ -38,7 +43,7 @@ class Comparator {
   }
   text(negated=false) {
     const verb = negated ? 'is not' : 'is';
-    return `where ${this.field} ${verb} ${this.textComp} ${this.value}`;
+    return `where ${this.field.text} ${verb} ${this.textComp} ${this.value}`;
   }
 }
 
@@ -48,7 +53,7 @@ export class GreaterThan extends Comparator {
     this.textComp = 'greater than';
   }
   matches(obj) {
-    return obj[this.field] && obj[this.field] > this.value;
+    return this.field.gt(this.value, obj);
   }
 }
 
@@ -58,7 +63,7 @@ export class GreaterOrEqual extends Comparator {
     this.textComp = 'at least';
   }
   matches(obj) {
-    return obj[this.field] && obj[this.field] >= this.value;
+    return this.field.ge(this.value, obj);
   }
 }
 
@@ -68,13 +73,13 @@ export class Equal extends Comparator {
   }
   text(negated=false) {
     if (negated) {
-      return `where ${this.field} does not equal ${this.value}`;
+      return `where ${this.field.text} does not equal ${this.value}`;
     } else {
-      return `where ${this.field} equals ${this.value}`;
+      return `where ${this.field.text} equals ${this.value}`;
     }
   }
   matches(obj) {
-    return obj[this.field] && obj[this.field] == this.value;
+    return this.field.eq(this.value, obj);
   }
 }
 
@@ -84,7 +89,7 @@ export class LessOrEqual extends Comparator {
     this.textComp = 'at most';
   }
   matches(obj) {
-    return obj[this.field] && obj[this.field] <= this.value;
+    return this.field.le(this.value, obj);
   }
 }
 
@@ -94,7 +99,7 @@ export class LessThan extends Comparator {
     this.textComp = 'less than';
   }
   matches(obj) {
-    return obj[this.field] && obj[this.field] < this.value;
+    return this.field.lt(this.value, obj);
   }
 }
 
