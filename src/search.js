@@ -20,7 +20,7 @@ import queryLang from './query-grammar.js';
       resultsElem.appendChild(resultElem);
     }
   } else {
-    console.err('failed to parse', parseResult);
+    console.error('failed to parse', parseResult);
   }
 
   // try {
