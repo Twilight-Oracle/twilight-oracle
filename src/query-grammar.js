@@ -9,6 +9,16 @@ const textOperator = (parser) => (
   parser.lookahead(parsimmon.regexp(/[()\s]/)).trim(parsimmon.optWhitespace)
 );
 
+const fullTerm = parsimmon.seq(parsimmon.seq(l.word, l.separator).chain(
+  ([key, sep]) => {
+    try {
+      return parsimmon.succeed([schema.getField(key), sep]);
+    } catch (e) {
+      return parsimmon.fail(e.message);
+    }
+  }
+), l.value).map(([field, sep, value]) => new sep(field, value));
+
 const parsers = {
   colon: () => parsimmon.string(':').result(nodes.Colon),
   gt: () => parsimmon.string('>').result(nodes.GreaterThan),
@@ -26,16 +36,7 @@ const parsers = {
   separator: (l) => parsimmon.alt(l.ge, l.le, l.gt, l.lt, l.eq, l.colon),
   value: (l) => parsimmon.alt(l.word, l.quoted),
   term: (l) => parsimmon.alt(
-    parsimmon.seq(l.word, l.separator, l.value).chain(
-      ([key, sep, value]) => {
-        try {
-          const field = schema.getField(key);
-          return parsimmon.succeed(new sep(field, value));
-        } catch (e) {
-          return parsimmon.fail(e.message);
-        }
-      }
-    ),
+    fullTerm,
     l.value.map(value => new nodes.Default(value, schema))
   ),
   basic: (l) => parsimmon.alt(
