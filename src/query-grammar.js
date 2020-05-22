@@ -9,16 +9,6 @@ const textOperator = (parser) => (
   parser.lookahead(parsimmon.regexp(/[()\s]/)).trim(parsimmon.optWhitespace)
 );
 
-const fullTerm = parsimmon.seq(parsimmon.seq(l.word, l.separator).chain(
-  ([key, sep]) => {
-    try {
-      return parsimmon.succeed([schema.getField(key), sep]);
-    } catch (e) {
-      return parsimmon.fail(e.message);
-    }
-  }
-), l.value).map(([field, sep, value]) => new sep(field, value));
-
 const parsers = {
   colon: () => parsimmon.string(':').result(nodes.Colon),
   gt: () => parsimmon.string('>').result(nodes.GreaterThan),
@@ -35,8 +25,18 @@ const parsers = {
   quoted: () => parsimmon.regexp(/[^"]*/).trim(parsimmon.string('"')),
   separator: (l) => parsimmon.alt(l.ge, l.le, l.gt, l.lt, l.eq, l.colon),
   value: (l) => parsimmon.alt(l.word, l.quoted),
+  field: (l) => parsimmon.seq(l.word, l.separator).chain(([key, sep]) => {
+    try {
+      return parsimmon.succeed([schema.getField(key), sep]);
+    } catch (e) {
+      return parsimmon.fail(e.message);
+    }
+  }),
+  fullTerm: (l) => parsimmon.seq(l.field, l.value).map(
+    ([[field, sep], value]) => new sep(field, value)
+  ),
   term: (l) => parsimmon.alt(
-    fullTerm,
+    l.fullTerm,
     l.value.map(value => new nodes.Default(value, schema))
   ),
   basic: (l) => parsimmon.alt(
