@@ -1,6 +1,20 @@
 import parsimmon from 'parsimmon';
 import * as nodes from './query-nodes.js';
-import schema from './query-schema.js';
+import Schema, * as fields from './query-schema.js';
+
+const schema = new Schema([
+  new fields.StringField('title', ['title', 'name']),
+  new fields.NumberField('number'),
+  new fields.CardTypeField('types', ['types']),
+  new fields.NumberField('ops', ['operations', 'ops']),
+  new fields.CardPeriodField('period'),
+  // TODO: differentiate between oracle and printed text and names
+  new fields.StringField('contents', ['oracle', 'printed', 'contents'], 'the text')
+], [
+  'title',
+  'contents',
+  'types'
+]);
 
 const textOperator = (parser) => (
   // Require whitespace or parentheses after e.g. and, or, not

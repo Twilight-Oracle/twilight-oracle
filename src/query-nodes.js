@@ -14,7 +14,7 @@ export class Default {
     return `which ${negated ? 'do not ' : ''}contain ${this.value}`;
   }
   matches(obj) {
-    return this.schema.defaultContains(this.value, obj);
+    return this.schema.defaultContains(obj, this.value);
   }
 }
 
@@ -31,7 +31,7 @@ export class Colon {
     }
   }
   matches(obj) {
-    return this.field.contains(this.value, obj);
+    return this.field.contains(obj, this.value);
   }
 }
 
@@ -53,7 +53,7 @@ export class GreaterThan extends Comparator {
     this.textComp = 'greater than';
   }
   matches(obj) {
-    return this.field.gt(this.value, obj);
+    return this.field.gt(obj, this.value);
   }
 }
 
@@ -63,7 +63,7 @@ export class GreaterOrEqual extends Comparator {
     this.textComp = 'at least';
   }
   matches(obj) {
-    return this.field.ge(this.value, obj);
+    return this.field.ge(obj, this.value);
   }
 }
 
@@ -79,7 +79,7 @@ export class Equal extends Comparator {
     }
   }
   matches(obj) {
-    return this.field.eq(this.value, obj);
+    return this.field.eq(obj, this.value);
   }
 }
 
@@ -89,7 +89,7 @@ export class LessOrEqual extends Comparator {
     this.textComp = 'at most';
   }
   matches(obj) {
-    return this.field.le(this.value, obj);
+    return this.field.le(obj, this.value);
   }
 }
 
@@ -99,7 +99,7 @@ export class LessThan extends Comparator {
     this.textComp = 'less than';
   }
   matches(obj) {
-    return this.field.lt(this.value, obj);
+    return this.field.lt(obj, this.value);
   }
 }
 

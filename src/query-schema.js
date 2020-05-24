@@ -1,127 +1,111 @@
 import typeAliases from '../data/cardTypeStrings.json';
+import * as strUtils from './string-utils.js';
 
-class Field {
-  constructor(ref, names=[ref], text='the '+names[0]) {
+/*
+  Goal:
+
+  interface Field {
+    contains(query: string, obj: object): match[]|false,
+    gt, ge, eq, le, lt similarly
+  }
+
+  interface match {
+    // needs field, location within field,
+    // just true is good enough for e.g. Numbers, though
+  }
+*/
+
+export class Field {
+  constructor(ref, names=[ref], text='the '+names[0], def=undefined) {
     this.ref = ref;
     this.names = names;
     this.text = text;
-  }
-  queryTransform(query) {
-    return query;
-  }
-  valueTransform(value) {
-    return value;
-  }
-  contains(query, obj) {
-    return (
-      obj[this.ref]
-      && this.valueTransform(obj[this.ref]).includes
-      && this.valueTransform(obj[this.ref]).includes(this.queryTransform(query))
-    );
-  }
-  gt(query, obj) {
-    return (obj[this.ref] && this.valueTransform(obj[this.ref]) > this.queryTransform(query));
-  }
-  ge(query, obj) {
-    return (obj[this.ref] && this.valueTransform(obj[this.ref]) >= this.queryTransform(query));
-  }
-  eq(query, obj) {
-    return (obj[this.ref] && this.valueTransform(obj[this.ref]) == this.queryTransform(query));
-  }
-  le(query, obj) {
-    return (obj[this.ref] && this.valueTransform(obj[this.ref]) <= this.queryTransform(query));
-  }
-  lt(query, obj) {
-    return (obj[this.ref] && this.valueTransform(obj[this.ref]) < this.queryTransform(query));
+    this.default = def;
   }
 }
-
-class StringField extends Field {
-  queryTransform(query) {
-    return query.toLowerCase();
-  }
-  valueTransform(value) {
-    return value.toLowerCase();
-  }
-}
-
-class NumberField extends Field {
-  queryTransform(query) {
-    return Number(query);
-  }
-  valueTransform(value) {
-    return Number(value);
-  }
-}
-
-class UnsupportedOperationError extends Error {}
-
-function unsupportedOperation() {
-  throw new UnsupportedOperationError();
-}
-
-class StringArrayField extends Field {
-  queryTransform(query) {
-    return query.toLowerCase();
-  }
-  valueTransform(value) {
-    return value.map(str => str.toLowerCase());
-  }
-  contains(query, obj) {
-    if (obj[this.ref]) {
-      query = this.queryTransform(query);
-      const value = this.valueTransform(obj[this.ref]);
-      return value.some(str => str.includes(query));
+for (let op of ['contains', 'gt', 'ge', 'eq', 'le', 'lt']) {
+  const delegate = '_' + op;
+  Field.prototype[op] = function (obj, query) {
+    const value = this.ref in obj ? obj[this.ref] : this.default;
+    if (value === undefined) {
+      return false;
+    } else {
+      return this[delegate](value, query);
+    }
+    Field.prototype[delegate] = function (value, query) {
+      return false;
     }
   }
-  gt = unsupportedOperation
-  ge = unsupportedOperation
-  eq = unsupportedOperation
-  le = unsupportedOperation
-  lt = unsupportedOperation
 }
 
-class CardTypeField extends StringArrayField {
-  valueTransform(value) {
-    return super.valueTransform(value.flatMap(str => [str, typeAliases[str]]));
+export class ComparableField extends Field {
+  _compare(value, query) {
+    return NaN;
+  }
+  _gt(value, query) {
+    return this._compare(value, query) > 0;
+  }
+  _ge(value, query) {
+    return this._compare(value, query) >= 0;
+  }
+  _eq(value, query) {
+    return this._compare(value, query) === 0;
+  }
+  _le(value, query) {
+    return this._compare(value, query) <= 0;
+  }
+  _lt(value, query) {
+    return this._compare(value, query) < 0;
   }
 }
 
-class ArrayField extends Field {
-  constructor(wrappedField) {
-    super(wrappedField.ref, wrappedField.names);
-    this.wrappedField = wrappedField;
+export class StringField extends ComparableField {
+  _contains(value, query) {
+    return strUtils.includes(value, query);
   }
-  queryTransform(query) {
-    return wrappedField.queryTransform(query);
+  _compare(value, query) {
+    return strUtils.compare(value, query);
   }
-  valueTransform(value) {
-    return value.map(item => wrappedField.valueTransform(item));
-  }
-  contains(query, obj) {
-    if (obj[this.ref]) {
-      query = this.queryTransform(query);
-      const value = this.valueTransform(obj[this.ref]);
-      // TODO: Awkward
-      return value.some(value => wrappedField.contains(query, {[this.ref]: value}));
-    }
-  }
-  gt = unsupportedOperation
-  ge = unsupportedOperation
-  eq = unsupportedOperation
-  le = unsupportedOperation
-  lt = unsupportedOperation
 }
 
-class CardPeriodField extends StringField {
-  valueTransform(value) {
-    return super.valueTransform(value + ' War');
+// TODO: could use Intl.Collator's 'numeric' options here... overkill probably
+export class NumberField extends ComparableField {
+  _contains(value, query) {
+    return Number(value) === Number(query);
+  }
+  _compare(value, query) {
+    return Number(value) - Number(query);
+  }
+}
+
+// TODO: Allow for explicitly, checkably unsupported operations on Fields?
+// Currently, they just return false always.
+
+export class StringArrayField extends Field {
+  _contains(value, query) {
+    return value.some(str => strUtils.includes(str, query));
+  }
+}
+
+export class CardTypeField extends StringArrayField {
+  _contains(value, query) {
+    return super._contains(value.flatMap(s => [s, typeAliases[s]], query));
+  }
+}
+
+export class CardPeriodField extends StringField {
+  _contains(value, query) {
+    return super._contains(value + ' War', query);
+  }
+  // TODO: what should war periods compare to, if anything?
+  _compare(value, query) {
+    return NaN;
   }
 }
 
 // TODO: class MarkdownField extends StringField {}
 
-class Schema {
+export default class Schema {
   constructor(fields, defaults) {
     this.fieldsByRef = {};
     this.fieldsByName = {};
@@ -147,17 +131,3 @@ class Schema {
     return this.defaultFields.some(field => field.contains(query, obj));
   }
 }
-
-export default new Schema([
-  new StringField('title', ['title', 'name']),
-  new NumberField('number'),
-  new CardTypeField('types', ['types']),
-  new NumberField('ops', ['operations', 'ops']),
-  new CardPeriodField('period'),
-  // TODO: differentiate between oracle and printed text and names
-  new StringField('contents', ['oracle', 'printed', 'contents'], 'the text')
-], [
-  'title',
-  'contents',
-  'types'
-]);
