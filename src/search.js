@@ -1,5 +1,7 @@
 import allCards from '../static/all-cards.json';
 import queryLang from './query-grammar.js';
+import { render } from 'preact';
+import { html } from 'htm/preact';
 
 // TODO: may no longer need to be async
 (async () => {
@@ -9,11 +11,10 @@ import queryLang from './query-grammar.js';
   if (parseResult.status) {
     const ast = parseResult.value;
     console.log(ast.text());
-    const results = Object.entries(allCards).filter(([path, card]) => ast.matches(card));
-    for (let [path, card] of results) {
-      const resultElem = createResultElem(path, card);
-      resultsElem.appendChild(resultElem);
-    }
+    const results = Object.entries(allCards).filter(
+      ([path, card]) => ast.matches(card)
+    );
+    render(html`<${SearchResultList} cards=${results} />`, resultsElem);
   } else {
     console.error('failed to parse', parseResult);
   }
@@ -21,10 +22,14 @@ import queryLang from './query-grammar.js';
 function getSearchString() {
   return new URLSearchParams(location.search).get('q');
 }
-function createResultElem(url, card) {
-  if (card === undefined) console.log(url);
-  const resultElem = document.getElementById('search-result-template').content.cloneNode(true);
-  resultElem.querySelector('a').href = url;
-  resultElem.querySelector('a').textContent = card.title;
-  return resultElem;
+
+function SearchResultList({cards}) {
+  return html`<ul>
+    ${cards.map(
+      ([path, card]) => html`<${SearchResult} path=${path} card=${card} />`
+    )}
+  </ul>`;
+}
+function SearchResult({path, card}) {
+  return html`<li><a href="${path}">${card.title}</a></li>`;
 }

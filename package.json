@@ -29,5 +29,9 @@
     "nodeArguments": [
       "--experimental-modules"
     ]
+  },
+  "dependencies": {
+    "htm": "^3.0.4",
+    "preact": "^10.4.4"
   }
 }
