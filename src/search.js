@@ -10,17 +10,23 @@ import { html } from 'htm/preact';
   const parseResult = queryLang.expression.parse(getSearchString());
   if (parseResult.status) {
     const ast = parseResult.value;
-    console.log(ast.text());
     const results = Object.entries(allCards).filter(
       ([path, card]) => ast.matches(card)
     );
-    render(html`<${SearchResultList} cards=${results} />`, resultsElem);
+    render(html`
+      <${QueryDescription} text=${ast.text()} count=${results.length} />
+      <${SearchResultList} cards=${results} />
+      `, resultsElem);
   } else {
     console.error('failed to parse', parseResult);
   }
 })();
 function getSearchString() {
   return new URLSearchParams(location.search).get('q');
+}
+
+function QueryDescription({text, count}) {
+  return html`<div id='query-interpretation'>${count} cards ${text}.</div>`;
 }
 
 function SearchResultList({cards}) {
