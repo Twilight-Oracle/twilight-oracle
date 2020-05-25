@@ -16,11 +16,11 @@ import * as strUtils from './string-utils.js';
 */
 
 export class Field {
-  constructor(ref, names=[ref], text='the '+names[0], def=undefined) {
+  constructor(ref, {names=[ref], text=`the ${names[0]}`, ...options}={}) {
     this.ref = ref;
     this.names = names;
     this.text = text;
-    this.default = def;
+    this.default = options.default;
   }
 }
 for (let op of ['contains', 'gt', 'ge', 'eq', 'le', 'lt']) {

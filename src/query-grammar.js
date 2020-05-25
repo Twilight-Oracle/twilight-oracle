@@ -3,13 +3,14 @@ import * as nodes from './query-nodes.js';
 import Schema, * as fields from './query-schema.js';
 
 const schema = new Schema([
-  new fields.StringField('title', ['title', 'name']),
+  new fields.StringField('title', {names: ['title', 'name']}),
   new fields.NumberField('number'),
-  new fields.CardTypeField('types', ['types']),
-  new fields.NumberField('ops', ['operations', 'ops']),
+  new fields.CardTypeField('types', {names: ['types']}),
+  new fields.NumberField('ops', {names: ['operations', 'ops'], text: 'the ops value'}),
   new fields.CardPeriodField('period'),
   // TODO: differentiate between oracle and printed text and names
-  new fields.StringField('contents', ['oracle', 'printed', 'contents'], 'the text')
+  new fields.StringField('contents', {names: ['oracle', 'printed', 'contents'], text: 'the text'}),
+  new fields.StringField('side', {default: 'Neutral'})
 ], [
   'title',
   'contents',

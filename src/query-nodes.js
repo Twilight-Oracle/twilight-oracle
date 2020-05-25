@@ -73,9 +73,9 @@ export class Equal extends Comparator {
   }
   text(negated=false) {
     if (negated) {
-      return `where ${this.field.text} does not equal ${this.value}`;
+      return `where ${this.field.text} is not ${this.value}`;
     } else {
-      return `where ${this.field.text} equals ${this.value}`;
+      return `where ${this.field.text} is ${this.value}`;
     }
   }
   matches(obj) {
