@@ -89,7 +89,7 @@ export class StringArrayField extends Field {
 
 export class CardTypeField extends StringArrayField {
   _contains(value, query) {
-    return super._contains(value.flatMap(s => [s, typeAliases[s]], query));
+    return super._contains(value.flatMap(s => [s, typeAliases[s]]), query);
   }
 }
 
@@ -127,7 +127,7 @@ export default class Schema {
       throw new Error(`No such field as ${prefix}`);
     }
   }
-  defaultContains(query, obj) {
-    return this.defaultFields.some(field => field.contains(query, obj));
+  defaultContains(obj, query) {
+    return this.defaultFields.some(field => field.contains(obj, query));
   }
 }

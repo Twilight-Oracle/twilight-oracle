@@ -52,7 +52,7 @@ const parsers = {
   ),
   term: (l) => parsimmon.alt(
     l.fullTerm,
-    l.value.map(value => new nodes.Default(value, schema))
+    l.value.map(value => new nodes.Default(schema, value))
   ),
   basic: (l) => parsimmon.alt(
     l.term,
