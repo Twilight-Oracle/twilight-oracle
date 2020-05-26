@@ -36,8 +36,10 @@ const parsers = {
   not: () => textOperator(parsimmon.string('not')).result(nodes.Not),
   lparen: () => parsimmon.string('('),
   rparen: () => parsimmon.string(')'),
-  word: () => parsimmon.regexp(/[^"<>=:()\s]+/),
-  quoted: () => parsimmon.regexp(/[^"]*/).trim(parsimmon.string('"')),
+  word: () => parsimmon.regexp(/[^"<>=:()\s]+/).desc('a word'),
+  quote: () => parsimmon.string('"'),
+  phrase: () => parsimmon.regexp(/[^"]*/).desc('a phrase'),
+  quoted: (l) => l.phrase.trim(parsimmon.string('"')),
   separator: (l) => parsimmon.alt(l.ge, l.le, l.gt, l.lt, l.eq, l.colon),
   value: (l) => parsimmon.alt(l.word, l.quoted),
   field: (l) => parsimmon.seq(l.word, l.separator).chain(([key, sep]) => {
@@ -85,7 +87,8 @@ const parsers = {
     ),
     l.disjunction
   ),
-  expression: (l) => l.listConjunction
+  expression: (l) => l.listConjunction,
+  query: (l) => parsimmon.alt(l.expression)
 }
 
 export default parsimmon.createLanguage(parsers);

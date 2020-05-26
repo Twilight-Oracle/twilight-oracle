@@ -122,9 +122,10 @@ export default class Schema {
     if (options.length === 1) {
       return this.fieldsByName[options[0]];
     } else if (options.length > 1){
-      throw new Error(`Ambiguous field name: ${prefix} could be any of ${options}`);
+      const optString = options.length === 2 ? options.join(' or ') : options.slice(0, -1).join(', ') + ' or ' + options[options.length - 1];
+      throw new Error(`a field name (perhaps ${optString}`);
     } else {
-      throw new Error(`No such field as ${prefix}`);
+      throw new Error(`a valid field name`);
     }
   }
   defaultContains(obj, query) {

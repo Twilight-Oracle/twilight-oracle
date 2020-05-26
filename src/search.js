@@ -7,7 +7,7 @@ import { html } from 'htm/preact';
 (async () => {
   // TODO: is DOMContentLoaded needed here
   const resultsElem = document.getElementById('search-results');
-  const parseResult = queryLang.expression.parse(getSearchString());
+  const parseResult = queryLang.query.parse(getSearchString());
   if (parseResult.status) {
     const ast = parseResult.value;
     const results = Object.entries(allCards).filter(
@@ -18,7 +18,7 @@ import { html } from 'htm/preact';
       <${SearchResultList} cards=${results} />
       `, resultsElem);
   } else {
-    console.error('failed to parse', parseResult);
+    console.error(`Expected ${parseResult.expected}`, parseResult);
   }
 })();
 function getSearchString() {
