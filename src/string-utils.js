@@ -40,3 +40,17 @@ export function stringRepr(string) {
   console.log(string);
   return `"${stringEscape(string)}"`;
 }
+
+export function listJoin(strings) {
+  if (strings.length < 2) {
+    return strings.join('');
+  } else if (strings.length == 2) {
+    return strings.join(' or ');
+  } else {
+    return (
+      strings.slice(0, -1).join(', ')
+      + ', or '
+      + strings[strings.length - 1]
+    );
+  }
+}
