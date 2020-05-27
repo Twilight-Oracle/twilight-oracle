@@ -11,7 +11,7 @@ export class Default {
     this.schema = schema;
   }
   text(negated=false) {
-    return `which ${negated ? 'do not ' : ''}contain ${this.value}`;
+    return `the card ${negated ? 'does not contain' : 'contains'} "${this.value}"`;
   }
   matches(obj) {
     return this.schema.defaultContains(obj, this.value);
@@ -25,9 +25,9 @@ export class Colon {
   }
   text(negated=false) {
     if (negated) {
-      return `where ${this.field.text} does not contain ${this.value}`;
+      return `${this.field.text} does not contain "${this.value}"`;
     } else {
-      return `where ${this.field.text} contains ${this.value}`;
+      return `${this.field.text} contains "${this.value}"`;
     }
   }
   matches(obj) {
@@ -43,7 +43,7 @@ class Comparator {
   }
   text(negated=false) {
     const verb = negated ? 'is not' : 'is';
-    return `where ${this.field.text} ${verb} ${this.textComp} ${this.value}`;
+    return `${this.field.text} ${verb} ${this.textComp} "${this.value}"`;
   }
 }
 
@@ -73,9 +73,9 @@ export class Equal extends Comparator {
   }
   text(negated=false) {
     if (negated) {
-      return `where ${this.field.text} is not ${this.value}`;
+      return `${this.field.text} is not "${this.value}"`;
     } else {
-      return `where ${this.field.text} is ${this.value}`;
+      return `${this.field.text} is "${this.value}"`;
     }
   }
   matches(obj) {
@@ -110,7 +110,8 @@ export class And {
   }
   text(negated=false) {
     if (negated) {
-      return `not (${this.a.text()} and ${this.b.text()}`;
+      // TODO: due to operator precedence, this _should_ be unreachable
+      return `not (${this.a.text()} and ${this.b.text()})`;
     } else {
       return `${this.a.text()} and ${this.b.text()}`;
     }
@@ -127,7 +128,8 @@ export class Or {
   }
   text(negated=false) {
     if (negated) {
-      return `not (${this.a.text()} or ${this.b.text()}`;
+      // TODO: due to operator precedence, this _should_ be unreachable
+      return `not (${this.a.text()} or ${this.b.text()})`;
     } else {
       return `${this.a.text()} or ${this.b.text()}`;
     }
@@ -146,5 +148,30 @@ export class Not {
   }
   matches(obj) {
     return !this.a.matches(obj);
+  }
+}
+
+export class Parenthetical {
+  constructor(a) {
+    this.a = a;
+  }
+  text(negated=false) {
+    return `${negated ? 'not ': ''}(${this.a.text()})`;
+  }
+  matches(obj) {
+    return this.a.matches(obj);
+  }
+}
+
+// TODO: alternatively, instead of being always false, Empty could 'not affect'
+// any logical construct it's in. So, X and Empty is X, X or Empty is X, not
+// Empty is Empty. This would make "not ()" somewhat more intuitive. Or, ()
+// could just be a parse error.
+export class Empty {
+  text() {
+    return '()';
+  }
+  matches(obj) {
+    return false;
   }
 }

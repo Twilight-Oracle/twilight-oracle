@@ -7,7 +7,8 @@ import { html } from 'htm/preact';
 (async () => {
   // TODO: is DOMContentLoaded needed here
   const resultsElem = document.getElementById('search-results');
-  const parseResult = queryLang.query.parse(getSearchString());
+  const query = getSearchString();
+  const parseResult = queryLang.query.parse(query);
   if (parseResult.status) {
     const ast = parseResult.value;
     const results = Object.entries(allCards).filter(
@@ -26,7 +27,7 @@ function getSearchString() {
 }
 
 function QueryDescription({text, count}) {
-  return html`<div id='query-interpretation'>${count} cards ${text}.</div>`;
+  return html`<div id="query-interpretation">${count} cards where ${text}.</div>`;
 }
 
 function SearchResultList({cards}) {
