@@ -38,8 +38,11 @@ const parsers = {
   rparen: () => parsimmon.string(')'),
   word: () => parsimmon.regexp(/[^"<>=:()\s]+/).desc('a word'),
   quote: () => parsimmon.string('"'),
-  phrase: () => parsimmon.regexp(/[^"]*/),
-  quoted: (l) => l.phrase.trim(parsimmon.string('"')),
+  phrase: () => parsimmon.alt(
+    parsimmon.string('\\"').result('"'),
+    parsimmon.regexp(/[^"]/)
+  ).many().tie(),
+  quoted: (l) => l.phrase.trim(l.quote),
   separator: (l) => parsimmon.alt(l.ge, l.le, l.gt, l.lt, l.eq, l.colon),
   value: (l) => parsimmon.alt(l.word, l.quoted),
   field: (l) => parsimmon.seq(l.word, l.separator).chain(([key, sep]) => {

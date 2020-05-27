@@ -31,3 +31,12 @@ export function compare(string1, string2) {
 export function includes(string, substring) {
   return indexOf(string, substring) !== -1;
 }
+
+export function stringEscape(string) {
+  return string.replace(/"/g, '\\"');
+}
+
+export function stringRepr(string) {
+  console.log(string);
+  return `"${stringEscape(string)}"`;
+}

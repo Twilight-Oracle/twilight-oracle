@@ -1,3 +1,5 @@
+import { stringRepr } from './string-utils.js';
+
 /*
   interface Node: {
     text(negated: boolean): string,
@@ -11,7 +13,8 @@ export class Default {
     this.schema = schema;
   }
   text(negated=false) {
-    return `the card ${negated ? 'does not contain' : 'contains'} "${this.value}"`;
+    const value = stringRepr(this.value);
+    return `the card ${negated ? 'does not contain' : 'contains'} ${value}`;
   }
   matches(obj) {
     return this.schema.defaultContains(obj, this.value);
@@ -24,10 +27,11 @@ export class Colon {
     this.value = value;
   }
   text(negated=false) {
+    const value = stringRepr(this.value);
     if (negated) {
-      return `${this.field.text} does not contain "${this.value}"`;
+      return `${this.field.text} does not contain ${value}`;
     } else {
-      return `${this.field.text} contains "${this.value}"`;
+      return `${this.field.text} contains ${value}`;
     }
   }
   matches(obj) {
@@ -42,8 +46,9 @@ class Comparator {
     this.value = value;
   }
   text(negated=false) {
+    const value = stringRepr(this.value);
     const verb = negated ? 'is not' : 'is';
-    return `${this.field.text} ${verb} ${this.textComp} "${this.value}"`;
+    return `${this.field.text} ${verb} ${this.textComp} ${value}`;
   }
 }
 
