@@ -32,9 +32,9 @@ for (let op of ['contains', 'gt', 'ge', 'eq', 'le', 'lt']) {
     } else {
       return this[delegate](value, query);
     }
-    Field.prototype[delegate] = function (value, query) {
-      return false;
-    }
+  }
+  Field.prototype[delegate] = function (value, query) {
+    return false;
   }
 }
 
