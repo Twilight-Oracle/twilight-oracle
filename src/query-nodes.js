@@ -173,8 +173,8 @@ export class Parenthetical {
 // Empty is Empty. This would make "not ()" somewhat more intuitive. Or, ()
 // could just be a parse error.
 export class Empty {
-  text() {
-    return '()';
+  text(negated=false) {
+    return negated ? 'not ()' : '()';
   }
   matches(obj) {
     return false;

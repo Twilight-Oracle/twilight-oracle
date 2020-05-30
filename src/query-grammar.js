@@ -45,6 +45,7 @@ const parsers = {
   ).many().tie(),
   quoted: (l) => l.phrase.trim(l.quote),
   separator: (l) => parsimmon.alt(l.ge, l.le, l.gt, l.lt, l.eq, l.colon),
+  nil: (l) => parsimmon.seq(l.lparen, l.rparen),
   value: (l) => parsimmon.alt(l.word, l.quoted),
   field: (l) => parsimmon.seq(l.word, l.separator).chain(([key, sep]) => {
     const options = schema.getFieldByPrefix(key);
@@ -62,7 +63,8 @@ const parsers = {
   ),
   term: (l) => parsimmon.alt(
     l.fullTerm,
-    l.value.map(value => new nodes.Default(schema, value))
+    l.value.map(value => new nodes.Default(schema, value)),
+    l.nil.map(() => new nodes.Empty())
   ),
   basic: (l) => parsimmon.alt(
     l.term,
