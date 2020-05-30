@@ -117,16 +117,13 @@ export default class Schema {
     }
     this.defaultFields = defaults.map(ref => this.fieldsByRef[ref]);
   }
-  getField(prefix) {
-    const options = Object.keys(this.fieldsByName).filter(name => name.startsWith(prefix));
-    if (options.length === 1) {
-      return this.fieldsByName[options[0]];
-    } else if (options.length > 1){
-      const optString = options.length === 2 ? options.join(' or ') : options.slice(0, -1).join(', ') + ' or ' + options[options.length - 1];
-      throw new Error(`a field name (perhaps ${optString}`);
-    } else {
-      throw new Error(`a valid field name`);
-    }
+  getFieldByPrefix(prefix) {
+    return Object.keys(this.fieldsByName)
+      .filter(name => name.startsWith(prefix))
+      .map(name => this.fieldsByName[name]);
+  }
+  getFieldByRef(ref) {
+    return this.fieldsByRef[ref];
   }
   defaultContains(obj, query) {
     return this.defaultFields.some(field => field.contains(obj, query));

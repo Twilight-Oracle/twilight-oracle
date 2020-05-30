@@ -1,6 +1,7 @@
 import parsimmon from 'parsimmon';
 import * as nodes from './query-nodes.js';
 import Schema, * as fields from './query-schema.js';
+import { listJoin } from './string-utils.js';
 
 const schema = new Schema([
   new fields.StringField('title', {names: ['title', 'name']}),
@@ -46,10 +47,14 @@ const parsers = {
   separator: (l) => parsimmon.alt(l.ge, l.le, l.gt, l.lt, l.eq, l.colon),
   value: (l) => parsimmon.alt(l.word, l.quoted),
   field: (l) => parsimmon.seq(l.word, l.separator).chain(([key, sep]) => {
-    try {
-      return parsimmon.succeed([schema.getField(key), sep]);
-    } catch (e) {
-      return parsimmon.fail(e.message);
+    const options = schema.getFieldByPrefix(key);
+    if (options.length > 1) {
+      const names = options.map(field => field.names[0]);
+      return parsimmon.fail(`a valid field name (perhaps ${listJoin(names)})`);
+    } else if (options.length === 1) {
+      return parsimmon.succeed([options[0], sep]);
+    } else {
+      return parsimmon.fail(`a valid field name`);
     }
   }),
   fullTerm: (l) => parsimmon.seq(l.field, l.value).map(
