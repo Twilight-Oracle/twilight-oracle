@@ -3,6 +3,7 @@ import queryLang from './query-grammar.js';
 import { render } from 'preact';
 import { html } from 'htm/preact';
 import { listJoin } from './string-utils.js';
+import typeAliases from '../data/cardTypeStrings.json';
 
 // TODO: may no longer need to be async
 (async () => {
@@ -14,7 +15,7 @@ import { listJoin } from './string-utils.js';
     const ast = parseResult.value;
     const results = Object.entries(allCards).filter(
       ([path, card]) => ast.matches(card)
-    );
+    ).sort(([, a], [, b]) => a.number - b.number);
     render(html`
       <${QueryDescription} text=${ast.text()} count=${results.length} />
       <${SearchResultList} cards=${results} />
@@ -61,6 +62,15 @@ function SearchResultList({cards}) {
     )}
   </ul>`;
 }
+
 function SearchResult({path, card}) {
-  return html`<li><a href="${path}">${card.title}</a></li>`;
+  const title = `${card.number.toString().padStart(3, '0')}${card.period[0]} ${card.title}`;
+  const ops = card.ops ? `${card.ops} Ops ` : '';
+  const typelist = card.types
+    ? ' – ' + card.types.map(type => typeAliases[type]).join(', ')
+    : '';
+  return html`<li>
+    <h3><a href="${path}">${title}</a></h3>
+    <p>${ops}${card.side} Event${typelist}</p>
+  </li>`;
 }
