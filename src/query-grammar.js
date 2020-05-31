@@ -10,7 +10,7 @@ const schema = new Schema([
   new fields.NumberField('ops', {names: ['operations', 'ops'], text: 'the ops value'}),
   new fields.CardPeriodField('period'),
   // TODO: differentiate between oracle and printed text and names
-  new fields.StringField('contents', {names: ['oracle', 'printed', 'contents'], text: 'the text'}),
+  new fields.StringField('contents', {names: ['text'], text: 'the text'}),
   new fields.StringField('side', {default: 'Neutral'})
 ], [
   'title',

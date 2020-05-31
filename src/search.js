@@ -13,12 +13,19 @@ import typeAliases from '../data/cardTypeStrings.json';
   const parseResult = queryLang.query.parse(query);
   if (parseResult.status) {
     const ast = parseResult.value;
-    const results = Object.entries(allCards).filter(
-      ([path, card]) => ast.matches(card)
-    ).sort(([, a], [, b]) => a.number - b.number);
+    let results = [];
+    for (let id of Object.keys(allCards)) {
+      const matchingVersions = Object.keys(allCards[id]).filter(
+        (version) => ast.matches(allCards[id][version])
+      );
+      if (matchingVersions.length) {
+        results.push([id, matchingVersions]);
+      }
+    }
+    results = results.sort(([id1], [id2]) => id1 - id2);
     render(html`
       <${QueryDescription} text=${ast.text()} count=${results.length} />
-      <${SearchResultList} cards=${results} />
+      <${SearchResultList} results=${results} />
       `, resultsElem);
   } else {
     console.warn(`Expected ${parseResult.expected}`, parseResult);
@@ -55,22 +62,43 @@ function QueryDescription({text, count}) {
   return html`<div id="query-interpretation">${count} cards where ${text}.</div>`;
 }
 
-function SearchResultList({cards}) {
+function SearchResultList({results}) {
   return html`<ul>
-    ${cards.map(
-      ([path, card]) => html`<${SearchResult} path=${path} card=${card} />`
+    ${results.map(
+      ([id, versions]) => html`<${SearchResult} id=${id} matches=${versions} />`
     )}
   </ul>`;
 }
 
-function SearchResult({path, card}) {
-  const title = `${card.number.toString().padStart(3, '0')}${card.period[0]} ${card.title}`;
-  const ops = card.ops ? `${card.ops} Ops ` : '';
-  const typelist = card.types
-    ? ' – ' + card.types.map(type => typeAliases[type]).join(', ')
+function TitleLink({version, id, match}) {
+  console.log(id, version ,match);
+  const card = allCards[id][version];
+  if (card === undefined) {
+    return html`[version missing] (${version})`;
+  }
+  const link = html`<a href=${card.permalink}>${card.title}</a> (${version})`;
+  if (match) {
+    return html`<strong>${link}</strong>`;
+  } else {
+    return link;
+  }
+}
+
+function SearchResult({id, matches}) {
+  const oracle = allCards[id].oracle;
+  const printed = allCards[id].printed;
+  const descriptor = `${oracle.number.toString().padStart(3, '0')}${oracle.period[0]}`;
+  const ops = oracle.ops ? `${oracle.ops} Ops ` : '';
+  const typelist = oracle.types
+    ? ' – ' + oracle.types.map(type => typeAliases[type]).join(', ')
     : '';
+  const titleLine = html`
+    <${TitleLink} version="oracle" id=${id} match=${matches.includes('oracle')} />
+    <span> / </span>
+    <${TitleLink} version="printed" id=${id} match=${matches.includes('printed')} />
+  `;
   return html`<li>
-    <h3><a href="${path}">${title}</a></h3>
-    <p>${ops}${card.side} Event${typelist}</p>
+    <p>${titleLine}</p>
+    <p>${ops}${oracle.side} Event${typelist}</p>
   </li>`;
 }

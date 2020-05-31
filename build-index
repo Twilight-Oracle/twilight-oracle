@@ -3,18 +3,35 @@
 const metalsmith = require('metalsmith');
 const scoped = require('metalsmith-scoped');
 const drafts = require('metalsmith-drafts');
+const { dirname } = require('path');
 
 function buildAllCardsJson(outputFilename) {
   return function plugin(files, metalsmith, callback) {
-    const allFiles = Object.fromEntries(Object.values(files).map(file => {
-      const permalink = file.permalink;
+    const allFiles = {};
+    function getVersion(file) {
+      const dir = dirname(file.permalink);
+      if (dir.includes('oracle')) {
+        return 'oracle';
+      } else if (dir.includes('printed')) {
+        return 'printed';
+      } else {
+        console.error('No version for', file);
+        return '';
+      }
+    }
+    for (let file of Object.values(files)) {
+      const id = file.number;
+      const version = getVersion(file);
       file = {...file};
       delete file.stats;
       delete file.mode;
-      delete file.permalink;
       file.contents = file.contents.toString();
-      return [permalink, file];
-    }));
+      if (id in allFiles) {
+        allFiles[id][version] = file;
+      } else {
+        allFiles[id] = {[version]: file};
+      }
+    }
     files[outputFilename] = {
       contents: Buffer.from(JSON.stringify(allFiles))
     }
