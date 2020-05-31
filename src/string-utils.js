@@ -3,6 +3,7 @@
 // e.g. unicode compatibility, performance.
 
 export function indexOf(string, substring, first=0) {
+  [string, substring] = [string.toUpperCase(), substring.toUpperCase()];
   return string.indexOf(substring, first);
 }
 
@@ -19,6 +20,7 @@ export function allIndices(string, substring) {
 }
 
 export function compare(string1, string2) {
+  [string1, string2] = [string1.toUpperCase(), string2.toUpperCase()];
   if (string1 < string2) {
     return -1;
   } else if (string1 > string2) {
