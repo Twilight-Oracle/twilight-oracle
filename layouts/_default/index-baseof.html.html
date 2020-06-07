@@ -6,14 +6,9 @@
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
-    <header>
-      <a href="/" class=home-link>Twilight Oracle</a>
-      <form action="/search" method="get">
-        <input type="text" name="q" placeholder="Search cards">
-      </form>
-    </header>
     <main>
       {{ block "main" . }}{{ end }}
     </main>
+    <footer>Hosted on <a href="/todo">GitHub</a></footer>
   </body>
 </html>

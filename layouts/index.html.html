@@ -2,5 +2,28 @@
   {{ .Site.Title }}
 {{ end }}
 {{ define "main" }}
-  {{ .Content }}
+<h1 class="site-title">Twilight Oracle</h1>
+<form action="/search" method="get" class="large search">
+  <input type="text" name="q" placeholder="Search cards">
+</form>
+<p>
+  Retemplating
+  <a href="https://www.boardgamegeek.com/boardgame/12333/twilight-struggle">Twilight Struggle</a>
+  for clarity and consistency
+</p>
+<nav class="site-links">
+  <ul>
+    <li><a href="/cards">All Cards</a></li>
+    <li><a href="/todo">Rules Rewrite</a></li>
+    <li><a href="/todo">Search Syntax</a></li>
+  </ul>
+</nav>
+<nav class="outside-links">
+  <p>Buy Twilight Struggle from</p>
+  <ul>
+    <li><a href="https://www.gmtgames.com/p-775-twilight-struggle-deluxe-edition-7th-printing.aspx">GMT Games</a></li>
+    <li><a href="https://store.steampowered.com/app/406290/Twilight_Struggle/">Steam</a></li>
+    <li><a href="https://play.google.com/store/apps/details?id=com.playdekgames.twilightstruggle">Google Play</a></li>
+  </ul>
+</nav>
 {{ end }}
