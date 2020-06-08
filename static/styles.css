@@ -1,3 +1,5 @@
+/* Define war-period colors */
+
 .early {
   background: #00a9d1;
   color: black;
@@ -11,4 +13,132 @@
 .mid {
   background: #0085ac;
   color: white;
+}
+
+/* Distribute header, footer, body */
+/* Prevents footer from rising above bottom of viewport */
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-flow: column nowrap;
+}
+main {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+footer, header {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+/* Center the contents of the footer */
+
+footer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+/* Define inline lists */
+/* TODO this doesn't _really_ center the list-item markers */
+/* TODO screenreaders may not like list-style-type: none; see mdn for fix */
+
+.inline-list {
+  display: flex inline;
+  flex-flow: row wrap;
+  margin: 0;
+  padding: 0;
+}
+.inline-list > li {
+  list-style-position: inside;
+  margin-right: 0.5em;
+}
+/* TODO: does this allow nesting? probably irrelevant */
+.inline-list > li:first-of-type {
+  list-style-type: none;
+}
+.inline-list > li:last-of-type {
+  margin-right: 0;
+}
+/* li::marker content would work to center the marker, but isn't widely supported yet */
+/* .inline-list > li::marker {
+  content: "AAA";
+} */
+
+/* Define asides */
+
+.aside {
+  font-style: italic;
+  font-size: 0.85em;
+}
+
+/* Style search bars */
+
+form.search {
+  height: 2em;
+  outline: 2px solid black;
+}
+form.search:focus-within {
+  outline-color: blue;
+  /* outline-width: 3px;
+  outline-style: double; */
+}
+form.search input {
+  height: 100%;
+  width: 100%;
+  font-size: inherit;
+  padding: 0.25em 0.5em;
+  margin: 0;
+  box-sizing: border-box;
+  border: none;
+}
+form.search.large {
+  width: 16em; /* TODO: scale this somehow - media-query ratcheting? */
+  font-size: 2em;
+}
+form.search.large input {
+
+}
+form.search.small {
+
+}
+form.search.small input {
+
+}
+
+/* Load fonts */
+
+@font-face {
+  font-family: "Chomsky";
+  src: url("/fonts/Chomsky.woff") format("woff2");
+}
+
+/* Style the homepage */
+
+/* Center the contents of the homepage */
+
+main.homepage {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style homepage header */
+
+.homepage-title {
+  font-size: 2.75em;
+  font-size: 3.5em;
+  font-family: "Chomsky", serif;
+  font-weight: normal;
+}
+
+/* Misc/TODO */
+
+.homepage-link {
+  font-family: "Chomsky", serif;
 }
