@@ -1,3 +1,7 @@
+:root {
+  --unobtrusive: #979797;
+}
+
 /* Define war-period colors */
 
 .early {
@@ -35,12 +39,29 @@ footer, header {
   flex-shrink: 0;
 }
 
-/* Center the contents of the footer */
+/* Style the header */
+
+header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  padding: 0.5em 0;
+  border-bottom: 1px solid black;
+}
+header .homepage-link {
+  font-size: 2em;
+  margin: 0 0.5em;
+  color: black;
+  text-decoration: none;
+}
+
+/* Style the footer */
 
 footer {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  border-top: 1px solid var(--unobtrusive);
 }
 
 /* Define inline lists */
@@ -81,7 +102,7 @@ footer {
 form.search {
   --search-bar-height: 2em;
   height: var(--search-bar-height);
-  outline: 2px solid black;
+  border: 2px solid black;
   display: flex;
   flex-flow: row nowrap;
   align-content: stretch;
@@ -107,7 +128,7 @@ form.search .search-icon {
   flex: 0 0 auto;
   box-sizing: border-box;
   padding: 0.2em;
-  color: #979797;
+  color: var(--unobtrusive);
 }
 
 form.search.large {
@@ -119,7 +140,7 @@ form.search.large input {
 }
 
 form.search.small {
-
+  width: 16em; /* TODO: scale this somehow - media-query ratcheting? */
 }
 form.search.small input {
 
