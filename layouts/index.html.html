@@ -4,7 +4,8 @@
 {{ define "main" }}
 <h1 class="homepage-title">Twilight Oracle</h1>
 <form action="/search" method="get" class="large search">
-  <input type="text" name="q" placeholder="Search cards">
+  {{ partial "feather-icons/search.svg" . }}
+  <input type="search" name="q" placeholder="Search cards">
 </form>
 <p>
   Retemplating
