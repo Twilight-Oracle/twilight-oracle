@@ -3,34 +3,25 @@
 const metalsmith = require('metalsmith');
 const scoped = require('metalsmith-scoped');
 const drafts = require('metalsmith-drafts');
-const { dirname } = require('path');
+const path = require('path');
 
 function buildAllCardsJson(outputFilename) {
   return function plugin(files, metalsmith, callback) {
     const allFiles = {};
-    function getVersion(file) {
-      const dir = dirname(file.permalink);
-      if (dir.includes('oracle')) {
-        return 'oracle';
-      } else if (dir.includes('printed')) {
-        return 'printed';
-      } else {
-        console.error('No version for', file);
-        return '';
-      }
+    function getId(file) {
+      return path.posix.basename(path.posix.dirname(file.permalink));
     }
-    for (let file of Object.values(files)) {
-      const id = file.number;
+    function getVersion(file) {
+      return path.posix.basename(file.permalink);
+    }
+    for (let [filepath, file] of Object.entries(files)) {
+      const id = getId(file);
       const version = getVersion(file);
       file = {...file};
       delete file.stats;
       delete file.mode;
       file.contents = file.contents.toString();
-      if (id in allFiles) {
-        allFiles[id][version] = file;
-      } else {
-        allFiles[id] = {[version]: file};
-      }
+      allFiles[id] = {...allFiles[id], [version]: file};
     }
     files[outputFilename] = {
       contents: Buffer.from(JSON.stringify(allFiles))
@@ -50,8 +41,18 @@ function rm(files, metalsmith, callback) {
 // Crudely imitate hugo's permalinks
 function hugoPermalinks(files, metalsmith, callback) {
   for (let file of Object.keys(files)) {
-    const permalink = '/cards/' + file.replace(/.md$/, '');
-    const dest = permalink + '/index.html';
+    const permalink = path.posix.join(
+      '/',
+      'cards',
+      ...path.dirname(file).split(path.sep),
+      path.basename(file, path.extname(file))
+    );
+    const dest = path.join(
+      'cards',
+      path.dirname(file),
+      path.basename(file, path.extname(file)),
+      'index.html'
+    );
     files[dest] = files[file];
     delete files[file];
     files[dest].permalink = permalink;
@@ -68,25 +69,12 @@ function logPaths(files, metalsmith, callback) {
   setImmediate(callback);
 }
 
-// metalsmith-default-values does this, but a little heavier-weight than we need
-function setDefault(key, value) {
-  return function setDefault(files, metalsmith, callback) {
-    for (let file of Object.keys(files)) {
-      if (!files[file].hasOwnProperty(key)) {
-        files[file][key] = value;
-      }
-    }
-    setImmediate(callback);
-  }
-}
-
 metalsmith(__dirname)
   .source('./content/cards')
   .destination('./static/') // TODO: move to somewhere else, for bundler to find them?
   .clean(false)
   .use(drafts())
   .use(hugoPermalinks)
-  .use(setDefault('side', 'Neutral'))
   .use(buildAllCardsJson('all-cards.json'))
   .use(scoped(rm, ['**', '!all-cards.json']))
   .build(function (err) {
