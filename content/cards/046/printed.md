@@ -1,0 +1,13 @@
+---
+number: 46
+period: M
+side: none
+ops: 2
+scoring: false
+war: false
+unique: true
+continuous: false
+name: How I Learned to Stop Worrying*
+image: "[img url]"
+---
+Set the DEFCON at any level you want (1-5). This event counts as 5 Military Operations for the purpose of required Military Operations.
