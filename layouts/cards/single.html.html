@@ -1,5 +1,5 @@
 {{ define "title" }}
-  {{ .Title }} &ndash; {{ .Site.Title }}
+  {{ .Params.Name }} &ndash; {{ .Site.Title }}
 {{ end }}
 {{ define "main" }}
   <main>
@@ -7,31 +7,23 @@
       <img class="card-image" src="{{ .Params.Image }}" alt="">
       <div class="card-stats">
         <h1 class="card-titleline">
-          <span class="card-title">{{ .Title }}</span>
+          <span class="card-title">{{ .Params.Name }}</span>
           <span class="card-number">{{ .Params.Number }}</span>
         </h1>
         <p class="card-period">
-          {{- .Params.Period }} War
+          {{- index .Site.Data.cardPeriodStrings .Params.Period }}
         </p>
         <p class="card-types">
           {{- with .Params.Ops -}} {{ . }} OPS {{ end -}}
-          {{- .Params.Side }} Event <!-- TODO: handle empty side as neutral -->
-          {{- with .Params.Types }} &ndash;
-            {{ delimit (apply . "index" $.Site.Data.cardTypeStrings ".") ", "}}
-          {{- end -}}
+          {{- index .Site.Data.cardSideStrings .Params.Side }} Event
+          {{ partial "card-types" . }}
         </p>
         <p class="card-text">
           {{ .Content }}
         </p>
         <div class="card-versions">
-          {{ with where .Site.Pages "Params.number" .Params.Number }}
-            {{ with index (where . ".File.Dir" "cards/oracle/") 0 }}
-              <a href="{{ .Permalink }}">Oracle</a>
-            {{ end }}
-            {{ with index (where . ".File.Dir" "cards/printed/") 0 }}
-              <a href="{{ .Permalink }}">Printed</a>
-            {{ end }}
-          {{ end }}
+          <a href="{{ relref . "oracle.md" }}">Oracle</a>
+          <a href="{{ relref . "printed.md" }}">Printed</a>
         </div>
       </div>
     </div>
