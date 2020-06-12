@@ -4,10 +4,9 @@
 {{ define "main" }}
   <ul>
     {{ range sort .Pages ".Params.number" }}
-    {{/* TODO checking the path is crude */}}
-    {{ if eq .File.Dir "cards/oracle/" }}
+    {{ if eq .File.ContentBaseName "oracle" }}
       <li>
-        <a href="{{ .Permalink }}">{{ .Params.number }} {{ .Title }}</a>
+        <a href="{{ .Permalink }}">{{ .Params.number }} {{ .Params.Name }}</a>
       </li>
     {{ end }}
     {{ end }}
