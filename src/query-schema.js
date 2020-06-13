@@ -1,4 +1,6 @@
 import typeAliases from '../data/cardTypeStrings.json';
+import periodAliases from '../data/cardPeriodStrings.json';
+import sideAliases from '../data/cardSideStrings.json';
 import * as strUtils from './string-utils.js';
 
 /*
@@ -87,19 +89,41 @@ export class StringArrayField extends Field {
   }
 }
 
-export class CardTypeField extends StringArrayField {
-  _contains(value, query) {
-    return super._contains(value.flatMap(s => [s, typeAliases[s]]), query);
+export class CardTypeField {
+  constructor(ref, names=[ref], text=`the ${names[0]}`) {
+    this.ref = ref;
+    this.names = names;
+    this.text = text;
+    this.wrapped = new StringArrayField('types');
   }
+  contains(object, query) {
+    return this.wrapped.contains({
+      types: Object.entries(object).flatMap(
+        ([k, v]) => ((k in typeAliases) && v) ? [typeAliases[k]] : []
+      )
+    }, query);
+  }
+}
+for (let op of ['gt', 'ge', 'eq', 'le', 'lt']) {
+  CardTypeField.prototype[op] = (object, query) => false;
 }
 
 export class CardPeriodField extends StringField {
   _contains(value, query) {
-    return super._contains(value + ' War', query);
+    return super._contains(periodAliases[value], query);
   }
   // TODO: what should war periods compare to, if anything?
   _compare(value, query) {
     return NaN;
+  }
+}
+
+export class CardSideField extends StringField {
+  _contains(value, query) {
+    if (!(value in sideAliases)) {
+      console.log(value);
+    }
+    return super._contains(sideAliases[value], query);
   }
 }
 

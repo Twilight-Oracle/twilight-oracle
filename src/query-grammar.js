@@ -4,16 +4,16 @@ import Schema, * as fields from './query-schema.js';
 import { listJoin } from './string-utils.js';
 
 const schema = new Schema([
-  new fields.StringField('title', {names: ['title', 'name']}),
+  new fields.StringField('name', {names: ['title', 'name']}),
   new fields.NumberField('number'),
-  new fields.CardTypeField('types', {names: ['types']}),
+  new fields.CardTypeField('types'),
   new fields.NumberField('ops', {names: ['operations', 'ops'], text: 'the ops value'}),
   new fields.CardPeriodField('period'),
   // TODO: differentiate between oracle and printed text and names
   new fields.StringField('contents', {names: ['text'], text: 'the text'}),
-  new fields.StringField('side', {default: 'Neutral'})
+  new fields.CardSideField('side')
 ], [
-  'title',
+  'name',
   'contents',
   'types'
 ]);
