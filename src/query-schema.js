@@ -1,7 +1,7 @@
-import typeAliases from '../data/cardTypeStrings.json';
 import periodAliases from '../data/cardPeriodStrings.json';
 import sideAliases from '../data/cardSideStrings.json';
 import * as strUtils from './string-utils.js';
+import * as utils from './utils.js';
 
 /*
   Goal:
@@ -98,9 +98,7 @@ export class CardTypeField {
   }
   contains(object, query) {
     return this.wrapped.contains({
-      types: Object.entries(object).flatMap(
-        ([k, v]) => ((k in typeAliases) && v) ? [typeAliases[k]] : []
-      )
+      types: utils.renderTypes(object)
     }, query);
   }
 }

@@ -3,7 +3,8 @@ import queryLang from './query-grammar.js';
 import { render } from 'preact';
 import { html } from 'htm/preact';
 import { listJoin } from './string-utils.js';
-import typeAliases from '../data/cardTypeStrings.json';
+import sideAliases from '../data/cardSideStrings.json';
+import * as utils from './utils.js';
 
 // TODO: may no longer need to be async
 (async () => {
@@ -76,7 +77,7 @@ function TitleLink({version, id, match}) {
   if (card === undefined) {
     return html`[version missing] (${version})`;
   }
-  const link = html`<a href=${card.permalink}>${card.title}</a> (${version})`;
+  const link = html`<a href=${card.permalink}>${card.name}</a> (${version})`;
   if (match) {
     return html`<strong>${link}</strong>`;
   } else {
@@ -89,8 +90,9 @@ function SearchResult({id, matches}) {
   const printed = allCards[id].printed;
   const descriptor = `${oracle.number.toString().padStart(3, '0')}${oracle.period[0]}`;
   const ops = oracle.ops ? `${oracle.ops} Ops ` : '';
-  const typelist = oracle.types
-    ? ' – ' + oracle.types.map(type => typeAliases[type]).join(', ')
+  const types = utils.renderTypes(oracle);
+  const typelist = types.length > 0
+    ? ' – ' + types.join(', ')
     : '';
   const titleLine = html`
     <${TitleLink} version="oracle" id=${id} match=${matches.includes('oracle')} />
@@ -99,6 +101,6 @@ function SearchResult({id, matches}) {
   `;
   return html`<li>
     <p>${titleLine}</p>
-    <p>${ops}${oracle.side} Event${typelist}</p>
+    <p>${ops}${sideAliases[oracle.side]} Event${typelist}</p>
   </li>`;
 }
