@@ -150,7 +150,7 @@ form.search.small input {
 
 @font-face {
   font-family: "Chomsky";
-  src: url("/fonts/Chomsky.woff") format("woff2");
+  src: url("/fonts/chomsky/Chomsky.woff") format("woff2");
 }
 
 /* Style the homepage */
