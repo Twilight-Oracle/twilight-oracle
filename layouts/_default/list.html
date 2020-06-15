@@ -3,12 +3,10 @@
 {{ end }}
 {{ define "main" }}
   <ul>
-    {{ range sort .Pages ".Params.number" }}
-    {{ if eq .File.ContentBaseName "oracle" }}
+    {{ range .Pages }}
       <li>
-        <a href="{{ .Permalink }}">{{ .Params.number }} {{ .Params.Name }}</a>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
       </li>
-    {{ end }}
     {{ end }}
   </ul>
 {{ end }}

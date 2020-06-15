@@ -11,12 +11,10 @@
           <span class="card-number">{{ .Params.Number }}</span>
         </h1>
         <p class="card-period">
-          {{- index .Site.Data.cardPeriodStrings .Params.Period }}
+          {{- partial "card/period" . }}
         </p>
         <p class="card-types">
-          {{- with .Params.Ops -}} {{ . }} OPS {{ end -}}
-          {{- index .Site.Data.cardSideStrings .Params.Side }} Event
-          {{ partial "card-types" . }}
+          {{ partial "card/type-line" . }}
         </p>
         <p class="card-text">
           {{ .Content }}

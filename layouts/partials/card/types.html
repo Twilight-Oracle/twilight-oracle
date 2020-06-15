@@ -1,0 +1,9 @@
+{{- $types := slice -}}
+{{- with .Params.Scoring }}{{ $types = $types | append "scoring" }}{{ end -}}
+{{- with .Params.War }}{{ $types = $types | append "war" }}{{ end -}}
+{{- with .Params.Continuous }}{{ $types = $types | append "continuous" }}{{ end -}}
+{{- with .Params.Unique }}{{ $types = $types | append "unique" }}{{ end -}}
+
+{{- with $types -}}
+  &ndash; {{ delimit (apply . "index" $.Site.Data.cardTypeStrings ".") ", " -}}
+{{- end -}}

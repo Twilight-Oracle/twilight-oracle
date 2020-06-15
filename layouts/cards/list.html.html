@@ -1,0 +1,36 @@
+{{ define "title" }}
+  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+  <ul>
+    {{- range sort (.Pages.GroupByParam "Number") -}}
+      {{- $oracle := "oracle" -}}
+      {{- $printed := "printed" -}}
+      {{- range .Pages -}}
+        {{- if eq .File.ContentBaseName "oracle" -}}
+          {{- $oracle = . -}}
+        {{- else if eq .File.ContentBaseName "printed" -}}
+          {{- $printed = . -}}
+        {{- end -}}
+      {{- end -}}
+      <li>
+        <p>
+          {{ partial "card/number" $oracle }}
+          {{- if eq $oracle.Params.Name $printed.Params.Name -}}
+            <a href="{{ $oracle.Permalink }}">{{- $oracle.Params.Name }}</a>
+            (<a href="{{ $oracle.Permalink }}">oracle</a>
+            /
+            <a href="{{ $printed.Permalink }}">printed</a>)
+          {{- else -}}
+            <a href="{{ $oracle.Permalink }}">{{- $oracle.Params.Name }}</a>
+            (<a href="{{ $oracle.Permalink }}">oracle</a>)
+            /
+            <a href="{{ $printed.Permalink }}">{{- $printed.Params.Name }}</a>
+            (<a href="{{ $printed.Permalink }}">printed</a>)
+          {{- end -}}
+        </p>
+        <p>{{ partial "card/type-line" $oracle }}</p>
+      </li>
+    {{- end -}}
+  </ul>
+{{ end }}
