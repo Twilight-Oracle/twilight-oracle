@@ -2,20 +2,29 @@
   {{ .Params.Name }} &ndash; {{ .Site.Title }}
 {{ end }}
 {{ define "main" }}
-  <main>
     <div class="card">
       <img class="card-image" src="{{ .Params.Image }}" alt="">
       <div class="card-stats">
         <h1 class="card-titleline">
           <span class="card-title">{{ .Params.Name }}</span>
-          <span class="card-number">{{ .Params.Number }}</span>
+          <span class="card-number">{{ with partial "card/number" . }}{{ . }}{{ end }}</span>
         </h1>
         <p class="card-period">
-          {{- partial "card/period" . }}
+          Period: {{ partial "card/period/full" . }}
         </p>
-        <p class="card-types">
-          {{ partial "card/type-line" . }}
+        <p class="card-side">
+          Side: {{ partial "card/side" . }}
         </p>
+        {{ with .Params.OPS }}
+          <p class="card-ops">
+            OPS: {{ . }}
+          </p>
+        {{ end }}
+        {{ with partial "card/types/string" . }}
+          <p class="card-types">
+            Types: {{ . }}
+          </p>
+        {{ end }}
         <p class="card-text">
           {{ .Content }}
         </p>
@@ -25,5 +34,4 @@
         </div>
       </div>
     </div>
-  </main>
 {{ end }}

@@ -1,1 +1,8 @@
-{{ partial "card/ops" . }} {{ partial "card/side" . }} Event {{ partial "card/types" . }}
+{{ with partial "card/ops" . }}
+  {{ . }} OPS
+{{ end }}
+{{ partial "card/side" . }}
+Event
+{{ with partial "card/types/string" . }}
+  &ndash; {{ . }}
+{{ end }}

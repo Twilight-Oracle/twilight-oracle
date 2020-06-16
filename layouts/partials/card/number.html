@@ -1,4 +1,4 @@
 {{- $runes := ((string .Params.Number) | strings.RuneCount) -}}
 {{- $padrunes := sub 3 $runes -}}
 {{- $padding := "0" | strings.Repeat $padrunes -}}
-{{ $padding }}{{ .Params.Number }}{{ .Params.Period }}
+{{ $padding }}{{ .Params.Number }}
