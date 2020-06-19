@@ -1,5 +1,7 @@
 :root {
   --unobtrusive: #979797;
+  --light: #bbbbbb;
+  font-size: 18px;
 }
 
 /* Define war-period colors */
@@ -33,6 +35,7 @@ body {
 main {
   flex-grow: 1;
   flex-shrink: 0;
+  margin: 2em 0 2em 0;
 }
 footer, header {
   flex-grow: 0;
@@ -171,6 +174,76 @@ main.homepage {
   font-size: 3.5em;
   font-family: "Chomsky", serif;
   font-weight: normal;
+}
+
+/* Style single-card display */
+
+.card.large {
+  display: flex;
+  flex-flow: row-reverse wrap;
+  justify-content: space-evenly;
+}
+.card.large .card-image {
+  border: 1px solid var(--unobtrusive);
+  flex: 0 0 auto;
+  margin: 0 2em 0 2em;
+}
+.card.large .card-box {
+  border: 1px solid var(--unobtrusive);
+  flex: 1 1 5em;
+  margin: 0 2em 0 2em;
+}
+.card.large .card-stats {
+  padding: 0 1em 1em 1em;
+}
+.card.large .card-versions {
+  display: flex;
+  flex-flow: row nowrap;
+  align-content:
+  border-bottom: 1px solid var(--unobtrusive);
+}
+.card.large .card-versions .card-version-tab {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 0.5em;
+}
+.card.large .card-versions a {
+  text-decoration: none;
+  color: black;
+  font-variant: small-caps;
+}
+.card.large .card-versions a:hover {
+  text-decoration: underline;
+}
+.card.large .card-versions .selected {
+  font-weight: bolder;
+}
+.card.large .card-versions :not(.selected) {
+  background-color: var(--light);
+}
+.card.large .card-titleline {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 0.5em 0 0.5em 0;
+}
+.card.large .card-fields {
+  border: solid black;
+  border-width: 1px 0 1px 0;
+  padding: 0.5em 0 0.5em 0;
+}
+.card.large .card-fields dt, .card.large .card-fields dt::after {
+  font-weight: bolder;
+  display: inline;
+}
+.card.large .card-fields dt::after {
+  content: ": ";
+  display: inline;
+}
+.card.large dd {
+  display: inline;
+  margin-left: 0;
 }
 
 /* Misc/TODO */

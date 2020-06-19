@@ -7,9 +7,9 @@
       {{- $oracle := "oracle" -}}
       {{- $printed := "printed" -}}
       {{- range .Pages -}}
-        {{- if eq .File.ContentBaseName "oracle" -}}
+        {{- if eq (partial "card/version" .) "oracle" -}}
           {{- $oracle = . -}}
-        {{- else if eq .File.ContentBaseName "printed" -}}
+        {{- else if eq (partial "card/version" .) "printed" -}}
           {{- $printed = . -}}
         {{- end -}}
       {{- end -}}

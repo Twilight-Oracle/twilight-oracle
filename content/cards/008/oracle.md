@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Fidel*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/008.jpg"
 ---
 Remove all US influence from `Cuba`.
 

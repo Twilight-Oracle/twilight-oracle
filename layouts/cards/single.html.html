@@ -2,36 +2,45 @@
   {{ .Params.Name }} &ndash; {{ .Site.Title }}
 {{ end }}
 {{ define "main" }}
-    <div class="card">
-      <img class="card-image" src="{{ .Params.Image }}" alt="">
-      <div class="card-stats">
-        <h1 class="card-titleline">
-          <span class="card-title">{{ .Params.Name }}</span>
-          <span class="card-number">{{ with partial "card/number" . }}{{ . }}{{ end }}</span>
-        </h1>
-        <p class="card-period">
-          Period: {{ partial "card/period/full" . }}
-        </p>
-        <p class="card-side">
-          Side: {{ partial "card/side" . }}
-        </p>
-        {{ with .Params.OPS }}
-          <p class="card-ops">
-            OPS: {{ . }}
-          </p>
-        {{ end }}
-        {{ with partial "card/types/string" . }}
-          <p class="card-types">
-            Types: {{ . }}
-          </p>
-        {{ end }}
-        <p class="card-text">
-          {{ .Content }}
-        </p>
+    <div class="card large">
+      <div class="card-box">
         <div class="card-versions">
-          <a href="{{ relref . "oracle.md" }}">Oracle</a>
-          <a href="{{ relref . "printed.md" }}">Printed</a>
+          {{ $version := partial "card/version" . }}
+          <a href="{{ relref . "oracle.md" }}" class="card-version-tab oracle {{ if eq $version "oracle" }}selected{{ end }}">
+            Oracle
+          </a>
+          <a href="{{ relref . "printed.md" }}" class="card-version-tab oracle {{ if eq $version "printed" }}selected{{ end }}">
+            Printed
+          </a>
+        </div>
+        <div class="card-stats">
+          <h1 class="card-titleline">
+            <span class="card-title">{{ .Params.Name }}</span>
+            <span class="card-number">{{ with partial "card/number" . }}{{ . }}{{ end }}</span>
+          </h1>
+          <dl class="card-fields">
+            <div>
+              <dt>Period</dt><dd>{{ partial "card/period/full" . }}</dd>
+            </div>
+            <div>
+              <dt>Side</dt><dd>{{ partial "card/side" . }}</dd>
+            </div>
+            {{ with partial "card/ops" . }}
+              <div>
+                <dt>OPS</dt><dd>{{ . }}</dd>
+              </div>
+            {{ end }}
+            {{ with partial "card/types/string" . }}
+              <div>
+                <dt>Types</dt><dd>{{ . }}</dd>
+              </div>
+            {{ end }}
+          </dl>
+          <p class="card-text">
+            {{ .Content }}
+          </p>
         </div>
       </div>
+      <img class="card-image" src="{{ .Params.Image }}" alt="">
     </div>
 {{ end }}
