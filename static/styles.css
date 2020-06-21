@@ -1,6 +1,6 @@
 :root {
   --unobtrusive: #979797;
-  --light: #bbbbbb;
+  --light: #c0c0c0;
   font-size: 18px;
 }
 
@@ -189,12 +189,13 @@ main.homepage {
   margin: 0 2em 0 2em;
 }
 .card.large .card-box {
-  border: 1px solid var(--unobtrusive);
   flex: 1 1 5em;
   margin: 0 2em 0 2em;
 }
 .card.large .card-stats {
-  padding: 0 1em 1em 1em;
+  padding: 1px 1em 1em 1em;
+  border: solid var(--unobtrusive);
+  border-width: 0 1px 1px 1px;
 }
 .card.large .card-versions {
   display: flex;
@@ -207,6 +208,9 @@ main.homepage {
   display: flex;
   justify-content: center;
   padding: 0.5em;
+  box-sizing: border-box;
+  border: solid var(--unobtrusive);
+  border-radius: 10px 10px 0 0;
 }
 .card.large .card-versions a {
   text-decoration: none;
@@ -216,11 +220,13 @@ main.homepage {
 .card.large .card-versions a:hover {
   text-decoration: underline;
 }
-.card.large .card-versions .selected {
+.card.large .card-versions .card-version-tab.selected {
   font-weight: bolder;
+  border-width: 1px 1px 0 1px;
 }
-.card.large .card-versions :not(.selected) {
+.card.large .card-versions .card-version-tab:not(.selected) {
   background-color: var(--light);
+  border-width: 0 0 1px 0;
 }
 .card.large .card-titleline {
   display: flex;
