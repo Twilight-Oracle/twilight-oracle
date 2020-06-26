@@ -269,19 +269,20 @@ ul.card-list {
 }
 .card-list > li {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: space-evenly;
-  margin: 2em 0 2em 0;
-  width: 45%; /* TODO: media-query ratchet this */
+  margin: 1em 0 1em 0;
+  width: 100%;
 }
 a.card.small {
   color: black;
   text-decoration: none;
 }
 .card.small {
-  width: 45%; /* TODO: media-query ratchet this */
+  width: 100%;
   border: 1px solid var(--unobtrusive);
   padding: 0.5em;
+  margin: 0.5em 0 0.5em 0;
 }
 .card.small .card-titleline {
   margin: 0;
@@ -311,4 +312,18 @@ a.card.small {
 
 .homepage-link {
   font-family: "Chomsky", serif;
+}
+
+/* Styles for larger screens */
+
+@media (min-width: 40em) {
+  .card.small {
+    width: 45%;
+  }
+}
+
+@media (min-width: 90em) {
+  .card-list > li {
+    width: 45%;
+  }
 }
