@@ -2,7 +2,7 @@
   {{ .Title }} &ndash; {{ .Site.Title }}
 {{ end }}
 {{ define "main" }}
-  <ul>
+  <ul class="card-list">
     {{- range sort (.Pages.GroupByParam "Number") -}}
       {{- $oracle := "oracle" -}}
       {{- $printed := "printed" -}}
@@ -14,22 +14,8 @@
         {{- end -}}
       {{- end -}}
       <li>
-        <p>
-          {{ partial "card/number" $oracle }}
-          {{- if eq $oracle.Params.Name $printed.Params.Name -}}
-            <a href="{{ $oracle.Permalink }}">{{- $oracle.Params.Name }}</a>
-            (<a href="{{ $oracle.Permalink }}">oracle</a>
-            /
-            <a href="{{ $printed.Permalink }}">printed</a>)
-          {{- else -}}
-            <a href="{{ $oracle.Permalink }}">{{- $oracle.Params.Name }}</a>
-            (<a href="{{ $oracle.Permalink }}">oracle</a>)
-            /
-            <a href="{{ $printed.Permalink }}">{{- $printed.Params.Name }}</a>
-            (<a href="{{ $printed.Permalink }}">printed</a>)
-          {{- end -}}
-        </p>
-        <p>{{ partial "card/type-line" $oracle }}</p>
+        {{ partial "card/box/small" $oracle }}
+        {{ partial "card/box/small" $printed }}
       </li>
     {{- end -}}
   </ul>

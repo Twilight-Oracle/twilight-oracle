@@ -176,6 +176,14 @@ main.homepage {
   font-weight: normal;
 }
 
+/* Style all card displays */
+
+.card ul {
+  list-style-type: disc;
+  list-style-position: outside;
+  padding-left: 1.25em;
+}
+
 /* Style single-card display */
 
 .card.large {
@@ -200,8 +208,6 @@ main.homepage {
 .card.large .card-versions {
   display: flex;
   flex-flow: row nowrap;
-  align-content:
-  border-bottom: 1px solid var(--unobtrusive);
 }
 .card.large .card-versions .card-version-tab {
   width: 50%;
@@ -250,6 +256,55 @@ main.homepage {
 .card.large dd {
   display: inline;
   margin-left: 0;
+}
+
+/* Style card-list display */
+
+ul.card-list {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0;
+  padding: 0;
+  justify-content: space-evenly;
+}
+.card-list > li {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  margin: 2em 0 2em 0;
+  width: 45%; /* TODO: media-query ratchet this */
+}
+a.card.small {
+  color: black;
+  text-decoration: none;
+}
+.card.small {
+  width: 45%; /* TODO: media-query ratchet this */
+  border: 1px solid var(--unobtrusive);
+  padding: 0.5em;
+}
+.card.small .card-titleline {
+  margin: 0;
+  font-size: 1em;
+}
+.card.small:hover .card-titleline {
+  text-decoration: underline;
+}
+.card.small .card-number {
+  font-family: monospace;
+}
+.card.small .card-version {
+  font-variant: small-caps;
+  font-weight: normal;
+}
+.card.small .card-typeline {
+  border: solid var(--unobtrusive);
+  border-width: 1px 0 1px 0;
+  padding: 0.5em 0 0.5em 0;
+  margin: 0.5em 0 0.5em 0;
+}
+.card.small .card-text {
+  padding: 0 0.25em 0 0.25em;
 }
 
 /* Misc/TODO */

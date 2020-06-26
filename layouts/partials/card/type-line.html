@@ -1,8 +1,8 @@
 {{ with partial "card/ops" . }}
-  {{ . }} OPS
+  <span class="card-ops">{{ . }} OPS</span>
 {{ end }}
-{{ partial "card/side" . }}
+<span class="card-side">{{ partial "card/side" . }}</span>
 Event
 {{ with partial "card/types/string" . }}
-  &ndash; {{ . }}
+  &ndash; <span class="card-types">{{ . }}</span>
 {{ end }}
