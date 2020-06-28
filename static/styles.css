@@ -263,9 +263,9 @@ main.homepage {
 ul.card-list {
   display: flex;
   flex-flow: row wrap;
-  margin: 0;
+  margin: 0.5em;
   padding: 0;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 .card-list > li {
   --card-gutter-half-width: 0.4em;
@@ -328,10 +328,13 @@ a.card.small {
     /* TODO: instead could set flex-basis exactly: */
     /* flex-basis: calc(50% - 2 * var(--card-gutter-half-width)); */
   }
+  ul.card-list {
+    margin: 0 5%;
+  }
 }
 
 @media (min-width: 90em) {
   .card-list > li {
-    width: 45%;
+    width: 47.5%;
   }
 }
