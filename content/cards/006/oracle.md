@@ -14,6 +14,6 @@ Conduct operations with this card. This card's operations value is 1 greater if 
 
 The enemy now holds this card. Turn it facedown.
 
-When USA resolves this card, end `035-E Formosan Resolution\*`.
+When USA resolves this card, end `035-E Formosan Resolution*`.
 
 *(This card is never in a side's hand and cannot be discarded.)*
