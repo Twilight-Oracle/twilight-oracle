@@ -14,8 +14,10 @@
         {{- end -}}
       {{- end -}}
       <li>
-        {{ partial "card/box/small" $oracle }}
-        {{ partial "card/box/small" $printed }}
+        <div class="flex-gutter-wrapper">
+          {{ partial "card/box/small" $oracle }}
+          {{ partial "card/box/small" $printed }}
+        </div>
       </li>
     {{- end -}}
   </ul>
