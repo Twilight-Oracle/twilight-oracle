@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Kitchen Debates*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/048.jpg"
 ---
 If USA controls more battlegrounds than USSR, award USA 2 VP.

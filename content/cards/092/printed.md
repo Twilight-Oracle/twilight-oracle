@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Terrorism
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/092.jpg"
 ---
 Opponent must randomly discard one card. If played by USSR and *Iranian Hostage Crisis* is in efect, the US player must randomly discard two cards.
 

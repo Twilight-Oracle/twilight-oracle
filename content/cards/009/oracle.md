@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Vietnam Revolts*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/009.jpg"
 ---
 Place 2 USSR influence in `Vietnam`.
 

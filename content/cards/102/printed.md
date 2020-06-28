@@ -8,7 +8,7 @@ war: true
 unique: true
 continuous: false
 name: Iran-Iraq War*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/102.jpg"
 ---
 Iran or Iraq invades the other (player's choice). Roll one die and subtract 1 for every opponent-controlled country adjacent to target of invasion. Player Victory on modified die roll of 4-6. Player adds 2 to Military Ops Track.
 

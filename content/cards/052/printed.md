@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Portuguese Empire Crumbles*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/052.jpg"
 ---
 Add 2 USSR Influence in both the SE African States and Angola.

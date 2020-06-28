@@ -8,6 +8,6 @@ war: false
 unique: false
 continuous: false
 name: Liberation Theology
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/075.jpg"
 ---
 Place 3 USSR influence in `Central America`. Do not place more than 2 influence in any single country.

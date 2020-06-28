@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: Formosan Resolution*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/035.jpg"
 ---
 *Ongoing* — When `Asia` is scored, if `Taiwan` is USA-controlled, `Taiwan` is a battleground during that scoring.
 

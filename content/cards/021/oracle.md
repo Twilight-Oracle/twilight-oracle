@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: NATO*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/021.jpg"
 ---
 This card cannot be implemented except during `016-E Warsaw Pact Formed` or `023-E Marshall Plan`.
 

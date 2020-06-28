@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: An Evil Empire*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/097.jpg"
 ---
 Cancels/prevents *Flower Power*.
 

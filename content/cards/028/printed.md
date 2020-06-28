@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Suez Crisis*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/028.jpg"
 ---
 Remove a total of 4 US Influence from France, the United Kingdom and Israel. Remove no more than 2 Influence per country.

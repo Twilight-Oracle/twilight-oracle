@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: The Cambridge Five
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/104.jpg"
 ---
 If it is the Late War, this card does nothing.
 

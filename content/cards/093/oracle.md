@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Iran-Contra Scandal*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/093.jpg"
 ---
 Until end of turn, whenever either side performs a realignment, subtract 1 from the USA die roll.

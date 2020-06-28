@@ -8,6 +8,6 @@ war: false
 unique: false
 continuous: false
 name: Decolonization
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/030.jpg"
 ---
 Place 1 USSR influence in each of up to 4 countries in `Africa` or `Southeast Asia`.

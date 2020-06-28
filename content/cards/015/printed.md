@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Nasser*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/015.jpg"
 ---
 Add 2 USSR Influence in Egypt. Remove half (rounded up) of the US Influence in Egypt.

@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: Bear Trap*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/044.jpg"
 ---
 *Ongoing* — USSR may only play scoring cards or cards from hand with operations values of 2 or greater. If USSR has no such cards in hand, USSR must choose to play no card in an action round.
 

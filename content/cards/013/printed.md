@@ -8,7 +8,7 @@ war: true
 unique: false
 continuous: false
 name: Arab-Israeli War
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/013.jpg"
 ---
 A Pan-Arab Coalition invades Israel. Roll one die and subtract 1 for US Control of Israel and every US-controlled country adjacent to Israel. USSR Victory on modified die roll 4-6. USSR adds 2 to Military Ops Track.
 

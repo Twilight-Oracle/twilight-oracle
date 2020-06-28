@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: NATO*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/021.jpg"
 ---
 *Play after 'Marshall Plan' or 'Warsaw Pact.'*
 

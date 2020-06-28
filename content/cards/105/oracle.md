@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Special Relationship
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/105.jpg"
 ---
 If the `United Kingdom` is not USA-controlled, this card does nothing.
 

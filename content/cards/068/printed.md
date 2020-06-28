@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: John Paul II Elected Pope*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/068.jpg"
 ---
 Remove 2 USSR Influence in Poland and then add 1 US Influence in Poland.
 

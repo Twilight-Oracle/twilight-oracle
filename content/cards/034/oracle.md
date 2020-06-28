@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Nuclear Test Ban
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/034.jpg"
 ---
 Gain VP equal to DEFCON minus 2.
 

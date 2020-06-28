@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Sadat Expels Soviets*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/072.jpg"
 ---
 Remove all USSR Influence in Egypt and add one US Influence.

@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: We Will Bury You*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/050.jpg"
 ---
 Decrement DEFCON.
 

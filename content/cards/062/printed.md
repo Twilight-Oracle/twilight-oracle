@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Lone Gunman*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/062.jpg"
 ---
 US Player reveals his hand.
 

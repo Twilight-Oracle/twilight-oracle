@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: The Reformer*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/087.jpg"
 ---
 Perform one (USSR's choice):
 * Place 4 USSR influence in `Europe`.

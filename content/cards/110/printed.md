@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: true
 name: AWACS Sale to Saudis*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/110.jpg"
 ---
 US receives 2 Influence in Saudi Arabia. Muslim Revolution may no longer be played as an event.

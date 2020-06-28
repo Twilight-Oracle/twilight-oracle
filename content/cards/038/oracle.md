@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Southeast Asia Scoring*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/038.jpg"
 ---
 Score `Southeast Asia`.

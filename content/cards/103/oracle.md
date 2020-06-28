@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Defectors
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/103.jpg"
 ---
 If this card is a headline, it is valued above any other card and has the text "discard the USSR headline."
 

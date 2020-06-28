@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Cultural Revolution*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/058.jpg"
 ---
 If the US has *The China Card*, claim it face up and available for play. If the USSR already has it, USSR gains 1 VP.

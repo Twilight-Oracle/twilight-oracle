@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Nixon Plays the China Card*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/071.jpg"
 ---
 If USA holds `006-E The China Card`, award USA 2 VP.
 

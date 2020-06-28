@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: Warsaw Pact Formed*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/016.jpg"
 ---
 Perform one (USSR's choice):
 * Remove all USA influence from up to 4 countries in `Eastern Europe`.

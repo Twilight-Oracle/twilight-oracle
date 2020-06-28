@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: SALT Negotiations*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/043.jpg"
 ---
 Increment DEFCON twice.
 

@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Romanian Abdication*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/012.jpg"
 ---
 Remove all US Influence from Romania. USSR gains sufficient Influence in Romania for Control.

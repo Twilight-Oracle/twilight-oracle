@@ -8,6 +8,6 @@ war: false
 unique: false
 continuous: false
 name: Liberation Theology
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/075.jpg"
 ---
 Add 3 USSR Influence in Central America, no more than 2 per country.

@@ -8,6 +8,6 @@ war: false
 unique: false
 continuous: false
 name: Colonial Rear Guards
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/063.jpg"
 ---
 Place 1 USA influence in each of up to 4 countries in `Africa` or `Southeast Asia`.

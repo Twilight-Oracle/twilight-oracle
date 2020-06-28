@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: The Reformer*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/087.jpg"
 ---
 Add 4 Influence in Europe (no more than 2 per country). If USSR is ahead of US in VP, then 6 Influence may be added instead.
 

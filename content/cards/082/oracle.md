@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: Iranian Hostage Crisis*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/082.jpg"
 ---
 Remove all USA influence from `Iran`, then place 2 USSR influence there.
 

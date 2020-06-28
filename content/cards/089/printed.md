@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Soviets Shoot Down KAL-007*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/089.jpg"
 ---
 Degrade DEFCON one level. US gains 2 VP.
 

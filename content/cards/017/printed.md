@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: true
 name: De Gaulle Leads France*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/017.jpg"
 ---
 Remove 2 US Influence in France, add 1 USSR Influence. Cancels effects of *NATO* for France.

@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Soviets Shoot Down KAL-007*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/089.jpg"
 ---
 Decrement DEFCON, then award USA 2 VP.
 

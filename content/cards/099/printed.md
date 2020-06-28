@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Pershing II Deployed*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/099.jpg"
 ---
 USSR gains 1 VP.
 

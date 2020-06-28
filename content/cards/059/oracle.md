@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: Flower Power*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/059.jpg"
 ---
 *Ongoing* — When USA resolves a war card, award USSR 2 VP.
 

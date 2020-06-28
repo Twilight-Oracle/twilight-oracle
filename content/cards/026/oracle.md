@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: CIA Created*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/026.jpg"
 ---
 Until end of turn, USSR plays with its hand revealed.
 

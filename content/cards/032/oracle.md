@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: UN Intervention
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/032.jpg"
 ---
 If this card is a headline, it does nothing.
 

@@ -8,6 +8,6 @@ war: false
 unique: false
 continuous: false
 name: Decolonization
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/030.jpg"
 ---
 Add one USSR Influence in each of any four African and/or SE Asian countries.

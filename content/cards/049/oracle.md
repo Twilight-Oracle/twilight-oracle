@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Missile Envy
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/049.jpg"
 ---
 The enemy chooses a card from among the cards in its hand which have the greatest operations value. If the chosen card is aligned with the enemy, you conduct operations with that card. Otherwise, you resolve that card.
 

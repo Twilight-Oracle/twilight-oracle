@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Wargames*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/100.jpg"
 ---
 If DEFCON is 2, you may award the enemy 6 VP.
 

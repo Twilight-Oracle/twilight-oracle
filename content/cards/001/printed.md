@@ -8,5 +8,5 @@ war: false
 unique: false
 continuous: false
 name: Asia Scoring
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/001.jpg"
 ---

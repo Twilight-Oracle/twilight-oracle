@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Ortega Elected in Nicaragua*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/091.jpg"
 ---
 Remove all USA influence from `Nicaragua`.
 

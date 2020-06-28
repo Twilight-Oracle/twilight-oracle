@@ -8,7 +8,7 @@ war: true
 unique: false
 continuous: false
 name: Indo-Pakistani War
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/024.jpg"
 ---
 Gain 2 military operations.
 

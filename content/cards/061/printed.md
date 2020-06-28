@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: OPEC
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/061.jpg"
 ---
 USSR gains 1 VP for each of the following countries he controls:
 

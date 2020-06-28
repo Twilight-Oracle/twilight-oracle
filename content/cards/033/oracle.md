@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: De-Stalinization*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/033.jpg"
 ---
 Choose any number of countries. Remove up to 4 USSR influence from among them.
 

@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: Willy Brandt*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/055.jpg"
 ---
 Award USSR 1 VP.
 

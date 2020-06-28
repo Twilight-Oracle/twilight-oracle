@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Duck and Cover
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/004.jpg"
 ---
 Degrade DEFCON one level.
 

@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Glasnost*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/090.jpg"
 ---
 USSR gains 2 VP.
 

@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Aldrich Ames Remix*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/098.jpg"
 ---
 US player exposes his hand to USSR player for remainder of turn. USSR then chooses one card from US hand; this card is discarded.

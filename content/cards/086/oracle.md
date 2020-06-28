@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: North Sea Oil*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/086.jpg"
 ---
 USA must complete 8 action rounds this turn. In its 8th action round, USA may decline to play a card.
 

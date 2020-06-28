@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: Tear Down This Wall*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/096.jpg"
 ---
 Cancels/prevents *Willy Brandt*.
 

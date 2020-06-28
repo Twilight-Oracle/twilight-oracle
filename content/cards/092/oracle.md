@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Terrorism
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/092.jpg"
 ---
 The enemy chooses a card from its hand at random and discards that card.
 

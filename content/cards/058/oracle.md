@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Cultural Revolution*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/058.jpg"
 ---
 If USSR holds `006-E The China Card`, award USSR 1 VP.
 

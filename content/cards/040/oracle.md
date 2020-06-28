@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Cuban Missile Crisis*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/040.jpg"
 ---
 Set DEFCON to 2.
 

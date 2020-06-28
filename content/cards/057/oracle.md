@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: ABM Treaty
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/057.jpg"
 ---
 Increment DEFCON.
 

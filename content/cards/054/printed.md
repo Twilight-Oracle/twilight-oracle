@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Allende*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/054.jpg"
 ---
 USSR receives 2 Influence in Chile.

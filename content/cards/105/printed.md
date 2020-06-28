@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Special Relationship
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/105.jpg"
 ---
 If US is US controlled but NATO is not in effect, US adds 1 Influence to any country adjacent to the UK.
 

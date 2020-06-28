@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: Marshall Plan*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/023.jpg"
 ---
 Allows play of *NATO*.
 

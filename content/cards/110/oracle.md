@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: AWACS Sale to Saudis*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/110.jpg"
 ---
 Place 2 USA influence in `Saudi Arabia`.
 

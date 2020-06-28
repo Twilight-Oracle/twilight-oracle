@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Latin American Death Squads
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/069.jpg"
 ---
 Until end of turn, when you launch a coup in a country in `Central America` or `South America`, add 1 to the die roll.
 

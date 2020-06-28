@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: De Gaulle Leads France*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/017.jpg"
 ---
 Remove up to 2 USA influence from `France`.
 

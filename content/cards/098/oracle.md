@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Aldrich Ames Remix*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/098.jpg"
 ---
 Until end of turn, USA plays with its hand revealed.
 

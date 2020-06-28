@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Socialist Governments
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/007.jpg"
 ---
 Remove up to 3 USA influence from `Western Europe`. Do not remove more than 2 from any single country.
 

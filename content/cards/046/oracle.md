@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: How I Learned to Stop Worrying*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/046.jpg"
 ---
 Gain 5 military operations.
 

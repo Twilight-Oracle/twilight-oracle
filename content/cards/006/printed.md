@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: The China Card
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/006.jpg"
 ---
 ***Begins the game with the USSR player.***
 

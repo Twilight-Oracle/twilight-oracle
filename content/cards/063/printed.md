@@ -8,6 +8,6 @@ war: false
 unique: false
 continuous: false
 name: Colonial Rear Guards
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/063.jpg"
 ---
 Add 1 US Influence in each of four different African and/or Southeast Asian countries.

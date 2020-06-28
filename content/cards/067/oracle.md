@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Grain Sales to Soviets
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/067.jpg"
 ---
 USSR chooses a card in its hand at random and declares it.
 

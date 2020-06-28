@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Defectors
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/103.jpg"
 ---
 Play in Headline Phase to cancel USSR Headline event, including Scoring Card. Canceled card returns to Discard Pile.
 

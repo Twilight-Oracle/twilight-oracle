@@ -8,7 +8,7 @@ war: true
 unique: false
 continuous: false
 name: Brush War
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/036.jpg"
 ---
 Gain 3 military operations.
 

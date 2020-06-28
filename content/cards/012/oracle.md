@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Romanian Abdication*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/012.jpg"
 ---
 Remove all USA influence from `Romania`.
 

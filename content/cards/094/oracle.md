@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Chernobyl*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/094.jpg"
 ---
 USA names a region. Until end of turn, USSR may not spread influence in any country in that region.

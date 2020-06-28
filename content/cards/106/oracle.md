@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: NORAD*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/106.jpg"
 ---
 *Ongoing* — After either side completes an action round, if DEFCON became 2 during that action round, USA may place 1 influence in any country containing USA influence.
 

@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: East European Unrest
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/029.jpg"
 ---
 **In Early or Mid War:** Remove 1 USSR Influence from three countries in Eastern Europe.
 

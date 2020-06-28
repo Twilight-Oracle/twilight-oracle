@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: COMECON*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/014.jpg"
 ---
 Add 1 USSR Influence in each of four non-US Controlled countries in Eastern Europe.

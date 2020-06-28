@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: South African Unrest
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/053.jpg"
 ---
 Place 1 USSR influence in `South Africa`.
 

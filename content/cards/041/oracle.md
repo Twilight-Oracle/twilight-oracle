@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Nuclear Subs*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/041.jpg"
 ---
 Until end of turn, when USA launches a coup in a battleground, do not decrement DEFCON.
 

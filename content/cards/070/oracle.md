@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: OAS Founded*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/070.jpg"
 ---
 Place 2 USA influence in any combination of countries in `Central America` and `South America`.

@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Containment*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/025.jpg"
 ---
 All further Operations cards played by US this turn add one to their value (to a maximum of 4).

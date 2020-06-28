@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Captured Nazi Scientist*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/018.jpg"
 ---
 Advance player's Space Race marker one box.

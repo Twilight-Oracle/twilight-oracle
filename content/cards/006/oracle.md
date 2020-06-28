@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: The China Card
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/006.jpg"
 ---
 Conduct operations with this card. This card's operations value is 1 greater if all its operations are conducted in `Asia`.
 

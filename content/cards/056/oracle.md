@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Muslim Revolution
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/056.jpg"
 ---
 Choose 2 of `Sudan`, `Iran`, `Iraq`, `Egypt`, `Libya`, `Saudi Arabia`, and `Jordan`.
 

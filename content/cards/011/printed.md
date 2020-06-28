@@ -8,7 +8,7 @@ war: true
 unique: true
 continuous: false
 name: Korean War*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/011.jpg"
 ---
 North Korea invades South Korea. Roll one die and subtract 1 for every US Controlled country adjacent to South Korea. USSR Victory on modified die roll 4-6. USSR adds 2 to Military Ops Track.
 

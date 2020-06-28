@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Ortega Elected in Nicaragua*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/091.jpg"
 ---
 Remove all US Influence from Nicaragua. Then USSR may make one free Coup attempt (with this card's Operations value) in a country adjacent to Nicaragua.

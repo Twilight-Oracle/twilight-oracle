@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Panama Canal Returned*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/064.jpg"
 ---
 Add 1 US Influence in Panama, Costa Rica, and Venezuela.

@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: The Iron Lady*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/083.jpg"
 ---
 Award USA 1 VP. Remove all USSR influence from `U.K.`.
 

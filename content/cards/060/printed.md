@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: U2 Incident*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/060.jpg"
 ---
 USSR gains 1 VP.
 

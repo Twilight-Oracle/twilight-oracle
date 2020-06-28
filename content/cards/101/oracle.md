@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Solidarity*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/101.jpg"
 ---
 Place 3 USA influence in `Poland`.
 

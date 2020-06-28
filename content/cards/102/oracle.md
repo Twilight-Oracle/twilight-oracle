@@ -8,7 +8,7 @@ war: true
 unique: true
 continuous: false
 name: Iran-Iraq War*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/102.jpg"
 ---
 Gain 2 military operations.
 

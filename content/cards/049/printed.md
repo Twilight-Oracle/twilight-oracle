@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Missile Envy
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/049.jpg"
 ---
 Exchange this card for your opponent's highest valued Operations card in his hand. If two or more cards are tied, opponent chooses.
 

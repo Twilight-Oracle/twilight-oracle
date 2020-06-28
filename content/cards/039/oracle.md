@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Arms Race
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/039.jpg"
 ---
 If the active side's MilOps marker is ahead of its enemy's, award the active side 1 VP.
 

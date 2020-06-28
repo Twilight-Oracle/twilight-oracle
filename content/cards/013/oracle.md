@@ -8,7 +8,7 @@ war: true
 unique: false
 continuous: false
 name: Arab-Israeli War
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/013.jpg"
 ---
 Award USSR 2 military operations.
 

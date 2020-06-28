@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Pershing II Deployed*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/099.jpg"
 ---
 Award USSR 1 VP.
 

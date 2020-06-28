@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: North Sea Oil*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/086.jpg"
 ---
 *OPEC* event is no longer playable.
 

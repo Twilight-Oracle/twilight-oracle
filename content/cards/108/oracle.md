@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Our Man in Tehran
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/108.jpg"
 ---
 If USA controls any country in the `Middle East`, USA looks at the top 5 cards of the draw pile. USA may discard any of these cards.
 

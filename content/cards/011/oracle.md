@@ -8,7 +8,7 @@ war: true
 unique: true
 continuous: false
 name: Korean War*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/011.jpg"
 ---
 Award USSR 2 military operations.
 

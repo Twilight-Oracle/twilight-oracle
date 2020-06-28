@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Marine Barracks Bombing*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/088.jpg"
 ---
 Remove all USA influence from `Lebanon`.
 

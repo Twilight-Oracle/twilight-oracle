@@ -8,6 +8,6 @@ war: false
 unique: false
 continuous: false
 name: Central America Scoring
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/037.jpg"
 ---
 Score `Central America`.

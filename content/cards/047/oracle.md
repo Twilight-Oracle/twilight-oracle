@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Junta
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/047.jpg"
 ---
 Place 2 influence in a country in `Central America` or `South America`.
 

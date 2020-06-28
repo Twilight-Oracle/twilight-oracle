@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Truman Doctrine*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/019.jpg"
 ---
 Remove all USSR Influence markers in one uncontrolled country in Europe.

@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: Marshall Plan*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/023.jpg"
 ---
 Place 1 USA influence in each of up to 7 countries in `Western Europe` that are not USSR-controlled.
 

@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Summit
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/045.jpg"
 ---
 Each side rolls a die and adds 1 for each region other than `Western Europe`, `Eastern Europe`, and `Southeast Asia` in which it has domination or control.
 

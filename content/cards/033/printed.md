@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: De-Stalinization*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/033.jpg"
 ---
 USSR may relocate up to 4 Influence points to non-US controlled countries.
 

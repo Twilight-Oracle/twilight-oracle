@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: US-Japan Mutual Defense Pact*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/027.jpg"
 ---
 Place USA influence in `Japan` sufficient for control.
 

@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: OPEC
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/061.jpg"
 ---
 For each of `Egypt`, `Iran`, `Libya`, `Saudi Arabia`, `Iraq`, `Gulf States`, and `Venezuela` which USSR controls, award USSR 1 VP.
 

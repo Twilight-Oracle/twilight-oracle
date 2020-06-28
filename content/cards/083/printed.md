@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: The Iron Lady*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/083.jpg"
 ---
 US gains 1 VP.
 

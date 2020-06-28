@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: Camp David Accords*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/065.jpg"
 ---
 Award USA 1 VP.
 

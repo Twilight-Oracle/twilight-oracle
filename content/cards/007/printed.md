@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Socialist Governments
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/007.jpg"
 ---
 *Unplayable as an event if 'The Iron Lady' is in effect.*
 

@@ -8,7 +8,7 @@ war: false
 unique: false
 continuous: false
 name: Che
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/107.jpg"
 ---
 USSR may launch a coup in a non-battleground country in `Central America`, `South America`, or `Africa` using this card.
 

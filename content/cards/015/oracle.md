@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: false
 name: Nasser*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/015.jpg"
 ---
 Remove USA influence from `Egypt` equal to half, rounded up, of the USA influence there.
 

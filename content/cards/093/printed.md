@@ -8,6 +8,6 @@ war: false
 unique: true
 continuous: false
 name: Iran-Contra Scandal*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/093.jpg"
 ---
 All US Realignment rolls have a -1 die roll modifier for the remainder of the turn.

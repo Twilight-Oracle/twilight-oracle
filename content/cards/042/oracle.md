@@ -8,7 +8,7 @@ war: false
 unique: true
 continuous: true
 name: Quagmire*
-image: "[img url]"
+image: "https://twistrug.jjt.io/images/cards/042.jpg"
 ---
 End the effects of `106-E NORAD`.
 
