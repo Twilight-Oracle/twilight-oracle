@@ -10,4 +10,3 @@ continuous: false
 name: Central America Scoring
 image: "[img url]"
 ---
--

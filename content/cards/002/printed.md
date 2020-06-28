@@ -10,4 +10,3 @@ continuous: false
 name: Europe Scoring
 image: "[img url]"
 ---
--

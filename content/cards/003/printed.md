@@ -10,4 +10,3 @@ continuous: false
 name: Middle East Scoring
 image: "[img url]"
 ---
--

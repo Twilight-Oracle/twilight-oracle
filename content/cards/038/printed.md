@@ -10,4 +10,3 @@ continuous: false
 name: Southeast Asia Scoring*
 image: "[img url]"
 ---
--

@@ -10,4 +10,3 @@ continuous: false
 name: South America Scoring
 image: "[img url]"
 ---
--

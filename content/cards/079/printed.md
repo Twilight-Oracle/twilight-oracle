@@ -10,4 +10,3 @@ continuous: false
 name: Africa Scoring
 image: "[img url]"
 ---
--
