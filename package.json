@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "test": "mocha --experimental-modules --experimental-json-modules",
-    "build": "rm -rf public && rm -f static/all-cards.json static/lunr-index.json static/search.js && ./build-index && rollup -c && hugo"
+    "build": "rm -rf public && rm -f static/search.js* && rollup -c && hugo"
   },
   "author": "ninevra",
   "license": "UNLICENSED",
