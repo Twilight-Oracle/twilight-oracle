@@ -1,5 +1,6 @@
 ---
 number: 92
+version: printed
 period: L
 side: none
 ops: 2

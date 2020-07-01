@@ -1,5 +1,6 @@
 ---
 number: 104
+version: oracle
 period: E
 side: USSR
 ops: 2

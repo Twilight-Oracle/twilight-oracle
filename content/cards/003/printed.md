@@ -1,5 +1,6 @@
 ---
 number: 3
+version: printed
 period: E
 side: none
 ops: null

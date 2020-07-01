@@ -1,5 +1,6 @@
 ---
 number: 20
+version: printed
 period: E
 side: none
 ops: 2

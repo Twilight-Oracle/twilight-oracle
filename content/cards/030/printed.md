@@ -1,5 +1,6 @@
 ---
 number: 30
+version: printed
 period: E
 side: USSR
 ops: 2

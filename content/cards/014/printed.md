@@ -1,5 +1,6 @@
 ---
 number: 14
+version: printed
 period: E
 side: USSR
 ops: 3

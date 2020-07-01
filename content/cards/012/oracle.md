@@ -1,5 +1,6 @@
 ---
 number: 12
+version: oracle
 period: E
 side: USSR
 ops: 1

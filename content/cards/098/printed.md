@@ -1,5 +1,6 @@
 ---
 number: 98
+version: printed
 period: L
 side: USSR
 ops: 3

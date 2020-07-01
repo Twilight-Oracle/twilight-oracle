@@ -1,5 +1,6 @@
 ---
 number: 38
+version: printed
 period: M
 side: none
 ops: null

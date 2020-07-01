@@ -1,5 +1,6 @@
 ---
 number: 38
+version: oracle
 period: M
 side: none
 ops: null

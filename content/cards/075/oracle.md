@@ -1,5 +1,6 @@
 ---
 number: 75
+version: oracle
 period: M
 side: USSR
 ops: 2

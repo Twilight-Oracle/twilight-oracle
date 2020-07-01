@@ -1,5 +1,6 @@
 ---
 number: 34
+version: oracle
 period: E
 side: none
 ops: 4

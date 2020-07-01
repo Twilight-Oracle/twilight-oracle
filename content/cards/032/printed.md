@@ -1,5 +1,6 @@
 ---
 number: 32
+version: printed
 period: E
 side: none
 ops: 1

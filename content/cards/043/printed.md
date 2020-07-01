@@ -1,5 +1,6 @@
 ---
 number: 43
+version: printed
 period: M
 side: none
 ops: 3

@@ -1,5 +1,6 @@
 ---
 number: 90
+version: oracle
 period: L
 side: USSR
 ops: 4

@@ -1,5 +1,6 @@
 ---
 number: 58
+version: printed
 period: M
 side: USSR
 ops: 3

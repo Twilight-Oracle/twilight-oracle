@@ -1,5 +1,6 @@
 ---
 number: 82
+version: printed
 period: L
 side: USSR
 ops: 3

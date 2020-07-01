@@ -1,5 +1,6 @@
 ---
 number: 70
+version: printed
 period: M
 side: USA
 ops: 1

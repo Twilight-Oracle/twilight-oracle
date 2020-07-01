@@ -1,5 +1,6 @@
 ---
 number: 90
+version: printed
 period: L
 side: USSR
 ops: 4

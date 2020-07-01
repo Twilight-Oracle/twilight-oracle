@@ -1,5 +1,6 @@
 ---
 number: 86
+version: oracle
 period: L
 side: USA
 ops: 3

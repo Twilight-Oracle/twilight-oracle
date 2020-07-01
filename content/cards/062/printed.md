@@ -1,5 +1,6 @@
 ---
 number: 62
+version: printed
 period: M
 side: USSR
 ops: null

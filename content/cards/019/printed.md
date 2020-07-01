@@ -1,5 +1,6 @@
 ---
 number: 19
+version: printed
 period: E
 side: USA
 ops: 1

@@ -1,5 +1,6 @@
 ---
 number: 96
+version: printed
 period: L
 side: USA
 ops: 3

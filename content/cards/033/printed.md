@@ -1,5 +1,6 @@
 ---
 number: 33
+version: printed
 period: E
 side: USSR
 ops: 3

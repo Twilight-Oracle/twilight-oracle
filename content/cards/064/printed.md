@@ -1,5 +1,6 @@
 ---
 number: 64
+version: printed
 period: M
 side: USA
 ops: 1

@@ -1,5 +1,6 @@
 ---
 number: 110
+version: printed
 period: L
 side: USA
 ops: 3

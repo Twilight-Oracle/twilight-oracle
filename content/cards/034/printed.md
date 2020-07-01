@@ -1,5 +1,6 @@
 ---
 number: 34
+version: printed
 period: E
 side: none
 ops: 4

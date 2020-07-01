@@ -1,5 +1,6 @@
 ---
 number: 89
+version: oracle
 period: L
 side: USA
 ops: 4

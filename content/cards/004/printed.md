@@ -1,5 +1,6 @@
 ---
 number: 4
+version: printed
 period: E
 side: USA
 ops: 3

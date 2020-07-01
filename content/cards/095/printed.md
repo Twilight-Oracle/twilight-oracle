@@ -1,5 +1,6 @@
 ---
 number: 95
+version: printed
 period: L
 side: USSR
 ops: 2

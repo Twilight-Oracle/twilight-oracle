@@ -1,5 +1,6 @@
 ---
 number: 52
+version: printed
 period: M
 side: USSR
 ops: 2

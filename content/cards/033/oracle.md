@@ -1,5 +1,6 @@
 ---
 number: 33
+version: oracle
 period: E
 side: USSR
 ops: 3

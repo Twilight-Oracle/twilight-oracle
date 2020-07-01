@@ -1,5 +1,6 @@
 ---
 number: 101
+version: oracle
 period: L
 side: USA
 ops: 2

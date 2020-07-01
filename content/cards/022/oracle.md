@@ -1,5 +1,6 @@
 ---
 number: 22
+version: oracle
 period: E
 side: USA
 ops: 2

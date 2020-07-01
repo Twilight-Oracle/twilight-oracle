@@ -1,5 +1,6 @@
 ---
 number: 44
+version: oracle
 period: M
 side: USA
 ops: 3

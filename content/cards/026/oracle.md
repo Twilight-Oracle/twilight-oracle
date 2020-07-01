@@ -1,5 +1,6 @@
 ---
 number: 26
+version: oracle
 period: E
 side: USA
 ops: 1

@@ -1,5 +1,6 @@
 ---
 number: 100
+version: printed
 period: L
 side: none
 ops: 4

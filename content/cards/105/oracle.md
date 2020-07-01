@@ -1,5 +1,6 @@
 ---
 number: 105
+version: oracle
 period: E
 side: USA
 ops: 2

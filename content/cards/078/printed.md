@@ -1,5 +1,6 @@
 ---
 number: 78
+version: printed
 period: M
 side: USA
 ops: 3

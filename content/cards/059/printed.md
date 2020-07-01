@@ -1,5 +1,6 @@
 ---
 number: 59
+version: printed
 period: M
 side: USSR
 ops: 4

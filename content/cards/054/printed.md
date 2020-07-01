@@ -1,5 +1,6 @@
 ---
 number: 54
+version: printed
 period: M
 side: USSR
 ops: 1

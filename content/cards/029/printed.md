@@ -1,5 +1,6 @@
 ---
 number: 29
+version: printed
 period: E
 side: USA
 ops: 3

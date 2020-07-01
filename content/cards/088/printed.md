@@ -1,5 +1,6 @@
 ---
 number: 88
+version: printed
 period: L
 side: USSR
 ops: 2

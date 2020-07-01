@@ -1,5 +1,6 @@
 ---
 number: 85
+version: printed
 period: L
 side: USA
 ops: 2

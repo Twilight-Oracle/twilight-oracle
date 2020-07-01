@@ -1,5 +1,6 @@
 ---
 number: 76
+version: printed
 period: M
 side: USA
 ops: 3

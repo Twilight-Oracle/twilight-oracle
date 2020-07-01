@@ -1,5 +1,6 @@
 ---
 number: 21
+version: printed
 period: E
 side: USA
 ops: 4

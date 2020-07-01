@@ -1,5 +1,6 @@
 ---
 number: 40
+version: oracle
 period: M
 side: none
 ops: 3

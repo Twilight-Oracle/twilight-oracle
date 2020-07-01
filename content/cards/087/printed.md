@@ -1,5 +1,6 @@
 ---
 number: 87
+version: printed
 period: L
 side: USSR
 ops: 3

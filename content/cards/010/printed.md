@@ -1,5 +1,6 @@
 ---
 number: 10
+version: printed
 period: E
 side: USSR
 ops: 1

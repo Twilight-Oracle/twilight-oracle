@@ -1,5 +1,6 @@
 ---
 number: 56
+version: oracle
 period: M
 side: USSR
 ops: 4
