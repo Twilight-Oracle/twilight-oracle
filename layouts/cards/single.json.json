@@ -1,0 +1,2 @@
+{{- $data := (dict "name" .Params.Name "number" .Params.Number "ops" .Params.OPS "period" .Params.Period "side" .Params.Side "scoring" .Params.Scoring "unique" .Params.Unique "war" .Params.War "continuous" .Params.Continuous "permalink" .Permalink "content" (safeJS .Content)) -}}
+{{ jsonify (dict "indent" "  ") $data }}

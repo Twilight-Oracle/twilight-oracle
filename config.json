@@ -1,4 +1,14 @@
 {
   "title": "Twilight Oracle",
-  "languageCode": "en-US"
+  "languageCode": "en-US",
+  "outputs": {
+    "page": [
+      "HTML",
+      "json"
+    ],
+    "section": [
+      "HTML",
+      "json"
+    ]
+  }
 }

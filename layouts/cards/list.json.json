@@ -1,0 +1,5 @@
+{{- $pages := slice }}
+{{- range .Pages }}
+  {{- $pages = $pages | append (.Render | transform.Unmarshal) }}
+{{- end }}
+{{- jsonify (dict "indent" "  ") $pages }}
