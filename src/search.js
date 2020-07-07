@@ -1,7 +1,6 @@
 import { Schema, FieldTermHandler, NumberPropertyField, StringPropertyField } from 'crystal-query';
 import { render } from 'preact';
 import { html } from 'htm/preact';
-import { listJoin } from './string-utils.js';
 import sideAliases from '../data/cardSideStrings.json';
 import * as utils from './utils.js';
 
@@ -60,7 +59,7 @@ function ErrorDescription({query, error: {expected, index: {offset}}}) {
       <span class="query-segment" id="parse-error-location">${query[offset]}</span>
       <span class="query-segment">${query.slice(offset + 1)}</span>
     </div>
-    <div>Expected ${listJoin(expected)}.</div>
+    <div>Expected ${utils.listJoin(expected)}.</div>
   `;
 }
 
