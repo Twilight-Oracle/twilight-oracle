@@ -1,31 +1,40 @@
-import queryLang from './query-grammar.js';
+import { Schema, FieldTermHandler, NumberPropertyField, StringPropertyField } from 'crystal-query';
 import { render } from 'preact';
 import { html } from 'htm/preact';
 import { listJoin } from './string-utils.js';
 import sideAliases from '../data/cardSideStrings.json';
 import * as utils from './utils.js';
 
+const schema = new Schema({
+  termHandler: new FieldTermHandler({
+    number: new NumberPropertyField('the card number', false, 'number'),
+    name: new StringPropertyField('the name', false, 'name', {caseSensitive: false}),
+    version: new StringPropertyField('the version', false, 'version', {caseSensitive: false}),
+    ops: new NumberPropertyField('the operations value', false, 'ops')
+  })
+});
+
 (async () => {
   // TODO: is DOMContentLoaded needed here
   const resultsElem = document.getElementById('search-results');
   const query = getSearchString();
-  const parseResult = queryLang.query.parse(query);
-  if (parseResult.status) {
-    const ast = parseResult.value;
+  const {status, description, predicate, errors} = schema.query(query);
+  console.log(status, description, predicate, errors);
+  if (status) {
     let cards = await fetch('/cards/index.json').then(resp => resp.json());
-    cards = cards.map(card => { card.match = ast.matches(card); return card; });
+    cards = cards.map(card => { card.match = predicate(card); return card; });
     let groups = utils.groupBy(card => card.number, cards);
     let results = groups.filter(group => group.some(card => card.match));
     results = results.sort((a, b) => a[0].number - b[0].number);
     const cardCount = results.length;
     const versionCount = cards.filter(card => card.match).length;
     render(html`
-      <${QueryDescription} text=${ast.text()} cardCount=${cardCount} versionCount=${versionCount} />
+      <${QueryDescription} text=${description} cardCount=${cardCount} versionCount=${versionCount} />
       <${SearchResultList} results=${results} />
       `, resultsElem);
   } else {
-    console.warn(`Expected ${parseResult.expected}`, parseResult);
-    render(html`<${ErrorDescription} query=${query} error=${parseResult} />`, resultsElem);
+    console.warn(`Errors ${errors}`);
+    render(html`<p>${errors.join(', ')}</p>`, resultsElem);
   }
 })();
 

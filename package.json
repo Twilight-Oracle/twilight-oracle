@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "htm": "^3.0.4",
-    "preact": "^10.4.4"
+    "preact": "^10.4.4",
+    "crystal-query": "^0.1.0"
   }
 }
