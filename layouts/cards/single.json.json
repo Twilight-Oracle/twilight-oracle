@@ -1,2 +1,3 @@
-{{- $data := (dict "name" .Params.Name "number" .Params.Number "version" .Params.Version "ops" .Params.OPS "period" .Params.Period "side" .Params.Side "scoring" .Params.Scoring "unique" .Params.Unique "war" .Params.War "continuous" .Params.Continuous "permalink" .Permalink "content" (safeJS .Content)) -}}
+{{- $data := (dict "name" .Params.Name "number" .Params.Number "version" .Params.Version "ops" .Params.OPS "period" .Params.Period "side" .Params.Side "permalink" .Permalink "htmlContent" .Content "plainContent" .Plain) -}}
+{{- $data = merge $data (dict "types" (partial "card/types/raw-array" . )) -}}
 {{ jsonify (dict "indent" "  ") $data }}
