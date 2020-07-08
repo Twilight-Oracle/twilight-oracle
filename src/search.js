@@ -7,6 +7,7 @@ import { CardTypeField } from './CardTypeField.js';
 import { CardContentField } from './CardContentField.js';
 import { CardSideField } from './CardSideField.js';
 import { CardPeriodField } from './CardPeriodField.js';
+import { AnyField } from './AnyField.js';
 
 const fields = {
   number: new NumberPropertyField('the card number', false, 'number'),
@@ -19,6 +20,7 @@ const fields = {
   side: new CardSideField(),
   period: new CardPeriodField()
 };
+fields[''] = new AnyField('any field', false, Object.values(fields));
 
 const schema = new Schema({
   termHandler: new FieldTermHandler(fields)
