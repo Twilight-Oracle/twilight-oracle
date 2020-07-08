@@ -6,7 +6,6 @@
   "main": "",
   "type": "module",
   "scripts": {
-    "test": "mocha --experimental-modules --experimental-json-modules",
     "build": "rm -rf public && rm -f static/search.js* && rollup -c && hugo"
   },
   "author": "ninevra",
@@ -15,22 +14,8 @@
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-json": "^4.0.3",
     "@rollup/plugin-node-resolve": "^7.1.3",
-    "expect": "^26.0.1",
-    "lunr": "^2.3.8",
-    "metalsmith": "^2.3.0",
-    "metalsmith-drafts": "^1.0.0",
-    "metalsmith-scoped": "^1.0.0",
-    "mocha": "^7.1.2",
-    "parsimmon": "^1.13.0",
     "rollup": "^2.9.1",
-    "rollup-plugin-terser": "^5.3.0"
-  },
-  "ava": {
-    "nodeArguments": [
-      "--experimental-modules"
-    ]
-  },
-  "dependencies": {
+    "rollup-plugin-terser": "^5.3.0",
     "htm": "^3.0.4",
     "preact": "^10.4.4",
     "crystal-query": "^0.1.0"
