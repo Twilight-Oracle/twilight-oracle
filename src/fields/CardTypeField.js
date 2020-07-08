@@ -1,5 +1,5 @@
 import { StringArrayPropertyField } from 'crystal-query';
-import typeAliases from '../data/cardTypeStrings.json';
+import typeAliases from '../../data/cardTypeStrings.json';
 
 export class CardTypeField extends StringArrayPropertyField {
   constructor() {

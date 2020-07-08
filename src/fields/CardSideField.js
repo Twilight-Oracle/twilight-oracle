@@ -1,5 +1,5 @@
 import { StringPropertyField } from 'crystal-query';
-import sideAliases from '../data/cardSideStrings.json';
+import sideAliases from '../../data/cardSideStrings.json';
 
 export class CardSideField extends StringPropertyField {
   constructor() {

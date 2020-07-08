@@ -3,11 +3,11 @@ import { render } from 'preact';
 import { html } from 'htm/preact';
 import sideAliases from '../data/cardSideStrings.json';
 import * as utils from './utils.js';
-import { CardTypeField } from './CardTypeField.js';
-import { CardContentField } from './CardContentField.js';
-import { CardSideField } from './CardSideField.js';
-import { CardPeriodField } from './CardPeriodField.js';
-import { AnyField } from './AnyField.js';
+import { CardTypeField } from './fields/CardTypeField.js';
+import { CardContentField } from './fields/CardContentField.js';
+import { CardSideField } from './fields/CardSideField.js';
+import { CardPeriodField } from './fields/CardPeriodField.js';
+import { AnyField } from './fields/AnyField.js';
 
 const fields = {
   number: new NumberPropertyField('the card number', false, 'number'),

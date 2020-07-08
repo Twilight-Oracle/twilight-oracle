@@ -1,5 +1,5 @@
 import { StringPropertyField } from 'crystal-query';
-import periodAliases from '../data/cardPeriodStrings.json';
+import periodAliases from '../../data/cardPeriodStrings.json';
 
 export class CardPeriodField extends StringPropertyField {
   constructor() {
