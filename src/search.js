@@ -3,14 +3,25 @@ import { render } from 'preact';
 import { html } from 'htm/preact';
 import sideAliases from '../data/cardSideStrings.json';
 import * as utils from './utils.js';
+import { CardTypeField } from './CardTypeField.js';
+import { CardContentField } from './CardContentField.js';
+import { CardSideField } from './CardSideField.js';
+import { CardPeriodField } from './CardPeriodField.js';
+
+const fields = {
+  number: new NumberPropertyField('the card number', false, 'number'),
+  name: new StringPropertyField('the name', false, 'name', {caseSensitive: false}),
+  version: new StringPropertyField('the version', false, 'version', {caseSensitive: false}),
+  ops: new NumberPropertyField('the operations value', false, 'ops'),
+  types: new CardTypeField(),
+  oracle: new CardContentField('the oracle text', false, 'plainContent', 'oracle', {caseSensitive: false}),
+  printed: new CardContentField('the printed text', false, 'plainContent', 'printed', {caseSensitive: false}),
+  side: new CardSideField(),
+  period: new CardPeriodField()
+};
 
 const schema = new Schema({
-  termHandler: new FieldTermHandler({
-    number: new NumberPropertyField('the card number', false, 'number'),
-    name: new StringPropertyField('the name', false, 'name', {caseSensitive: false}),
-    version: new StringPropertyField('the version', false, 'version', {caseSensitive: false}),
-    ops: new NumberPropertyField('the operations value', false, 'ops')
-  })
+  termHandler: new FieldTermHandler(fields)
 });
 
 (async () => {
