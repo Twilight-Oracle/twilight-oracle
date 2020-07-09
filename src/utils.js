@@ -1,9 +1,7 @@
 import typeAliases from '../data/cardTypeStrings.json';
 
-export function renderTypes(card) {
-  return Object.entries(card).flatMap(
-    ([k, v]) => ((k in typeAliases) && v) ? [typeAliases[k]] : []
-  );
+export function renderTypes(types) {
+  return types.map(type => typeAliases[type]).join(', ');
 }
 
 export function groupBy(fn, iterable) {

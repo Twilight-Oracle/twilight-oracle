@@ -8,6 +8,7 @@ import { CardContentField } from './fields/CardContentField.js';
 import { CardSideField } from './fields/CardSideField.js';
 import { CardPeriodField } from './fields/CardPeriodField.js';
 import { AnyField } from './fields/AnyField.js';
+import { CardBoxSmall } from './components/CardBoxSmall.js';
 
 const fields = {
   number: new NumberPropertyField('the card number', false, 'number'),
@@ -82,20 +83,11 @@ function QueryDescription({text, cardCount, versionCount}) {
 
 function SearchResultList({results}) {
   console.log('SearchResultList', results);
-  return html`<ul>
+  return html`<ul class="card-list">
     ${results.map(
       (cards) => html`<${SearchResult} cards=${cards} />`
     )}
   </ul>`;
-}
-
-function TitleLink({card}) {
-  const link = html`<a href=${card.permalink}>${card.name}</a> (${card.version})`;
-  if (card.match) {
-    return html`<strong>${link}</strong>`;
-  } else {
-    return link;
-  }
 }
 
 function SearchResult({cards}) {
@@ -103,19 +95,10 @@ function SearchResult({cards}) {
   const oracle = cards.filter(c => c.version === 'oracle')[0];
   const printed = cards.filter(c => c.version === 'printed')[0];
   console.log(oracle, printed);
-  const descriptor = `${oracle.number.toString().padStart(3, '0')}${oracle.period[0]}`;
-  const ops = oracle.ops ? `${oracle.ops} Ops ` : '';
-  const types = utils.renderTypes(oracle);
-  const typelist = types.length > 0
-    ? ' – ' + types.join(', ')
-    : '';
-  const titleLine = html`
-    <${TitleLink} card=${oracle} />
-    <span> / </span>
-    <${TitleLink} card=${printed} />
-  `;
   return html`<li>
-    <p>${titleLine}</p>
-    <p>${ops}${sideAliases[oracle.side]} Event${typelist}</p>
+    <div class="flex-gutter-wrapper">
+      <${CardBoxSmall} card=${oracle} />
+      <${CardBoxSmall} card=${printed} />
+    </div>
   </li>`;
 }
