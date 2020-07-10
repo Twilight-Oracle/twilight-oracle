@@ -9,6 +9,7 @@ import { CardSideField } from './fields/CardSideField.js';
 import { CardPeriodField } from './fields/CardPeriodField.js';
 import { AnyField } from './fields/AnyField.js';
 import { CardBoxSmall } from './components/CardBoxSmall.js';
+import { ErrorDescription } from './components/ErrorDescription.js';
 
 const fields = {
   number: new NumberPropertyField('the card number', false, 'number'),
@@ -46,35 +47,13 @@ const schema = new Schema({
       <${SearchResultList} results=${results} />
       `, resultsElem);
   } else {
-    console.warn(`Errors ${errors}`);
-    render(html`<p>${errors.join(', ')}</p>`, resultsElem);
+    console.warn('Query errors:', ...errors);
+    render(html`${errors.map(error => ErrorDescription({error}))}`, resultsElem);
   }
 })();
 
 function getSearchString() {
   return new URLSearchParams(location.search).get('q');
-}
-
-function ErrorDescription({query, error: {expected, index: {offset}}}) {
-  if (offset >= query.length) {
-    query += '\u00a0'; // Non-breaking figure space // TODO: how does htm interact with entities?
-  }
-  return html`
-    <div>
-      <style>
-        .query-segment {
-          white-space: pre;
-        }
-        #parse-error-location {
-          background-color: red;
-        }
-      </style>
-      <span class="query-segment">${query.slice(0, offset)}</span>
-      <span class="query-segment" id="parse-error-location">${query[offset]}</span>
-      <span class="query-segment">${query.slice(offset + 1)}</span>
-    </div>
-    <div>Expected ${utils.listJoin(expected)}.</div>
-  `;
 }
 
 function QueryDescription({text, cardCount, versionCount}) {
