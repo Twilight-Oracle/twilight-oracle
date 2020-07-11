@@ -2,6 +2,7 @@
   --unobtrusive: #979797;
   --light: #c0c0c0;
   font-size: 18px;
+  --content-margin: 0.5em;
 }
 
 /* Define war-period colors */
@@ -35,27 +36,39 @@ body {
 main {
   flex-grow: 1;
   flex-shrink: 0;
-  margin: 2em 0 2em 0;
+  padding: 0 var(--content-margin);
 }
 footer, header {
   flex-grow: 0;
   flex-shrink: 0;
+  padding: 0 var(--content-margin)
 }
 
 /* Style the header */
 
 header {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: flex-start;
-  padding: 0.5em 0;
+  align-items: center;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   border-bottom: 1px solid black;
 }
 header .homepage-link {
   font-size: 2em;
-  margin: 0 0.5em;
+  margin: 0 0.5em 0 0; /* TODO: should probably use rems for most spacing throughout */
   color: black;
   text-decoration: none;
+  flex-shrink: 0;
+}
+header .homepage-link .large {
+  display: none;
+}
+header nav.intrasite-links {
+  display: none;
+  margin: 0 0 0 1em;
+  flex-shrink: 0;
 }
 
 /* Style the footer */
@@ -73,7 +86,7 @@ footer {
 
 .inline-list {
   display: flex inline;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   margin: 0;
   padding: 0;
 }
@@ -137,13 +150,18 @@ form.search .search-icon {
 form.search.large {
   width: 16em; /* TODO: scale this somehow - media-query ratcheting? */
   font-size: 2em;
+  /* TODO: this is crude, letting margins collapse would be better; possibly
+     stop using flex for the homepage elements, instead putting them in a flex
+     item for centering and using block layout inside it */
+  margin-top: 0.5em;
 }
 form.search.large input {
 
 }
 
 form.search.small {
-  width: 16em; /* TODO: scale this somehow - media-query ratcheting? */
+  flex-grow: 1; /* TODO: scale this somehow - media-query ratcheting? */
+  margin: 0;
 }
 form.search.small input {
 
@@ -170,10 +188,10 @@ main.homepage {
 /* Style homepage header */
 
 .homepage-title {
-  font-size: 2.75em;
   font-size: 3.5em;
   font-family: "Chomsky", serif;
   font-weight: normal;
+  margin: 0;
 }
 
 /* Style all card displays */
@@ -263,7 +281,7 @@ main.homepage {
 ul.card-list {
   display: flex;
   flex-flow: row wrap;
-  margin: 0.5em;
+  margin: 1em 0;
   padding: 0;
   justify-content: space-between;
 }
@@ -287,7 +305,7 @@ a.card.small {
   flex-basis: 100%;
   border: 1px solid var(--unobtrusive);
   padding: 0.5em;
-  margin: 0.5em var(--card-gutter-half-width);
+  margin: 0 var(--card-gutter-half-width);
   box-sizing: border-box;
 }
 .card.small .card-titleline {
@@ -314,6 +332,16 @@ a.card.small {
   padding: 0 0.25em 0 0.25em;
 }
 
+/* Style query error descriptions */
+
+.query-error {
+  background: #ffb0b0;
+  padding: 0.75em;
+  margin: 1em 0;
+  border: 2px solid red;
+  border-radius: 0.5em;
+}
+
 /* Misc/TODO */
 
 .homepage-link {
@@ -323,18 +351,27 @@ a.card.small {
 /* Styles for larger screens */
 
 @media (min-width: 40em) {
+  :root {
+    --content-margin: 5%;
+  }
   .card.small {
     flex: 1 1 0;
     /* TODO: instead could set flex-basis exactly: */
     /* flex-basis: calc(50% - 2 * var(--card-gutter-half-width)); */
   }
-  ul.card-list {
-    margin: 0 5%;
+  header .homepage-link .small {
+    display: none;
+  }
+  header .homepage-link .large {
+    display: inline;
   }
 }
 
 @media (min-width: 90em) {
   .card-list > li {
     width: 47.5%;
+  }
+  header nav.intrasite-links {
+    display: flex inline;
   }
 }

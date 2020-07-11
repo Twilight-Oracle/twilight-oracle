@@ -6,13 +6,7 @@
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
-    <header>
-      <a href="/" class="homepage-link">Twilight Oracle</a>
-      <form action="/search" method="get" class="small search">
-        {{ partial "feather-icons/search.svg" . }}
-        <input type="text" name="q" placeholder="Search cards">
-      </form>
-    </header>
+    {{ partial "header" . }}
     <main>
       {{ block "main" . }}{{ end }}
     </main>
