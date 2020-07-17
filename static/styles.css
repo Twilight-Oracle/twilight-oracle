@@ -149,12 +149,13 @@ form.search .search-icon {
 }
 
 form.search.large {
-  width: 16em; /* TODO: scale this somehow - media-query ratcheting? */
+  width: 20em; /* TODO: scale this somehow - media-query ratcheting? */
+  max-width: 100%;
   font-size: 2em;
   /* TODO: this is crude, letting margins collapse would be better; possibly
      stop using flex for the homepage elements, instead putting them in a flex
      item for centering and using block layout inside it */
-  margin-top: 0.5em;
+  margin: 1em 0 0.5em 0;
 }
 form.search.large input {
 
@@ -185,6 +186,7 @@ main.homepage {
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 /* Style homepage header */
