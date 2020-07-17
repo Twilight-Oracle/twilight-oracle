@@ -3,44 +3,46 @@
 {{ end }}
 {{ define "main" }}
     <div class="card large">
-      <div class="card-box">
-        <div class="card-versions">
-          {{ $version := partial "card/version" . }}
-          <a href="{{ relref . "oracle.md" }}" class="card-version-tab oracle {{ if eq $version "oracle" }}selected{{ end }}">
-            Oracle
-          </a>
-          <a href="{{ relref . "printed.md" }}" class="card-version-tab printed {{ if eq $version "printed" }}selected{{ end }}">
-            Printed
-          </a>
-        </div>
-        <div class="card-stats">
-          <h1 class="card-titleline">
-            <span class="card-title">{{ .Params.Name }}</span>
-            <span class="card-number">{{ with partial "card/number" . }}{{ . }}{{ end }}</span>
-          </h1>
-          <dl class="card-fields">
-            <div>
-              <dt>Period</dt><dd>{{ partial "card/period/full" . }}</dd>
-            </div>
-            <div>
-              <dt>Side</dt><dd>{{ partial "card/side" . }}</dd>
-            </div>
-            {{ with partial "card/ops" . }}
+      <div class="flex-gutter-wrapper">
+        <div class="card-box">
+          <div class="card-versions">
+            {{ $version := partial "card/version" . }}
+            <a href="{{ relref . "oracle.md" }}" class="card-version-tab oracle {{ if eq $version "oracle" }}selected{{ end }}">
+              Oracle
+            </a>
+            <a href="{{ relref . "printed.md" }}" class="card-version-tab printed {{ if eq $version "printed" }}selected{{ end }}">
+              Printed
+            </a>
+          </div>
+          <div class="card-stats">
+            <h1 class="card-titleline">
+              <span class="card-title">{{ .Params.Name }}</span>
+              <span class="card-number">{{ with partial "card/number" . }}{{ . }}{{ end }}</span>
+            </h1>
+            <dl class="card-fields">
               <div>
-                <dt>OPS</dt><dd>{{ . }}</dd>
+                <dt>Period</dt><dd>{{ partial "card/period/full" . }}</dd>
               </div>
-            {{ end }}
-            {{ with partial "card/types/string" . }}
               <div>
-                <dt>Types</dt><dd>{{ . }}</dd>
+                <dt>Side</dt><dd>{{ partial "card/side" . }}</dd>
               </div>
-            {{ end }}
-          </dl>
-          <p class="card-text">
-            {{ .Content }}
-          </p>
+              {{ with partial "card/ops" . }}
+                <div>
+                  <dt>OPS</dt><dd>{{ . }}</dd>
+                </div>
+              {{ end }}
+              {{ with partial "card/types/string" . }}
+                <div>
+                  <dt>Types</dt><dd>{{ . }}</dd>
+                </div>
+              {{ end }}
+            </dl>
+            <div class="card-text">
+              {{ .Content }}
+            </div>
+          </div>
         </div>
+        <img class="card-image" src="{{ .Params.Image }}" alt="">
       </div>
-      <img class="card-image" src="{{ .Params.Image }}" alt="">
     </div>
 {{ end }}

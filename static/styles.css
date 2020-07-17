@@ -209,23 +209,33 @@ main.homepage {
 /* Style single-card display */
 
 .card.large {
+  margin: 2em 0;
+}
+.card.large .flex-gutter-wrapper {
   display: flex;
   flex-flow: row-reverse wrap;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: stretch;
+  width: calc(100% + 2em);
+  margin: -1em;
 }
 .card.large .card-image {
   border: 1px solid var(--unobtrusive);
   flex: 0 0 auto;
-  margin: 0 2em 0 2em;
+  margin: 1em;
 }
 .card.large .card-box {
   flex: 1 1 5em;
-  margin: 0 2em 0 2em;
+  margin: 1em;
+  max-width: 40em;
+  display: flex;
+  flex-flow: column nowrap;
 }
 .card.large .card-stats {
   padding: 1px 1em 1em 1em;
   border: solid var(--unobtrusive);
   border-width: 0 1px 1px 1px;
+  flex-grow: 1;
 }
 .card.large .card-versions {
   display: flex;
