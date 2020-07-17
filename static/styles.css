@@ -3,6 +3,7 @@
   --light: #c0c0c0;
   font-size: 18px;
   --content-margin: 0.5em;
+  --matching-color: #b0d0ff;
 }
 
 /* Define war-period colors */
@@ -332,6 +333,9 @@ a.card.small {
 .card.small .card-text {
   padding: 0 0.25em 0 0.25em;
 }
+.card.small.match {
+  outline: 0.3em solid var(--matching-color);
+}
 
 /* Style query error descriptions */
 
@@ -351,6 +355,12 @@ a.card.small {
   margin: 2em 0 0 0;
   border: 2px solid var(--unobtrusive);
   border-radius: 0.5em;
+}
+
+.query-description .card-count {
+  background-color: var(--matching-color);
+  padding: 0.1em 0.2em;
+  border-radius: 0.2em;
 }
 
 /* Misc/TODO */

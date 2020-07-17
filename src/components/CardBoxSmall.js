@@ -7,7 +7,7 @@ function initialCaptial(word) {
 
 export function CardBoxSmall({card}) {
   return html`
-  <a href=${card.permalink} class="card small ${card.version}">
+  <a href=${card.permalink} class="card small ${card.version}${card.match ? ' match' : ''}">
     <h2 class="card-titleline">
       <span class="card-number">${String(card.number).padStart(3, '0')}</span>
       -
