@@ -30,6 +30,8 @@ const schema = new Schema({
   // TODO: is DOMContentLoaded needed here
   const resultsElem = document.getElementById('search-results');
   const query = getSearchString();
+  const searchInput = document.getElementById('search-text-input');
+  searchInput.value = query;
   const {status, description, predicate, errors} = schema.query(query);
   console.log(status, description, predicate, errors);
   if (status) {
