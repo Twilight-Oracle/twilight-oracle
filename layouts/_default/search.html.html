@@ -2,8 +2,9 @@
   Search &ndash; {{ .Site.Title }}
 {{ end }}
 {{ define "main" }}
-  <div id="search-results">
-
+  <div id="search-results"></div>
+  <div id="search syntax">
+    {{ .Content }}
   </div>
   <script src="/search.js" charset="utf-8"></script>
 {{ end }}
