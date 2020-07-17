@@ -4,7 +4,6 @@ import { html } from 'htm/preact';
 import sideAliases from '../data/cardSideStrings.json';
 import * as utils from './utils.js';
 import { CardTypeField } from './fields/CardTypeField.js';
-import { CardContentField } from './fields/CardContentField.js';
 import { CardSideField } from './fields/CardSideField.js';
 import { CardPeriodField } from './fields/CardPeriodField.js';
 import { AnyField } from './fields/AnyField.js';
@@ -17,8 +16,7 @@ const fields = {
   version: new StringPropertyField('the version', false, 'version', {caseSensitive: false}),
   ops: new NumberPropertyField('the operations value', false, 'ops'),
   types: new CardTypeField(),
-  oracle: new CardContentField('the oracle text', false, 'plainContent', 'oracle', {caseSensitive: false}),
-  printed: new CardContentField('the printed text', false, 'plainContent', 'printed', {caseSensitive: false}),
+  text: new StringPropertyField('the text', false, 'plainContent', {caseSensitive: false}),
   side: new CardSideField(),
   period: new CardPeriodField()
 };
