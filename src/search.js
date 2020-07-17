@@ -7,9 +7,9 @@ import { CardTypeField } from './fields/CardTypeField.js';
 import { CardSideField } from './fields/CardSideField.js';
 import { CardPeriodField } from './fields/CardPeriodField.js';
 import { AnyField } from './fields/AnyField.js';
-import { CardBoxSmall } from './components/CardBoxSmall.js';
 import { ErrorDescription } from './components/ErrorDescription.js';
 import { QueryDescription } from './components/QueryDescription.js';
+import { SearchResultList } from './components/SearchResultList.js';
 
 const fields = {
   number: new NumberPropertyField('the card number', false, 'number'),
@@ -27,54 +27,48 @@ const schema = new Schema({
   termHandler: new FieldTermHandler(fields)
 });
 
-(async () => {
-  // TODO: is DOMContentLoaded needed here
-  const resultsElem = document.getElementById('search-results');
-  const query = getSearchString();
-  const searchInput = document.getElementById('search-text-input');
-  searchInput.value = query;
-  const {status, description, predicate, errors} = schema.query(query);
-  console.log(status, description, predicate, errors);
-  if (status) {
-    let cards = await fetch('/cards/index.json').then(resp => resp.json());
-    cards = cards.map(card => { card.match = predicate(card); return card; });
-    let groups = utils.groupBy(card => card.number, cards);
-    let results = groups.filter(group => group.some(card => card.match));
-    results = results.sort((a, b) => a[0].number - b[0].number);
-    const cardCount = results.length;
-    const versionCount = cards.filter(card => card.match).length;
-    render(html`
-      <${QueryDescription} description=${description} count=${cardCount} />
-      <${SearchResultList} results=${results} />
-      `, resultsElem);
-  } else {
-    console.warn('Query errors:', ...errors);
-    render(html`${errors.map(error => ErrorDescription({error}))}`, resultsElem);
-  }
-})();
+function showSyntax() {
+  document.getElementById('search-syntax').style.display = 'block';
+}
 
 function getSearchString() {
   return new URLSearchParams(location.search).get('q');
 }
 
-function SearchResultList({results}) {
-  console.log('SearchResultList', results);
-  return html`<ul class="card-list">
-    ${results.map(
-      (cards) => html`<${SearchResult} cards=${cards} />`
-    )}
-  </ul>`;
-}
+const resultsElem = document.getElementById('search-results');
+const searchInput = document.getElementById('search-text-input');
+const query = getSearchString();
 
-function SearchResult({cards}) {
-  console.log(cards);
-  const oracle = cards.filter(c => c.version === 'oracle')[0];
-  const printed = cards.filter(c => c.version === 'printed')[0];
-  console.log(oracle, printed);
-  return html`<li>
-    <div class="flex-gutter-wrapper">
-      <${CardBoxSmall} card=${oracle} />
-      <${CardBoxSmall} card=${printed} />
-    </div>
-  </li>`;
+if (query === null) {
+  showSyntax();
+} else {
+  searchInput.value = query;
+  const cardsP = fetch('/cards/index.json').then(resp => resp.json());
+  const {status, description, predicate, errors} = schema.query(query);
+  if (!status) {
+    render(
+      html`${errors.map(error => ErrorDescription({error}))}`,
+      resultsElem
+    );
+    showSyntax();
+  } else {
+    (async () => {
+      const cards = (await cardsP).map(card => {
+        card.match = predicate(card);
+        return card;
+      });
+      const groups = utils.groupBy(card => card.number, cards);
+      const results = groups
+        .filter(group => group.some(card => card.match))
+        .sort((a, b) => a[0].number - b[0].number);
+      const count = results.length;
+      render(
+        html`
+          <${QueryDescription} description=${description} count=${count} />
+          <${SearchResultList} results=${results} />
+        `,
+        resultsElem
+      );
+    })();
+  }
 }
