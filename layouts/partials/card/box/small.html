@@ -1,6 +1,6 @@
 <a href="{{ .Permalink }}" class="card small {{ partial "card/version" .}}">
   <h2 class="card-titleline">
-    <span class="card-number">{{- with partial "card/number" . -}}{{- . -}}{{- end -}}-<span class="card-period">{{ partial "card/period/initial" .}}</span></span>
+    <span class="card-number">{{- with partial "card/number" . -}}{{- . -}}{{- end -}}</span>-<span class="card-period">{{ partial "card/period/initial" .}}</span>
     <span class="card-title">{{ .Params.name }}</span>
     <span class="card-version">({{ title (partial "card/version" .) }})</span>
   </h2>

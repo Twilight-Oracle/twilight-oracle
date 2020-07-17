@@ -322,6 +322,9 @@ a.card.small {
 .card.small .card-number {
   font-family: monospace;
 }
+.card.small .card-period {
+  font-family: monospace;
+}
 .card.small .card-version {
   font-variant: small-caps;
   font-weight: normal;
