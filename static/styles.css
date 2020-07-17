@@ -288,7 +288,7 @@ ul.card-list {
 .card-list > li {
   --card-gutter-half-width: 0.4em;
   list-style-type: none;
-  margin: 1em 0;
+  margin: 0.5em 0;
   width: 100%;
 }
 .card-list .flex-gutter-wrapper {
@@ -305,7 +305,7 @@ a.card.small {
   flex-basis: 100%;
   border: 1px solid var(--unobtrusive);
   padding: 0.5em;
-  margin: 0 var(--card-gutter-half-width);
+  margin: 0.5em var(--card-gutter-half-width);
   box-sizing: border-box;
 }
 .card.small .card-titleline {
