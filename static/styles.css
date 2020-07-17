@@ -248,7 +248,6 @@ main.homepage {
   padding: 0.5em;
   box-sizing: border-box;
   border: solid var(--unobtrusive);
-  border-radius: 10px 10px 0 0;
 }
 .card.large .card-versions a {
   text-decoration: none;
@@ -265,6 +264,8 @@ main.homepage {
 .card.large .card-versions .card-version-tab:not(.selected) {
   background-color: var(--light);
   border-width: 0 0 1px 0;
+  padding: 0.3em;
+  align-self: flex-end;
 }
 .card.large .card-titleline {
   display: flex;
