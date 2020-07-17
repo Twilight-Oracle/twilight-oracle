@@ -9,6 +9,7 @@ import { CardPeriodField } from './fields/CardPeriodField.js';
 import { AnyField } from './fields/AnyField.js';
 import { CardBoxSmall } from './components/CardBoxSmall.js';
 import { ErrorDescription } from './components/ErrorDescription.js';
+import { QueryDescription } from './components/QueryDescription.js';
 
 const fields = {
   number: new NumberPropertyField('the card number', false, 'number'),
@@ -43,7 +44,7 @@ const schema = new Schema({
     const cardCount = results.length;
     const versionCount = cards.filter(card => card.match).length;
     render(html`
-      <${QueryDescription} text=${description} cardCount=${cardCount} versionCount=${versionCount} />
+      <${QueryDescription} description=${description} count=${cardCount} />
       <${SearchResultList} results=${results} />
       `, resultsElem);
   } else {
@@ -54,10 +55,6 @@ const schema = new Schema({
 
 function getSearchString() {
   return new URLSearchParams(location.search).get('q');
-}
-
-function QueryDescription({text, cardCount, versionCount}) {
-  return html`<div id="query-interpretation">${cardCount} cards (${versionCount} versions) where ${text}.</div>`;
 }
 
 function SearchResultList({results}) {

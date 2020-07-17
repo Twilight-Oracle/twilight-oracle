@@ -342,6 +342,16 @@ a.card.small {
   border-radius: 0.5em;
 }
 
+/* Style query description */
+
+.query-description {
+  /* background: #d0d0d0; */
+  padding: 0.75em;
+  margin: 2em 0 0 0;
+  border: 2px solid var(--unobtrusive);
+  border-radius: 0.5em;
+}
+
 /* Misc/TODO */
 
 .homepage-link {
