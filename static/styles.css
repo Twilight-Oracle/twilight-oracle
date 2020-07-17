@@ -388,7 +388,7 @@ a.card.small {
 #search-syntax pre {
   background: #e0e0e0;
   border: 1px solid var(--unobtrusive);
-  line-height: 1.5em;
+  line-height: 1.5;
   padding: 0.3em;
   border-radius: 0.25em;
   margin: 1em;
