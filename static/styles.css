@@ -161,6 +161,7 @@ form.search.large input {
 
 form.search.small {
   flex-grow: 1; /* TODO: scale this somehow - media-query ratcheting? */
+  min-width: 2em;
   margin: 0;
 }
 form.search.small input {
