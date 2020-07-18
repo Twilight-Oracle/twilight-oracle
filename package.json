@@ -6,7 +6,7 @@
   "main": "",
   "type": "module",
   "scripts": {
-    "build": "rm -rf public && rm -f static/search.js* && rollup -c && hugo"
+    "build": "rm -rf public/* && rm -f static/search.js* && rollup -c && hugo"
   },
   "author": "ninevra",
   "license": "UNLICENSED",

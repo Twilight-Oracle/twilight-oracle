@@ -1,0 +1,4 @@
+[submodule "public"]
+	path = public
+	url = git@github.com:Twilight-Oracle/twilight-oracle.github.io.git
+	branch = master

@@ -1,5 +1,3 @@
-# ignore hugo's output for now
-/public/
 # ignore npm dependencies
 /node_modules/
 # ignore intermediate build products
