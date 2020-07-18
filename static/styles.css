@@ -269,9 +269,12 @@ main.homepage {
 }
 .card.large .card-titleline {
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: center;
   margin: 0.5em 0 0.5em 0;
+}
+.card.large .card-title {
+  margin-right: auto;
 }
 .card.large .card-fields {
   border: solid black;
