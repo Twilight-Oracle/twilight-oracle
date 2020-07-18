@@ -37,7 +37,7 @@ Combining terms with "and" requires all of them (the default behavior).
 influence and not place
 ```
 
-## Card number
+## Card Number
 
 Filter cards by number:
 
@@ -46,15 +46,16 @@ number=109
 number>=103
 ```
 
-## Card name
+## Card Name
 
 Filter cards by name:
 
 ```
 name:China
+name="The China Card"
 ```
 
-## Card type
+## Card Type
 
 Filter cards by type:
 
@@ -64,7 +65,7 @@ type:war
 type:"ongoing effect" and type:"removed after event"
 ```
 
-## Operations value
+## Operations Value
 
 Filter cards by operations value:
 
@@ -75,7 +76,7 @@ ops=1
 ops=1 or ops=4
 ```
 
-## War period
+## War Period
 
 Filter cards by period:
 
@@ -103,7 +104,7 @@ Filter cards by text:
 text:place and text:influence
 ```
 
-## Card version
+## Card Version
 
 Filter cards by version (oracle or printed):
 
