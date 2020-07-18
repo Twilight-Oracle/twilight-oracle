@@ -221,7 +221,7 @@ main.homepage {
 }
 .card.large .card-image {
   border: 1px solid var(--unobtrusive);
-  flex: 0 0 auto;
+  flex: 0 1 auto;
   margin: 1em;
 }
 .card.large .card-box {
