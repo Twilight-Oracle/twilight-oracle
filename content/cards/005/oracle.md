@@ -9,7 +9,8 @@ war: false
 unique: false
 continuous: false
 name: Soviet Announces a 5-Year Plan
-image: New York Times 05.20.31
+image: "https://twistrug.jjt.io/images/cards/005.jpg"
+cite: New York Times 05.20.31
 ---
 USSR chooses a card in its hand at random and discards it.
 
