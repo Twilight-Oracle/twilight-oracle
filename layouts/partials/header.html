@@ -1,11 +1,12 @@
 <header>
-  <a href="/" class="homepage-link">
-    <span class="small">TO</span>
-    <span class="large">Twilight Oracle</span>
-  </a>
-  <form action="/search" method="get" class="small search">
-    {{ partial "feather-icons/search.svg" . }}
-    <input type="text" name="q" id="search-text-input" placeholder="Search cards">
-  </form>
-  {{ partial "intrasite-nav" . }}
+  <div class="content-wrapper">
+    <a href="/" class="homepage-link">
+      <span class="large">Twilight Oracle</span>
+    </a>
+    <form action="/search" method="get" class="small search">
+      {{ partial "feather-icons/search.svg" . }}
+      <input type="text" name="q" id="search-text-input" placeholder="Search cards">
+    </form>
+    {{ partial "intrasite-nav" . }}
+  </div>
 </header>

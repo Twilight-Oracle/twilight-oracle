@@ -48,28 +48,29 @@ footer, header {
 /* Style the header */
 
 header {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  align-items: center;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+  --header-row-height: 2rem;
   border-bottom: 1px solid black;
 }
+header .content-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem -0.5rem 0 -0.5rem;
+}
 header .homepage-link {
-  font-size: 2em;
-  margin: 0 0.5em 0 0; /* TODO: should probably use rems for most spacing throughout */
+  font-size: var(--header-row-height);
+  margin: 0 0.5rem 0.5rem 0.5rem; /* TODO: should probably use rems for most spacing throughout */
   color: black;
   text-decoration: none;
   flex-shrink: 0;
 }
-header .homepage-link .large {
-  display: none;
-}
 header nav.intrasite-links {
-  display: none;
-  margin: 0 0 0 1em;
-  flex-shrink: 0;
+  margin: 0 0.5rem 0.5rem 0.5rem;
+  flex: 0 1 auto;
+  height: var(--header-row-height);
+  display: flex;
+  align-items: center;
 }
 
 /* Style the footer */
@@ -162,9 +163,8 @@ form.search.large input {
 }
 
 form.search.small {
-  flex-grow: 1; /* TODO: scale this somehow - media-query ratcheting? */
-  min-width: 2em;
-  margin: 0;
+  flex: 1 1 20rem;
+  margin: 0 0.5rem 0.5rem 0.5rem;
 }
 form.search.small input {
 
@@ -418,19 +418,13 @@ a.card.small {
     /* TODO: instead could set flex-basis exactly: */
     /* flex-basis: calc(50% - 2 * var(--card-gutter-half-width)); */
   }
-  header .homepage-link .small {
-    display: none;
-  }
-  header .homepage-link .large {
-    display: inline;
+  header nav.intrasite-links {
+    flex-shrink: 0;
   }
 }
 
 @media (min-width: 90em) {
   .card-list > li {
     width: 47.5%;
-  }
-  header nav.intrasite-links {
-    display: flex inline;
   }
 }
