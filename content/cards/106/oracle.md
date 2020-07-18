@@ -11,6 +11,6 @@ continuous: true
 name: NORAD*
 image: "https://twistrug.jjt.io/images/cards/106.jpg"
 ---
-*Ongoing* — After either side completes an action round, if DEFCON became 2 during that action round, USA may place 1 influence in any country containing USA influence.
+*Ongoing* — After either side completes an action round, if DEFCON became 2 during that action round and USA controls `Canada`, USA may place 1 influence in any country containing USA influence.
 
 *(`042-M Quagmire` ends this event.)*
