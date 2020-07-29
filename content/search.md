@@ -7,13 +7,13 @@ outputs:
 
 # Search Syntax
 
-Entering words or numbers into the search bar will search for cards containing all of those words or numbers.
+Entering words or numbers into the search bar will search for cards containing all of those terms.
 
 ```
 remove 3 influence early war
 ```
 
-Enclosing a phrase in quotes will search for exactly that list of words.
+Enclose a phrase in quotes to search for exactly that list of words.
 
 ```
 remove "3 influence" "early war"
@@ -31,7 +31,7 @@ Modify search terms with "not" to filter out containing those terms.
 not (place influence)
 ```
 
-Combining terms with "and" requires all of them (the default behavior).
+Combine terms with "and" to require all of them (the default behavior).
 
 ```
 influence and not place
@@ -92,7 +92,7 @@ ops=1 or ops=4
 
 ## War Period
 
-Filter cards by period:
+Filter cards by war period:
 
 ```
 period:early
