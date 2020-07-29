@@ -2,25 +2,14 @@
   --unobtrusive: #979797;
   --light: #c0c0c0;
   font-size: 18px;
-  --content-margin: 0.5em;
+  --content-margin: 0.5rem;
   --matching-color: #b0d0ff;
-}
-
-/* Define war-period colors */
-
-.early {
-  background: #00a9d1;
-  color: black;
-}
-
-.late {
-  background: #2d3045;
-  color: white;
-}
-
-.mid {
-  background: #0085ac;
-  color: white;
+  --early-war: #00a9d1;
+  --early-war-contrast: black;
+  --mid-war: #0085ac;
+  --mid-war-contrast: white;
+  --late-war: #2d3045;
+  --late-war-contrast: white;
 }
 
 /* Distribute header, footer, body */
@@ -60,7 +49,7 @@ header .content-wrapper {
 }
 header .homepage-link {
   font-size: var(--header-row-height);
-  margin: 0 0.5rem 0.5rem 0.5rem; /* TODO: should probably use rems for most spacing throughout */
+  margin: 0 0.5rem 0.5rem 0.5rem;
   color: black;
   text-decoration: none;
   flex-shrink: 0;
@@ -127,11 +116,6 @@ form.search {
   flex-flow: row nowrap;
   align-content: stretch;
 }
-form.search:focus-within {
-  outline-color: blue;
-  /* outline-width: 3px;
-  outline-style: double; */
-}
 form.search input {
   flex: 1 1 auto;
   min-width: 2em;
@@ -152,7 +136,7 @@ form.search .search-icon {
 }
 
 form.search.large {
-  width: 20em; /* TODO: scale this somehow - media-query ratcheting? */
+  width: 20em;
   max-width: 100%;
   font-size: 2em;
   /* TODO: this is crude, letting margins collapse would be better; possibly
@@ -211,24 +195,24 @@ main.homepage {
 /* Style single-card display */
 
 .card.large {
-  margin: 2em 0;
+  margin: 2rem 0;
 }
 .card.large .flex-gutter-wrapper {
   display: flex;
   flex-flow: row-reverse wrap;
   justify-content: center;
   align-items: stretch;
-  width: calc(100% + 2em);
-  margin: -1em;
+  width: calc(100% + 2rem);
+  margin: -1rem;
 }
 .card.large .card-image {
   border: 1px solid var(--unobtrusive);
   flex: 0 1 auto;
-  margin: 1em;
+  margin: 1rem;
 }
 .card.large .card-box {
   flex: 1 1 5em;
-  margin: 1em;
+  margin: 1rem;
   max-width: 40em;
   display: flex;
   flex-flow: column nowrap;
@@ -247,7 +231,7 @@ main.homepage {
   width: 50%;
   display: flex;
   justify-content: center;
-  padding: 0.5em;
+  padding: 0.5rem;
   box-sizing: border-box;
   border: solid var(--unobtrusive);
 }
@@ -266,14 +250,14 @@ main.homepage {
 .card.large .card-versions .card-version-tab:not(.selected) {
   background-color: var(--light);
   border-width: 0 0 1px 0;
-  padding: 0.3em;
+  padding: 0.3rem;
   align-self: flex-end;
 }
 .card.large .card-titleline {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  margin: 0.5em 0 0.5em 0;
+  margin: 1rem 0 1rem 0;
 }
 .card.large .card-title {
   margin-right: auto;
@@ -281,7 +265,8 @@ main.homepage {
 .card.large .card-fields {
   border: solid black;
   border-width: 1px 0 1px 0;
-  padding: 0.5em 0 0.5em 0;
+  padding: 0.5rem 0;
+  margin: 1rem 0;
 }
 .card.large .card-fields dt, .card.large .card-fields dt::after {
   font-weight: bolder;
@@ -301,18 +286,18 @@ main.homepage {
 ul.card-list {
   display: flex;
   flex-flow: row wrap;
-  margin: 1em 0;
+  margin: 1rem 0;
   padding: 0;
   justify-content: space-between;
 }
 .card-list > li {
-  --card-gutter-half-width: 0.4em;
+  --card-gutter-half-width: 0.4rem;
   list-style-type: none;
-  margin: 0.5em 0;
+  margin: 0.5rem 0;
   width: 100%;
 }
 .card-list .flex-gutter-wrapper {
-  margin: 0 calc( -1 * var(--card-gutter-half-width));
+  margin: 0 calc(-1 * var(--card-gutter-half-width));
   height: 100%;
   display: flex;
   flex-flow: row wrap;
@@ -324,8 +309,8 @@ a.card.small {
 .card.small {
   flex-basis: 100%;
   border: 1px solid var(--unobtrusive);
-  padding: 0.5em;
-  margin: 0.5em var(--card-gutter-half-width);
+  padding: 0.5rem;
+  margin: 0.5rem var(--card-gutter-half-width);
   box-sizing: border-box;
 }
 .card.small .card-titleline {
@@ -352,28 +337,27 @@ a.card.small {
   margin: 0.5em 0 0.5em 0;
 }
 .card.small .card-text {
-  padding: 0 0.25em 0 0.25em;
+  padding: 0 0.25rem 0 0.25rem;
 }
 .card.small.match {
-  outline: 0.3em solid var(--matching-color);
+  outline: 0.3rem solid var(--matching-color);
 }
 
 /* Style query error descriptions */
 
 .query-error {
   background: #ffb0b0;
-  padding: 0.75em;
-  margin: 1em 0;
+  padding: 0.75rem;
+  margin: 1.5rem 0;
   border: 2px solid red;
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
 }
 
 /* Style query description */
 
 .query-description {
-  /* background: #d0d0d0; */
-  padding: 0.75em;
-  margin: 2em 0 0 0;
+  padding: 0.75rem;
+  margin: 1.5rem 0 0 0;
   border: 2px solid var(--unobtrusive);
   border-radius: 0.5em;
 }
