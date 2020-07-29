@@ -381,6 +381,7 @@ a.card.small {
   padding: 0.3em;
   border-radius: 0.25em;
   margin: 1em;
+  white-space: pre-wrap;
 }
 
 #search-syntax p {

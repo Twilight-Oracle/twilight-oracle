@@ -43,6 +43,8 @@ Filter cards by number:
 
 ```
 number=109
+```
+```
 number>=103
 ```
 
@@ -52,6 +54,8 @@ Filter cards by name:
 
 ```
 name:China
+```
+```
 name="The China Card"
 ```
 
@@ -61,7 +65,11 @@ Filter cards by type:
 
 ```
 type:scoring
+```
+```
 type:war
+```
+```
 type:"ongoing effect" and type:"removed after event"
 ```
 
@@ -71,8 +79,14 @@ Filter cards by operations value:
 
 ```
 ops>3
+```
+```
 ops<=2
+```
+```
 ops=1
+```
+```
 ops=1 or ops=4
 ```
 
@@ -82,7 +96,11 @@ Filter cards by period:
 
 ```
 period:early
+```
+```
 period:"Mid War"
+```
+```
 period=L
 ```
 
@@ -92,7 +110,11 @@ Filter cards by side:
 
 ```
 side:USA
+```
+```
 side:USSR
+```
+```
 not side:Neutral
 ```
 
@@ -110,5 +132,7 @@ Filter cards by version (oracle or printed):
 
 ```
 version:oracle
+```
+```
 version:printed and text:replace
 ```
