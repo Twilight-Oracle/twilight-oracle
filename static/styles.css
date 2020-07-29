@@ -82,31 +82,33 @@ footer {
   border-top: 1px solid var(--unobtrusive);
 }
 
-/* Define inline lists */
-/* TODO this doesn't _really_ center the list-item markers */
+/* Define button lists */
 /* TODO screenreaders may not like list-style-type: none; see mdn for fix */
 
-.inline-list {
-  display: flex inline;
-  flex-flow: row nowrap;
-  margin: 0;
+.button-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  --column-gap-half-width: 0.125rem;
+  --row-gap-half-width: 0.125rem;
+  margin: calc(-1 * var(--row-gap-half-width)) calc(-1 * var(--column-gap-half-width));
   padding: 0;
 }
-.inline-list > li {
-  list-style-position: inside;
-  margin-right: 0.5em;
-}
-/* TODO: does this allow nesting? probably irrelevant */
-.inline-list > li:first-of-type {
+.button-list > li {
   list-style-type: none;
 }
-.inline-list > li:last-of-type {
-  margin-right: 0;
+.button-list > li a {
+  padding: 0.25rem;
+  border: 1px solid var(--unobtrusive);
+  border-radius: 0.25rem;
+  margin: var(--row-gap-half-width) var(--column-gap-half-width);
+  color: black;
+  text-decoration: none;
 }
-/* li::marker content would work to center the marker, but isn't widely supported yet */
-/* .inline-list > li::marker {
-  content: "AAA";
-} */
+.button-list > li a:focus, .button-list > li a:hover {
+  background-color: var(--matching-color);
+  text-decoration: underline;
+}
 
 /* Define asides */
 
